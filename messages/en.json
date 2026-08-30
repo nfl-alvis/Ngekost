@@ -33,33 +33,6 @@
     "visual": "3D boarding house illustration",
     "tagline": "Indonesia's #1 verified boarding platform"
   },
-  "promo": {
-    "title": "Best Offers",
-    "subtitle": "This month only",
-    "viewAll": "View all promos",
-    "items": {
-      "1": {
-        "title": "Up to 800k discount",
-        "body": "Near campus favorites. Limited quota.",
-        "tag": "Students"
-      },
-      "2": {
-        "title": "Early check-in",
-        "body": "Flexible move-in for newcomers.",
-        "tag": "Flexible"
-      },
-      "3": {
-        "title": "No deposit needed",
-        "body": "Choose properties with zero deposit policy.",
-        "tag": "No DP"
-      },
-      "4": {
-        "title": "Year-long peace of mind",
-        "body": "Special pricing for annual stays.",
-        "tag": "Annual"
-      }
-    }
-  },
   "featured": {
     "title": "Featured Properties",
     "subtitle": "Top-rated boarding houses",
@@ -173,7 +146,11 @@
     "guide": "Complete renting guide",
     "verified": "Team Verified",
     "transparent": "Transparent Pricing",
-    "nearCampus": "Near Campus"
+    "nearCampus": "Near Campus",
+    "agentBody": "Our team verifies every property before it's listed, so you never have to worry about scams.",
+    "favoriteBody": "Save your favorite properties and compare facilities, prices, and locations in one place.",
+    "promoBody": "Get access to exclusive promos you won't find anywhere else, straight from the manager.",
+    "guideBody": "A complete guide from choosing a location to signing the contract — all in one place."
   },
   "stats": {
     "heading": "More than just a boarding house search platform",
@@ -181,12 +158,6 @@
     "properties": "verified properties",
     "cities": "cities",
     "tenants": "active tenants"
-  },
-  "cta": {
-    "badge": "Free Guide",
-    "heading": "Learn what matters before choosing a boarding house.",
-    "button": "Start Searching",
-    "body": "Thousands of verified boarding houses across 6 cities. Transparent pricing, complete facilities, close to campus."
   },
   "category": {
     "title": "Explore by City",

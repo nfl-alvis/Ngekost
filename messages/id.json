@@ -33,33 +33,6 @@
     "visual": "Ilustrasi 3D rumah kost",
     "tagline": "Platform kost terverifikasi #1 di Indonesia"
   },
-  "promo": {
-    "title": "Penawaran Terbaik",
-    "subtitle": "Khusus bulan ini",
-    "viewAll": "Lihat semua promo",
-    "items": {
-      "1": {
-        "title": "Diskon s.d. 800 ribu",
-        "body": "Kost dekat kampus favorit. Kuota terbatas.",
-        "tag": "Mahasiswa"
-      },
-      "2": {
-        "title": "Masuk kos 1 hari lebih awal",
-        "body": "Check-in fleksibel untuk kamu yang baru pindah kota.",
-        "tag": "Fleksibel"
-      },
-      "3": {
-        "title": "Bisa masuk tanpa deposit",
-        "body": "Pilih kost dengan kebijakan tanpa deposit.",
-        "tag": "Tanpa DP"
-      },
-      "4": {
-        "title": "Ngekos lebih tenang hingga setahun",
-        "body": "Tenang sepanjang tahun dengan harga spesial.",
-        "tag": "Tahunan"
-      }
-    }
-  },
   "featured": {
     "title": "Kost Unggulan",
     "subtitle": "Pilihan terbaik dengan rating tertinggi",
@@ -173,7 +146,11 @@
     "guide": "Panduan ngekos lengkap",
     "verified": "Terverifikasi Tim",
     "transparent": "Harga Transparan",
-    "nearCampus": "Dekat Kampus"
+    "nearCampus": "Dekat Kampus",
+    "agentBody": "Tim kami memverifikasi setiap kost sebelum tampil, jadi kamu nggak perlu khawatir ditipu.",
+    "favoriteBody": "Simpan kost favoritmu dan bandingkan fasilitas, harga, dan lokasi dalam satu tempat.",
+    "promoBody": "Dapatkan akses ke promo khusus yang nggak ada di tempat lain, langsung dari pengelola.",
+    "guideBody": "Panduan lengkap dari memilih lokasi sampai tanda tangan kontrak — semua ada di sini."
   },
   "stats": {
     "heading": "Lebih dari sekadar platform pencari kost",
@@ -181,12 +158,6 @@
     "properties": "kost terverifikasi",
     "cities": "kota",
     "tenants": "penyewa aktif"
-  },
-  "cta": {
-    "badge": "Panduan Gratis",
-    "heading": "Pelajari hal penting sebelum memilih kost.",
-    "button": "Mulai Cari Kost",
-    "body": "Ribuan kost terverifikasi di 6 kota. Harga transparan, fasilitas lengkap, dan dekat kampus."
   },
   "category": {
     "title": "Jelajahi Berdasarkan Kota",

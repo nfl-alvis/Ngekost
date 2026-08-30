@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import SearchBar from "@/components/SearchBar";
-import PromoCarousel from "@/components/PromoCarousel";
 import PropertyCard from "@/components/PropertyCard";
-import Kost3D from "@/components/Kost3D";
 import { getVerifiedProperties, CITIES } from "@/lib/data/properties";
 
 export async function generateMetadata({
@@ -23,6 +21,25 @@ const CATEGORY_IMAGES = [
   { seed: "ngekost-cat-jogja", label: "Yogyakarta", area: "Kotabaru · Caturtunggal", hero: 1 },
   { seed: "ngekost-cat-jakarta", label: "Jakarta", area: "Menteng · Tebet", hero: 2 },
   { seed: "ngekost-cat-malang", label: "Malang", area: "Sumbersari · Dinoyo", hero: 3 },
+];
+
+const WHY_ICONS = [
+  {
+    key: "agent",
+    path: "M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z M16 10a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z",
+  },
+  {
+    key: "favorite",
+    path: "M12 2l2.9 6.26L21.5 9.27l-5 4.87L17.8 21 12 17.77 6.2 21l1.3-6.86-5-4.87 6.6-1.01L12 2z",
+  },
+  {
+    key: "promo",
+    path: "M21 8l-9-5-9 5 9 5 9-5ZM3 8v8l9 5 9-5V8",
+  },
+  {
+    key: "guide",
+    path: "M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15ZM10 6h4",
+  },
 ];
 
 export default async function HomePage({
@@ -180,50 +197,48 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ===== PROMO ===== */}
+      {/* ===== WHY NGEKOST — reasons to choose, hairline grid ===== */}
       <section className="border-b border-nk-border">
-        <div className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
-          <div className="flex items-end justify-between pb-10">
-            <div>
-              <p className="mb-3 text-xs font-light uppercase tracking-[0.3em] text-nk-text-muted">
-                {t("promo.subtitle")}
-              </p>
-              <h2 className="text-2xl font-light uppercase tracking-tight text-nk-text sm:text-3xl">
-                {t("promo.title")}
-              </h2>
-            </div>
-            <Link
-              href="/kost"
-              className="hidden text-xs font-light uppercase tracking-widest text-nk-text underline underline-offset-4 transition-colors hover:text-nk-text-muted sm:block"
-            >
-              {t("promo.viewAll")}
-            </Link>
-          </div>
-          <PromoCarousel />
-        </div>
-      </section>
-
-      {/* ===== SPLIT CTA — 3D house + giant type ===== */}
-      <section className="border-b border-nk-border bg-[#E5E4DE]">
-        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 lg:grid-cols-2">
-          {/* 3D house side */}
-          <div className="flex items-center justify-center border-b border-nk-border p-10 lg:border-b-0 lg:border-r">
-            <Kost3D className="scale-90 lg:scale-100" />
-          </div>
-          {/* Type side */}
-          <div className="flex flex-col justify-center p-10 lg:p-16">
-            <h2 className="text-3xl font-light uppercase leading-[0.95] tracking-tight text-nk-text sm:text-4xl lg:text-5xl">
-              {t("cta.heading")}
-            </h2>
-            <p className="mt-6 max-w-md text-sm font-light leading-relaxed text-nk-text-muted">
-              {t("cta.body")}
+        <div className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+          <div className="max-w-2xl">
+            <p className="mb-4 text-xs font-light uppercase tracking-[0.3em] text-nk-text-muted">
+              {t("why.heading")}
             </p>
-            <Link
-              href="/kost"
-              className="mt-10 inline-block w-fit bg-nk-accent px-8 py-4 text-xs font-light uppercase tracking-[0.25em] text-nk-text-inverse transition-opacity hover:opacity-90"
-            >
-              {t("cta.button")}
-            </Link>
+            <h2 className="text-3xl font-light uppercase leading-[0.95] tracking-tight text-nk-text sm:text-4xl">
+              {t("why.subheading")}
+            </h2>
+          </div>
+
+          <div className="mt-14 grid grid-cols-1 gap-[1px] bg-[#E5E4DE] sm:grid-cols-2 lg:grid-cols-4">
+            {WHY_ICONS.map((item) => (
+              <div
+                key={item.key}
+                className="flex flex-col gap-8 bg-nk-bg p-8"
+              >
+                <svg
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-nk-text"
+                  aria-hidden="true"
+                >
+                  <path d={item.path} />
+                </svg>
+                <div className="mt-auto">
+                  <h3 className="text-lg font-light uppercase tracking-tight text-nk-text">
+                    {t(`why.${item.key}`)}
+                  </h3>
+                  <p className="mt-3 text-sm font-light leading-relaxed text-nk-text-muted">
+                    {t(`why.${item.key}Body`)}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

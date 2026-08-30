@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { getVerifiedProperties } from "@/lib/data/properties";
 import FilterPanel, { type FilterState } from "@/components/FilterPanel";
 import PropertyCard from "@/components/PropertyCard";
-import IsoHouse from "@/components/IsoHouse";
+import { getVerifiedProperties } from "@/lib/data/properties";
 import type { Property, Facility } from "@/lib/data/types";
 
 export function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -96,7 +95,6 @@ export default async function ListPage({
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-24 text-center">
-              <IsoHouse seed="empty" className="mb-6 w-40" />
               <h3 className="text-xl font-light uppercase tracking-tight text-nk-text">{t("list.emptyTitle")}</h3>
               <p className="mt-2 max-w-sm text-sm text-nk-text-muted">{t("list.emptyBody")}</p>
             </div>

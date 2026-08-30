@@ -17,14 +17,6 @@
 
   --font-serif: var(--font-sans);
   --font-sans: var(--font-sans);
-
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-float-slow: float 9s ease-in-out infinite;
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-  }
 }
 
 body {
@@ -38,27 +30,6 @@ body {
 ::selection {
   background: #3A2618;
   color: #FDFCF9;
-}
-
-/* ===== 3D house scene ===== */
-.kost3d-scene {
-  perspective: 1300px;
-}
-.kost3d {
-  transform-style: preserve-3d;
-  transform: rotateX(-18deg) rotateY(38deg);
-  transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-}
-.group:hover .kost3d,
-.kost3d-hover:hover .kost3d {
-  transform: rotateX(-12deg) rotateY(52deg) rotateZ(1.5deg);
-}
-.kost3d-face {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  backface-visibility: visible;
 }
 
 /* ===== grain / noise overlay ===== */
