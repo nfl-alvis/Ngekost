@@ -22,7 +22,7 @@ export default function SearchBar() {
   return (
     <form
       onSubmit={submit}
-      className="flex w-full max-w-2xl flex-col gap-0 border-b border-nk-border sm:flex-row"
+      className="flex w-full max-w-2xl flex-col border border-nk-border bg-nk-surface sm:flex-row"
     >
       <div className="flex flex-1 items-center gap-2.5 border-b border-nk-border px-4 py-3 sm:border-b-0 sm:border-r">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-nk-text-muted" aria-hidden="true">
@@ -39,7 +39,7 @@ export default function SearchBar() {
         />
       </div>
 
-      <div className="flex items-center gap-2.5 border-b border-nk-border px-4 py-3 sm:border-b-0 sm:border-r">
+      <div className="flex items-center gap-2.5 border-b border-nk-border bg-nk-section px-4 py-3 sm:border-b-0 sm:border-r">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-nk-text-muted" aria-hidden="true">
           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
           <circle cx="12" cy="10" r="3" />
