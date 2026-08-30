@@ -30,7 +30,8 @@
       "Surabaya",
       "Malang"
     ],
-    "visual": "Ilustrasi 3D rumah kost"
+    "visual": "Ilustrasi 3D rumah kost",
+    "tagline": "Platform kost terverifikasi #1 di Indonesia"
   },
   "promo": {
     "title": "Penawaran Terbaik",
@@ -154,7 +155,8 @@
     "malang": "Kost Malang",
     "partners": "Mitra Pengelola",
     "listProperty": "Pasang Kost",
-    "guide": "Panduan Ngekos"
+    "guide": "Panduan Ngekos",
+    "contact": "Kontak"
   },
   "common": {
     "loading": "Memuat...",
@@ -175,11 +177,20 @@
   },
   "stats": {
     "heading": "Lebih dari sekadar platform pencari kost",
-    "cta": "Jelajahi Sekarang"
+    "cta": "Jelajahi Sekarang",
+    "properties": "kost terverifikasi",
+    "cities": "kota",
+    "tenants": "penyewa aktif"
   },
   "cta": {
     "badge": "Panduan Gratis",
     "heading": "Pelajari hal penting sebelum memilih kost.",
-    "button": "Mulai Cari Kost"
+    "button": "Mulai Cari Kost",
+    "body": "Ribuan kost terverifikasi di 6 kota. Harga transparan, fasilitas lengkap, dan dekat kampus."
+  },
+  "category": {
+    "title": "Jelajahi Berdasarkan Kota",
+    "viewAll": "Lihat Semua",
+    "explore": "Jelajahi Kost"
   }
 }

@@ -1,26 +1,25 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-nk-bg: #fffcfa;
+  --color-nk-bg: #FDFCF9;
   --color-nk-surface: #FFFFFF;
-  --color-nk-text: #3d2a24;
-  --color-nk-text-muted: #7c6c6a;
-  --color-nk-text-inverse: #fffcfa;
-  --color-nk-border: #edeae8;
-  --color-nk-accent: #d5762b;
-  --color-nk-accent-dark: #bc5823;
-  --color-nk-accent-subtle: #f7f4f2;
-  --color-nk-accent-light: #fef3eb;
-  --color-nk-section: #f5f3f2;
-  --color-nk-dark: #140e0c;
-  --color-nk-dark-border: #8a7a78;
+  --color-nk-text: #1a1a1a;
+  --color-nk-text-muted: #78716c;
+  --color-nk-text-inverse: #FDFCF9;
+  --color-nk-border: #E5E4DE;
+  --color-nk-accent: #3A2618;
+  --color-nk-accent-dark: #2a1b10;
+  --color-nk-accent-subtle: #F6F5F2;
+  --color-nk-accent-light: #F6F5F2;
+  --color-nk-section: #F6F5F2;
+  --color-nk-dark: #3A2618;
+  --color-nk-dark-border: #a89a8f;
 
-  --font-serif: var(--font-serif);
+  --font-serif: var(--font-sans);
   --font-sans: var(--font-sans);
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-slow: float 9s ease-in-out infinite;
-  --animate-spin-slow: spin 14s linear infinite;
 
   @keyframes float {
     0%, 100% { transform: translateY(0); }
@@ -34,6 +33,11 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: #3A2618;
+  color: #FDFCF9;
 }
 
 /* ===== 3D house scene ===== */

@@ -22,10 +22,10 @@ export default function SearchBar() {
   return (
     <form
       onSubmit={submit}
-      className="flex w-full max-w-2xl flex-col gap-2 sm:flex-row sm:items-center sm:gap-0 sm:rounded-md sm:border sm:border-nk-border sm:bg-white sm:p-2 sm:shadow-sm"
+      className="flex w-full max-w-2xl flex-col gap-0 border-b border-nk-border sm:flex-row"
     >
-      <div className="flex flex-1 items-center gap-2.5 rounded-md border border-nk-border bg-white px-4 py-3 sm:border-0 sm:bg-transparent">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-nk-text-muted" aria-hidden="true">
+      <div className="flex flex-1 items-center gap-2.5 border-b border-nk-border px-4 py-3 sm:border-b-0 sm:border-r">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-nk-text-muted" aria-hidden="true">
           <circle cx="11" cy="11" r="7" />
           <path d="m21 21-4.3-4.3" />
         </svg>
@@ -34,20 +34,20 @@ export default function SearchBar() {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder={t("placeholder")}
-          className="w-full bg-transparent text-sm text-nk-text outline-none placeholder:text-nk-text-muted"
+          className="w-full bg-transparent text-xs uppercase tracking-widest text-nk-text outline-none placeholder:text-nk-text-muted"
           aria-label={t("placeholder")}
         />
       </div>
 
-      <div className="flex items-center gap-2.5 rounded-md border border-nk-border bg-white px-4 py-3 sm:border-0 sm:bg-transparent">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-nk-text-muted" aria-hidden="true">
+      <div className="flex items-center gap-2.5 border-b border-nk-border px-4 py-3 sm:border-b-0 sm:border-r">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-nk-text-muted" aria-hidden="true">
           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
           <circle cx="12" cy="10" r="3" />
         </svg>
         <select
           value={city}
           onChange={(e) => setCity(e.target.value)}
-          className="w-full cursor-pointer bg-transparent text-sm text-nk-text outline-none"
+          className="w-full cursor-pointer bg-transparent text-xs uppercase tracking-widest text-nk-text outline-none"
           aria-label={t("placeholder")}
         >
           <option value="">{t("popular")}</option>
@@ -59,12 +59,8 @@ export default function SearchBar() {
 
       <button
         type="submit"
-        className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-gradient-to-b from-nk-accent to-nk-accent-dark px-6 text-sm font-medium text-white shadow-sm transition-all hover:shadow-md active:scale-[0.98] sm:h-auto sm:rounded-md"
+        className="inline-flex h-11 items-center justify-center gap-2 bg-nk-accent px-6 text-xs uppercase tracking-widest text-white transition-opacity hover:opacity-90 sm:h-auto"
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="7" />
-          <path d="m21 21-4.3-4.3" />
-        </svg>
         {t("search")}
       </button>
     </form>

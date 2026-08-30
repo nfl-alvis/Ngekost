@@ -51,12 +51,12 @@ export default function FilterPanel({ state }: Props) {
   }
 
   return (
-    <div className="space-y-6 rounded-xl border border-nk-border bg-white p-5 shadow-sm lg:sticky lg:top-24">
+    <div className="space-y-6 border border-nk-border bg-nk-section p-5 lg:sticky lg:top-24">
       <div className="flex items-center justify-between">
-        <h2 className="text-sm font-medium text-nk-text">{t("filter")}</h2>
+        <h2 className="text-xs font-normal uppercase tracking-widest text-nk-text">{t("filter")}</h2>
         <button
           onClick={reset}
-          className="text-xs font-medium text-nk-text-muted transition-colors hover:text-nk-accent"
+          className="text-[10px] font-light uppercase tracking-widest text-nk-text-muted transition-colors hover:text-nk-accent"
         >
           {t("reset")}
         </button>
@@ -64,17 +64,17 @@ export default function FilterPanel({ state }: Props) {
 
       {/* City */}
       <div className="space-y-2.5">
-        <label className="block text-xs font-semibold uppercase tracking-wider text-nk-text-muted">
+        <label className="block text-[10px] font-normal uppercase tracking-widest text-nk-text-muted">
           {t("city")}
         </label>
         <div className="flex flex-wrap gap-2">
           <button
             onClick={() => update({ kota: "" })}
             className={cn(
-              "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+              "border border-nk-border px-3 py-1.5 text-[10px] font-light uppercase tracking-widest transition-colors",
               !state.kota
-                ? "border-nk-accent bg-nk-accent-light text-nk-accent-dark"
-                : "border-nk-border text-nk-text-muted hover:border-nk-accent"
+                ? "border-nk-accent bg-nk-accent text-nk-text-inverse"
+                : "text-nk-text-muted hover:border-nk-accent"
             )}
           >
             {t("allCities")}
@@ -84,10 +84,10 @@ export default function FilterPanel({ state }: Props) {
               key={c}
               onClick={() => update({ kota: c })}
               className={cn(
-                "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+                "border border-nk-border px-3 py-1.5 text-[10px] font-light uppercase tracking-widest transition-colors",
                 state.kota === c
-                  ? "border-nk-accent bg-nk-accent-light text-nk-accent-dark"
-                  : "border-nk-border text-nk-text-muted hover:border-nk-accent"
+                  ? "border-nk-accent bg-nk-accent text-nk-text-inverse"
+                  : "text-nk-text-muted hover:border-nk-accent"
               )}
             >
               {c}
@@ -98,7 +98,7 @@ export default function FilterPanel({ state }: Props) {
 
       {/* Price */}
       <div className="space-y-2.5">
-        <label htmlFor="max-price" className="block text-xs font-semibold uppercase tracking-wider text-nk-text-muted">
+        <label htmlFor="max-price" className="block text-[10px] font-normal uppercase tracking-widest text-nk-text-muted">
           {t("maxPrice")}
         </label>
         <input
@@ -111,14 +111,14 @@ export default function FilterPanel({ state }: Props) {
           onChange={(e) => update({ maxPrice: PRICE_STEPS[Number(e.target.value)] })}
           className="w-full accent-nk-accent"
         />
-        <div className="flex justify-between text-xs text-nk-text-muted">
+        <div className="flex justify-between text-[10px] text-nk-text-muted">
           <span>{state.maxPrice ? `Rp ${(state.maxPrice / 1000000).toFixed(state.maxPrice % 1000000 === 0 ? 0 : 1)} jt` : t("genderAll")}</span>
         </div>
       </div>
 
       {/* Gender */}
       <div className="space-y-2.5">
-        <span className="block text-xs font-semibold uppercase tracking-wider text-nk-text-muted">
+        <span className="block text-[10px] font-normal uppercase tracking-widest text-nk-text-muted">
           {t("gender")}
         </span>
         <div className="flex flex-wrap gap-2">
@@ -132,10 +132,10 @@ export default function FilterPanel({ state }: Props) {
               key={g.v}
               onClick={() => update({ gender: g.v })}
               className={cn(
-                "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+                "border border-nk-border px-3 py-1.5 text-[10px] font-light uppercase tracking-widest transition-colors",
                 state.gender === g.v
-                  ? "border-nk-accent bg-nk-accent-light text-nk-accent-dark"
-                  : "border-nk-border text-nk-text-muted hover:border-nk-accent"
+                  ? "border-nk-accent bg-nk-accent text-nk-text-inverse"
+                  : "text-nk-text-muted hover:border-nk-accent"
               )}
             >
               {g.l}
@@ -146,7 +146,7 @@ export default function FilterPanel({ state }: Props) {
 
       {/* Facilities */}
       <div className="space-y-2.5">
-        <span className="block text-xs font-semibold uppercase tracking-wider text-nk-text-muted">
+        <span className="block text-[10px] font-normal uppercase tracking-widest text-nk-text-muted">
           {t("facilities")}
         </span>
         <div className="flex flex-wrap gap-2">
@@ -156,10 +156,10 @@ export default function FilterPanel({ state }: Props) {
               onClick={() => toggleFacility(f)}
               aria-pressed={state.fasilitas.includes(f)}
               className={cn(
-                "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
+                "border border-nk-border px-3 py-1.5 text-[10px] font-light uppercase tracking-widest transition-colors",
                 state.fasilitas.includes(f)
-                  ? "border-nk-accent bg-nk-accent-light text-nk-accent-dark"
-                  : "border-nk-border text-nk-text-muted hover:border-nk-accent"
+                  ? "border-nk-accent bg-nk-accent text-nk-text-inverse"
+                  : "text-nk-text-muted hover:border-nk-accent"
               )}
             >
               {FACILITY_META[f].labelId}
@@ -170,14 +170,14 @@ export default function FilterPanel({ state }: Props) {
 
       {/* Sort */}
       <div className="space-y-2.5">
-        <label htmlFor="sort" className="block text-xs font-semibold uppercase tracking-wider text-nk-text-muted">
+        <label htmlFor="sort" className="block text-[10px] font-normal uppercase tracking-widest text-nk-text-muted">
           {t("sort")}
         </label>
         <select
           id="sort"
           value={state.sort}
           onChange={(e) => update({ sort: e.target.value })}
-          className="w-full cursor-pointer rounded-md border border-nk-border bg-white px-3 py-2 text-sm text-nk-text outline-none focus:border-nk-accent"
+          className="w-full cursor-pointer border border-nk-border bg-nk-bg px-3 py-2 text-xs uppercase tracking-widest text-nk-text outline-none"
         >
           <option value="rating">{t("sortRating")}</option>
           <option value="price-asc">{t("sortPriceAsc")}</option>

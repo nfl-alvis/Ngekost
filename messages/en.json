@@ -12,8 +12,8 @@
   },
   "hero": {
     "badge": "Hundreds of verified boarding houses",
-    "title1": "Find your dream kost",
-    "title2": "easy with NgeKost.",
+    "title1": "Find Your Dream",
+    "title2": "Boarding House.",
     "subtitle": "Discover verified boarding houses near your campus or office. Transparent pricing, complete facilities, fast booking.",
     "placeholder": "Search location/area/address",
     "search": "Search",
@@ -30,7 +30,8 @@
       "Surabaya",
       "Malang"
     ],
-    "visual": "3D boarding house illustration"
+    "visual": "3D boarding house illustration",
+    "tagline": "Indonesia's #1 verified boarding platform"
   },
   "promo": {
     "title": "Best Offers",
@@ -154,7 +155,8 @@
     "malang": "Kost Malang",
     "partners": "Partner with Us",
     "listProperty": "List Your Property",
-    "guide": "Renting Guide"
+    "guide": "Renting Guide",
+    "contact": "Contact"
   },
   "common": {
     "loading": "Loading...",
@@ -175,11 +177,20 @@
   },
   "stats": {
     "heading": "More than just a boarding house search platform",
-    "cta": "Explore Now"
+    "cta": "Explore Now",
+    "properties": "verified properties",
+    "cities": "cities",
+    "tenants": "active tenants"
   },
   "cta": {
     "badge": "Free Guide",
     "heading": "Learn what matters before choosing a boarding house.",
-    "button": "Start Searching"
+    "button": "Start Searching",
+    "body": "Thousands of verified boarding houses across 6 cities. Transparent pricing, complete facilities, close to campus."
+  },
+  "category": {
+    "title": "Explore by City",
+    "viewAll": "View All",
+    "explore": "Explore Kost"
   }
 }
