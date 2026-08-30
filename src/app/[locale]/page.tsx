@@ -50,20 +50,18 @@ export default async function HomePage({
         <img
           src="/assets/hero-bg.png"
           alt=""
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover object-right opacity-40"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover object-right opacity-30"
         />
-        {/* overlay: solid cream on left (text zone), fades to transparent right */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-nk-bg via-nk-bg via-70% to-nk-bg/20" aria-hidden="true" />
         <div className="relative mx-auto w-full max-w-7xl px-6 py-24 md:py-32 lg:px-10">
-          <p className="mb-6 text-xs font-normal uppercase tracking-[0.3em] text-nk-text">
+          <p className="mb-6 text-xs font-light uppercase tracking-[0.3em] text-nk-text-muted">
             {t("hero.tagline")}
           </p>
-          <h1 className="max-w-3xl font-sans text-5xl font-semibold uppercase leading-[0.95] tracking-tight text-nk-text sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="max-w-4xl font-sans text-5xl font-light uppercase leading-[0.95] tracking-tight text-nk-text sm:text-6xl md:text-7xl lg:text-8xl">
             {t("hero.title1")}
             <br />
             {t("hero.title2")}
           </h1>
-          <div className="mt-12 max-w-xl">
+          <div className="mt-12 max-w-2xl">
             <SearchBar />
           </div>
         </div>
