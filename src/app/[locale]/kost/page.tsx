@@ -66,10 +66,10 @@ export default async function ListPage({
       <section className="border-b border-nk-border">
         <div className="mx-auto w-full max-w-7xl px-6 py-14 lg:px-10 lg:py-20">
           <div className="max-w-3xl">
-            <h1 className="text-4xl font-light uppercase tracking-tight text-nk-text md:text-5xl">
+            <h1 className="text-4xl font-light tracking-tight text-nk-text md:text-5xl">
               {t("list.title")}
             </h1>
-            <p className="mt-4 text-sm font-light uppercase tracking-[0.2em] text-nk-text-muted">
+            <p className="mt-4 text-sm text-nk-text-muted">
               {t("list.subtitle")}
             </p>
           </div>
@@ -84,18 +84,18 @@ export default async function ListPage({
 
         {/* Grid */}
         <div className="p-6 lg:p-8">
-          <p className="mb-8 text-xs font-light uppercase tracking-widest text-nk-text-muted">
+          <p className="mb-8 text-sm text-nk-text-muted">
             {t("list.resultCount", { count: filtered.length })}
           </p>
           {filtered.length > 0 ? (
-            <div className="grid grid-cols-1 gap-[1px] bg-[#E5E4DE] sm:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-[1px] bg-nk-border sm:grid-cols-2 xl:grid-cols-3">
               {filtered.map((p) => (
                 <PropertyCard key={p.slug} property={p} />
               ))}
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-24 text-center">
-              <h3 className="text-xl font-light uppercase tracking-tight text-nk-text">{t("list.emptyTitle")}</h3>
+              <h3 className="text-xl font-medium tracking-tight text-nk-text">{t("list.emptyTitle")}</h3>
               <p className="mt-2 max-w-sm text-sm text-nk-text-muted">{t("list.emptyBody")}</p>
             </div>
           )}

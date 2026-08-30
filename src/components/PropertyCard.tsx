@@ -27,29 +27,29 @@ export default async function PropertyCard({ property }: { property: Property })
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
         {property.verified && (
-          <span className="absolute left-3 top-3 inline-flex items-center gap-1 bg-nk-bg/90 px-2 py-0.5 text-[10px] font-normal uppercase tracking-widest text-nk-text backdrop-blur-sm">
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-md bg-white/90 px-2.5 py-1 text-xs font-medium text-nk-text backdrop-blur-sm">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M20 6 9 17l-5-5" />
             </svg>
             {t("verified")}
           </span>
         )}
-        <span className="absolute bottom-3 right-3 bg-nk-dark/80 px-2 py-0.5 text-[10px] font-light uppercase tracking-widest text-nk-text-inverse">
+        <span className="absolute bottom-3 right-3 rounded-md bg-nk-dark/85 px-2.5 py-1 text-xs font-medium text-nk-text-inverse">
           {formatDistance(property.distanceToCampusM)}
         </span>
       </div>
 
       <div className="flex items-center gap-2">
-        <h3 className="truncate text-lg font-light uppercase tracking-tight text-nk-text">
+        <h3 className="truncate text-lg font-medium tracking-tight text-nk-text">
           {property.name}
         </h3>
         <span className="text-nk-text-muted">·</span>
-        <span className="truncate text-lg font-light uppercase tracking-tight text-nk-text-muted">
+        <span className="truncate text-lg font-light tracking-tight text-nk-text-muted">
           {t(GENDER_LABEL[property.gender])}
         </span>
       </div>
 
-      <p className="mt-1.5 flex items-center gap-1 text-[11px] uppercase tracking-widest text-nk-text-muted">
+      <p className="mt-1.5 flex items-center gap-1 text-xs text-nk-text-muted">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
           <circle cx="12" cy="10" r="3" />
@@ -74,13 +74,13 @@ export default async function PropertyCard({ property }: { property: Property })
       </div>
 
       <div className="mt-auto flex items-baseline gap-1.5 border-t border-nk-border pt-4">
-        <span className="text-[10px] uppercase tracking-widest text-nk-text-muted">{t("from")}</span>
-        <span className="text-xl font-light tracking-tight text-nk-text">
+        <span className="text-xs text-nk-text-muted">{t("from")}</span>
+        <span className="text-xl font-medium tracking-tight text-nk-text">
           {formatIDR(property.minPrice)}
         </span>
-        <span className="text-[10px] uppercase tracking-widest text-nk-text-muted">{t("perMonth")}</span>
+        <span className="text-xs text-nk-text-muted">{t("perMonth")}</span>
         <span className={cn(
-          "ml-auto inline-flex items-center text-[10px] font-normal uppercase tracking-widest",
+          "ml-auto inline-flex items-center text-xs font-medium",
           property.roomTypes.some((r) => r.available > 0)
             ? "text-nk-accent"
             : "text-nk-text-muted"

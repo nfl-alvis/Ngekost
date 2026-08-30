@@ -34,7 +34,7 @@ export default function SearchBar() {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder={t("placeholder")}
-          className="w-full bg-transparent text-xs uppercase tracking-widest text-nk-text outline-none placeholder:text-nk-text-muted"
+          className="w-full bg-transparent text-sm text-nk-text outline-none placeholder:text-nk-text-muted"
           aria-label={t("placeholder")}
         />
       </div>
@@ -47,7 +47,7 @@ export default function SearchBar() {
         <select
           value={city}
           onChange={(e) => setCity(e.target.value)}
-          className="w-full cursor-pointer bg-transparent text-xs uppercase tracking-widest text-nk-text outline-none"
+          className="w-full cursor-pointer bg-transparent text-sm text-nk-text outline-none"
           aria-label={t("placeholder")}
         >
           <option value="">{t("popular")}</option>
@@ -59,7 +59,7 @@ export default function SearchBar() {
 
       <button
         type="submit"
-        className="inline-flex h-11 items-center justify-center gap-2 bg-nk-accent px-6 text-xs uppercase tracking-widest text-white transition-opacity hover:opacity-90 sm:h-auto"
+        className="inline-flex h-11 items-center justify-center gap-2 bg-nk-accent px-6 text-sm font-medium text-white transition-opacity hover:opacity-90 sm:h-auto"
       >
         {t("search")}
       </button>

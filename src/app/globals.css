@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-nk-bg: #FDFCF9;
+  --color-nk-bg: #FFFFFF;
   --color-nk-surface: #FFFFFF;
-  --color-nk-text: #1a1a1a;
-  --color-nk-text-muted: #78716c;
-  --color-nk-text-inverse: #FDFCF9;
-  --color-nk-border: #E5E4DE;
-  --color-nk-accent: #3A2618;
-  --color-nk-accent-dark: #2a1b10;
-  --color-nk-accent-subtle: #F6F5F2;
-  --color-nk-accent-light: #F6F5F2;
-  --color-nk-section: #F6F5F2;
-  --color-nk-dark: #3A2618;
-  --color-nk-dark-border: #a89a8f;
+  --color-nk-text: #171717;
+  --color-nk-text-muted: #737373;
+  --color-nk-text-inverse: #FFFFFF;
+  --color-nk-border: #E5E5E5;
+  --color-nk-accent: #171717;
+  --color-nk-accent-dark: #0a0a0a;
+  --color-nk-accent-subtle: #F5F5F5;
+  --color-nk-accent-light: #F5F5F5;
+  --color-nk-section: #F5F5F5;
+  --color-nk-dark: #171717;
+  --color-nk-dark-border: #737373;
 
   --font-serif: var(--font-sans);
   --font-sans: var(--font-sans);
@@ -23,13 +23,15 @@ body {
   background: var(--color-nk-bg);
   color: var(--color-nk-text);
   font-family: var(--font-sans);
+  font-feature-settings: "salt", "ss01", "ss02", "rlig" 1, "calt" 1;
+  letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: #3A2618;
-  color: #FDFCF9;
+  background: #171717;
+  color: #FFFFFF;
 }
 
 /* ===== grain / noise overlay ===== */

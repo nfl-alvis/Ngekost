@@ -61,7 +61,7 @@ export default async function HomePage({
 
   return (
     <>
-      {/* ===== HERO — giant uppercase type + search ===== */}
+      {/* ===== HERO — giant type + search ===== */}
       <section className="relative overflow-hidden border-b border-nk-border">
         {/* full-bleed background image, slightly transparent */}
         <img
@@ -69,13 +69,13 @@ export default async function HomePage({
           alt=""
           className="pointer-events-none absolute inset-0 h-full w-full object-cover object-right opacity-30"
         />
-        {/* overlay: solid cream on left (text zone), fades from 40% */}
+        {/* overlay: solid white on left (text zone), fades from 40% */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-nk-bg from-40% via-nk-bg/55 via-70% to-transparent" aria-hidden="true" />
         <div className="relative mx-auto w-full max-w-7xl px-6 py-24 md:py-32 lg:px-10">
-          <p className="mb-6 text-xs font-light uppercase tracking-[0.3em] text-nk-text-muted">
+          <p className="mb-6 text-sm font-medium text-nk-text-muted">
             {t("hero.tagline")}
           </p>
-          <h1 className="max-w-4xl font-sans text-5xl font-light uppercase leading-[0.95] tracking-tight text-nk-text sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="max-w-4xl font-sans text-5xl font-light leading-[1.02] tracking-tight text-nk-text sm:text-6xl md:text-7xl lg:text-8xl">
             {t("hero.title1")}
             <br />
             {t("hero.title2")}
@@ -87,14 +87,14 @@ export default async function HomePage({
       </section>
 
       {/* ===== MARQUEE STRIP — 3 value props, hairline grid ===== */}
-      <section className="border-b border-nk-border bg-[#E5E4DE]">
+      <section className="border-b border-nk-border bg-nk-border">
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-[1px] md:grid-cols-3">
           {marqueeItems.map((item) => (
             <div
               key={item.label}
               className="flex items-center justify-between bg-nk-bg px-6 py-5"
             >
-              <span className="text-sm font-light uppercase tracking-[0.2em] text-nk-text">
+              <span className="text-sm font-medium text-nk-text">
                 {item.label}
               </span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="text-nk-text-muted" aria-hidden="true">
@@ -109,18 +109,18 @@ export default async function HomePage({
       <section className="border-b border-nk-border">
         <div className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
           <div className="flex items-center justify-between pb-10">
-            <h2 className="text-2xl font-light uppercase tracking-tight text-nk-text sm:text-3xl">
+            <h2 className="text-2xl font-light tracking-tight text-nk-text sm:text-3xl">
               {t("featured.title")}
             </h2>
             <Link
               href="/kost"
-              className="hidden text-xs font-light uppercase tracking-widest text-nk-text underline underline-offset-4 transition-colors hover:text-nk-text-muted sm:block"
+              className="hidden text-sm text-nk-text underline underline-offset-4 transition-colors hover:text-nk-text-muted sm:block"
             >
               {t("featured.viewAll")}
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 gap-[1px] bg-[#E5E4DE] sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-[1px] bg-nk-border sm:grid-cols-2 lg:grid-cols-4">
             {featured.map((p) => (
               <PropertyCard key={p.slug} property={p} />
             ))}
@@ -129,7 +129,7 @@ export default async function HomePage({
           <div className="mt-8 sm:hidden">
             <Link
               href="/kost"
-              className="block w-full border border-nk-border bg-nk-bg px-6 py-3 text-center text-xs uppercase tracking-widest text-nk-text transition-colors hover:bg-nk-section"
+              className="block w-full border border-nk-border bg-nk-bg px-6 py-3 text-center text-sm text-nk-text transition-colors hover:bg-nk-section"
             >
               {t("featured.viewAll")}
             </Link>
@@ -141,12 +141,12 @@ export default async function HomePage({
       <section className="border-b border-nk-border">
         <div className="mx-auto w-full max-w-7xl px-6 pt-16 lg:px-10">
           <div className="flex items-end justify-between pb-8">
-            <h2 className="text-2xl font-light uppercase tracking-tight text-nk-text sm:text-3xl">
+            <h2 className="text-2xl font-light tracking-tight text-nk-text sm:text-3xl">
               {t("category.title")}
             </h2>
             <Link
               href="/kost"
-              className="hidden text-xs font-light uppercase tracking-widest text-nk-text underline underline-offset-4 transition-colors hover:text-nk-text-muted sm:block"
+              className="hidden text-sm text-nk-text underline underline-offset-4 transition-colors hover:text-nk-text-muted sm:block"
             >
               {t("category.viewAll")}
             </Link>
@@ -166,12 +166,12 @@ export default async function HomePage({
               />
               <div className="absolute inset-x-0 top-0 h-[60%] bg-gradient-to-b from-nk-bg via-nk-bg/80 to-transparent" />
               <div className="relative z-10 flex h-[38vh] flex-col p-6 lg:h-full lg:p-8 lg:pt-12">
-                <h3 className="text-xl font-light uppercase tracking-tight text-nk-text lg:text-2xl">
+                <h3 className="text-xl font-light tracking-tight text-nk-text lg:text-2xl">
                   {cat.label}
                 </h3>
                 <div className="mt-auto pb-2">
                   <div className="flex w-full items-center justify-between border-t border-nk-text/10 pt-4">
-                    <span className="text-[10px] font-light uppercase tracking-[0.25em] text-nk-text">
+                    <span className="text-xs font-medium text-nk-text">
                       {t("category.explore")}
                     </span>
                     <svg
@@ -201,15 +201,15 @@ export default async function HomePage({
       <section className="border-b border-nk-border">
         <div className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
           <div className="max-w-2xl">
-            <p className="mb-4 text-xs font-light uppercase tracking-[0.3em] text-nk-text-muted">
+            <p className="mb-4 text-sm font-medium text-nk-text-muted">
               {t("why.heading")}
             </p>
-            <h2 className="text-3xl font-light uppercase leading-[0.95] tracking-tight text-nk-text sm:text-4xl">
+            <h2 className="text-3xl font-light leading-tight tracking-tight text-nk-text sm:text-4xl">
               {t("why.subheading")}
             </h2>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 gap-[1px] bg-[#E5E4DE] sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid grid-cols-1 gap-[1px] bg-nk-border sm:grid-cols-2 lg:grid-cols-4">
             {WHY_ICONS.map((item) => (
               <div
                 key={item.key}
@@ -230,10 +230,10 @@ export default async function HomePage({
                   <path d={item.path} />
                 </svg>
                 <div className="mt-auto">
-                  <h3 className="text-lg font-light uppercase tracking-tight text-nk-text">
+                  <h3 className="text-lg font-medium tracking-tight text-nk-text">
                     {t(`why.${item.key}`)}
                   </h3>
-                  <p className="mt-3 text-sm font-light leading-relaxed text-nk-text-muted">
+                  <p className="mt-3 text-sm leading-relaxed text-nk-text-muted">
                     {t(`why.${item.key}Body`)}
                   </p>
                 </div>
@@ -258,7 +258,7 @@ export default async function HomePage({
               <div className="text-4xl font-light tracking-tight md:text-5xl">
                 {s.value}
               </div>
-              <div className="text-xs font-light uppercase tracking-[0.25em] text-nk-dark-border">
+              <div className="text-sm text-nk-dark-border">
                 {s.label}
               </div>
             </div>

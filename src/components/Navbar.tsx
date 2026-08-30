@@ -30,8 +30,8 @@ export default function Navbar() {
               href={l.href}
               className={
                 isActive(l.href)
-                  ? "text-xs uppercase tracking-widest text-nk-text"
-                  : "text-xs uppercase tracking-widest text-nk-text-muted transition-colors hover:text-nk-text"
+                  ? "text-sm font-medium text-nk-text"
+                  : "text-sm text-nk-text-muted transition-colors hover:text-nk-text"
               }
             >
               {l.label}
@@ -43,7 +43,7 @@ export default function Navbar() {
         <div className="hidden items-center gap-6 md:flex">
           <Link
             href="/kost"
-            className="flex items-center gap-2 text-xs uppercase tracking-widest text-nk-text transition-colors hover:text-nk-text-muted"
+            className="flex items-center gap-2 text-sm text-nk-text transition-colors hover:text-nk-text-muted"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <circle cx="11" cy="11" r="7" />

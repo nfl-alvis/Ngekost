@@ -48,7 +48,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-10">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           <div className="flex flex-col gap-4">
-            <p className="mb-2 text-xs font-normal uppercase tracking-widest text-nk-dark-border">
+            <p className="mb-2 text-xs font-semibold text-nk-dark-border">
               {t("explore")}
             </p>
             {exploreLinks.map((l) => (
@@ -63,7 +63,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <p className="mb-2 text-xs font-normal uppercase tracking-widest text-nk-dark-border">
+            <p className="mb-2 text-xs font-semibold text-nk-dark-border">
               {t("company")}
             </p>
             {companyLinks.map((l) => (
@@ -78,7 +78,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <p className="mb-2 text-xs font-normal uppercase tracking-widest text-nk-dark-border">
+            <p className="mb-2 text-xs font-semibold text-nk-dark-border">
               {t("support")}
             </p>
             {supportLinks.map((l) => (
@@ -93,7 +93,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <p className="mb-2 text-xs font-normal uppercase tracking-widest text-nk-dark-border">
+            <p className="mb-2 text-xs font-semibold text-nk-dark-border">
               {t("contact")}
             </p>
             <a href="tel:+6281122334455" className="text-sm font-light text-nk-text-inverse transition-colors hover:text-white">
