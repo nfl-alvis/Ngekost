@@ -1,0 +1,143 @@
+{
+  "nav": {
+    "search": "Search",
+    "listings": "Explore Boarding Houses",
+    "help": "Help Center",
+    "login": "Log in",
+    "register": "Sign up",
+    "locale": "EN"
+  },
+  "hero": {
+    "badge": "Hundreds of verified boarding houses",
+    "title1": "Find your dream",
+    "title2": "boarding house.",
+    "subtitle": "Discover verified boarding houses near your campus or office. Transparent pricing, complete facilities, fast booking.",
+    "placeholder": "Enter location/area/address",
+    "search": "Search",
+    "popular": "Popular:",
+    "stats": {
+      "properties": "verified boarding houses",
+      "cities": "cities",
+      "tenants": "active tenants"
+    }
+  },
+  "promo": {
+    "title": "Special Promos",
+    "subtitle": "Limited offers this month",
+    "viewAll": "View all promos",
+    "items": {
+      "1": {
+        "title": "Up to 800K off",
+        "body": "Boarding houses near top campuses. Limited slots.",
+        "tag": "Students"
+      },
+      "2": {
+        "title": "Move in 1 day early",
+        "body": "Flexible check-in for those new to the city.",
+        "tag": "Flexible"
+      },
+      "3": {
+        "title": "No deposit required",
+        "body": "Pick boarding houses with no-deposit policy.",
+        "tag": "No DP"
+      },
+      "4": {
+        "title": "Stay calm for a full year",
+        "body": "Special pricing for yearly stays.",
+        "tag": "Yearly"
+      }
+    }
+  },
+  "featured": {
+    "title": "Featured Boarding Houses",
+    "subtitle": "Top picks with the highest ratings",
+    "viewAll": "View all boarding houses",
+    "from": "from",
+    "perMonth": "/month",
+    "verified": "Verified",
+    "noResult": "No matching boarding houses yet."
+  },
+  "list": {
+    "title": "Explore Boarding Houses",
+    "subtitle": "Find verified boarding houses in your favorite city",
+    "filter": "Filter",
+    "city": "City",
+    "allCities": "All cities",
+    "priceRange": "Price Range",
+    "maxPrice": "Maximum",
+    "facilities": "Facilities",
+    "gender": "Boarding House Type",
+    "genderAll": "All",
+    "genderMixed": "Mixed",
+    "genderMale": "Male only",
+    "genderFemale": "Female only",
+    "sort": "Sort",
+    "sortNewest": "Newest",
+    "sortPriceAsc": "Lowest price",
+    "sortPriceDesc": "Highest price",
+    "sortRating": "Highest rating",
+    "resultCount": "{count, plural, =0 {No boarding houses} =1 {1 boarding house} other {# boarding houses}} found",
+    "emptyTitle": "No matching boarding houses",
+    "emptyBody": "Try adjusting your filters or search another city.",
+    "reset": "Reset filters",
+    "apply": "Apply"
+  },
+  "card": {
+    "perMonth": "/month",
+    "from": "from",
+    "available": "available",
+    "verified": "Verified",
+    "genderMixed": "Mixed",
+    "genderMale": "Male",
+    "genderFemale": "Female"
+  },
+  "detail": {
+    "back": "Back",
+    "perMonth": "/month",
+    "from": "from",
+    "available": "rooms available",
+    "roomTypes": "Room Types",
+    "facilities": "Facilities",
+    "description": "About This Boarding House",
+    "location": "Location",
+    "deposit": "Deposit Policy",
+    "reviews": "reviews",
+    "book": "Book Now",
+    "call": "Contact Owner",
+    "notFound": "Boarding house not found",
+    "notFoundBody": "The boarding house you are looking for is unavailable or has been removed.",
+    "backToList": "Back to listings",
+    "roomType": "Type",
+    "size": "Size",
+    "price": "Price",
+    "availability": "Availability",
+    "availableNow": "Available",
+    "full": "Full",
+    "distance": "distance to campus",
+    "gender": "Boarding House Type",
+    "share": "Share",
+    "verified": "Verified"
+  },
+  "footer": {
+    "tagline": "Verified boarding house platform for Indonesian students.",
+    "product": "Product",
+    "company": "Company",
+    "support": "Support",
+    "legal": "Legal",
+    "explore": "Explore",
+    "about": "About Us",
+    "blog": "Blog",
+    "jobs": "Careers",
+    "help": "Help Center",
+    "faq": "FAQ",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "rights": "All rights reserved.",
+    "verifiedBadge": "Every boarding house on NgeKost is verified by our team."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again"
+  }
+}

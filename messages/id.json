@@ -1,0 +1,143 @@
+{
+  "nav": {
+    "search": "Cari kost",
+    "listings": "Jelajahi Kost",
+    "help": "Pusat Bantuan",
+    "login": "Masuk",
+    "register": "Daftar",
+    "locale": "ID"
+  },
+  "hero": {
+    "badge": "Ratusan kost terverifikasi",
+    "title1": "Cari kost impianmu",
+    "title2": "tanpa ribet.",
+    "subtitle": "Temukan kost terverifikasi di dekat kampus atau kantormu. Harga transparan, fasilitas lengkap, proses sewa cepat.",
+    "placeholder": "Masukan nama lokasi/area/alamat",
+    "search": "Cari",
+    "popular": "Populer:",
+    "stats": {
+      "properties": "kost terverifikasi",
+      "cities": "kota",
+      "tenants": "penyewa aktif"
+    }
+  },
+  "promo": {
+    "title": "Promo Spesial",
+    "subtitle": "Penawaran terbatas bulan ini",
+    "viewAll": "Lihat semua promo",
+    "items": {
+      "1": {
+        "title": "Diskon s.d. 800 ribu",
+        "body": "Kost dekat kampus favorit. Kuota terbatas.",
+        "tag": "Mahasiswa"
+      },
+      "2": {
+        "title": "Masuk kos 1 hari lebih awal",
+        "body": "Check-in fleksibel untuk kamu yang baru pindah kota.",
+        "tag": "Fleksibel"
+      },
+      "3": {
+        "title": "Bisa masuk tanpa deposit",
+        "body": "Pilih kost dengan kebijakan tanpa deposit.",
+        "tag": "Tanpa DP"
+      },
+      "4": {
+        "title": "Ngekos lebih tenang hingga setahun",
+        "body": "Tenang sepanjang tahun dengan harga spesial.",
+        "tag": "Tahunan"
+      }
+    }
+  },
+  "featured": {
+    "title": "Kost Unggulan",
+    "subtitle": "Pilihan terbaik dengan rating tertinggi",
+    "viewAll": "Lihat semua kost",
+    "from": "mulai",
+    "perMonth": "/bulan",
+    "verified": "Terverifikasi",
+    "noResult": "Belum ada kost yang cocok."
+  },
+  "list": {
+    "title": "Jelajahi Kost",
+    "subtitle": "Temukan kost terverifikasi di kota favoritmu",
+    "filter": "Filter",
+    "city": "Kota",
+    "allCities": "Semua kota",
+    "priceRange": "Rentang Harga",
+    "maxPrice": "Maksimal",
+    "facilities": "Fasilitas",
+    "gender": "Jenis Kost",
+    "genderAll": "Semua",
+    "genderMixed": "Campuran",
+    "genderMale": "Khusus Putra",
+    "genderFemale": "Khusus Putri",
+    "sort": "Urutkan",
+    "sortNewest": "Terbaru",
+    "sortPriceAsc": "Harga Terendah",
+    "sortPriceDesc": "Harga Tertinggi",
+    "sortRating": "Rating Tertinggi",
+    "resultCount": "{count, plural, =0 {Tidak ada kost} =1 {1 kost} other {# kost}} ditemukan",
+    "emptyTitle": "Tidak ada kost yang cocok",
+    "emptyBody": "Coba ubah filter atau cari di kota lain.",
+    "reset": "Reset filter",
+    "apply": "Terapkan"
+  },
+  "card": {
+    "perMonth": "/bulan",
+    "from": "mulai",
+    "available": "tersedia",
+    "verified": "Terverifikasi",
+    "genderMixed": "Campuran",
+    "genderMale": "Putra",
+    "genderFemale": "Putri"
+  },
+  "detail": {
+    "back": "Kembali",
+    "perMonth": "/bulan",
+    "from": "mulai",
+    "available": "kamar tersedia",
+    "roomTypes": "Tipe Kamar",
+    "facilities": "Fasilitas",
+    "description": "Tentang Kost Ini",
+    "location": "Lokasi",
+    "deposit": "Kebijakan Deposit",
+    "reviews": "ulasan",
+    "book": "Sewa Sekarang",
+    "call": "Hubungi Pengelola",
+    "notFound": "Kost tidak ditemukan",
+    "notFoundBody": "Kost yang kamu cari tidak tersedia atau sudah dihapus.",
+    "backToList": "Kembali ke daftar kost",
+    "roomType": "Tipe",
+    "size": "Luas",
+    "price": "Harga",
+    "availability": "Ketersediaan",
+    "availableNow": "Tersedia",
+    "full": "Penuh",
+    "distance": "jarak ke kampus",
+    "gender": "Jenis Kost",
+    "share": "Bagikan",
+    "verified": "Terverifikasi"
+  },
+  "footer": {
+    "tagline": "Platform kost terverifikasi untuk anak kos Indonesia.",
+    "product": "Produk",
+    "company": "Perusahaan",
+    "support": "Bantuan",
+    "legal": "Legal",
+    "explore": "Jelajahi",
+    "about": "Tentang Kami",
+    "blog": "Blog",
+    "jobs": "Karir",
+    "help": "Pusat Bantuan",
+    "faq": "FAQ",
+    "terms": "Syarat & Ketentuan",
+    "privacy": "Kebijakan Privasi",
+    "rights": "Hak cipta dilindungi.",
+    "verifiedBadge": "Semua kost di NgeKost melewati verifikasi tim kami."
+  },
+  "common": {
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan",
+    "retry": "Coba lagi"
+  }
+}
