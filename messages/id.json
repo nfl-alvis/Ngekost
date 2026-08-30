@@ -5,12 +5,15 @@
     "help": "Pusat Bantuan",
     "login": "Masuk",
     "register": "Daftar",
-    "locale": "ID"
+    "locale": "ID",
+    "home": "Beranda",
+    "menu": "Menu",
+    "explore": "Jelajahi"
   },
   "hero": {
     "badge": "Ratusan kost terverifikasi",
     "title1": "Cari kost impianmu",
-    "title2": "tanpa ribet.",
+    "title2": "mudah bersama NgeKost.",
     "subtitle": "Temukan kost terverifikasi di dekat kampus atau kantormu. Harga transparan, fasilitas lengkap, proses sewa cepat.",
     "placeholder": "Masukan nama lokasi/area/alamat",
     "search": "Cari",
@@ -19,11 +22,18 @@
       "properties": "kost terverifikasi",
       "cities": "kota",
       "tenants": "penyewa aktif"
-    }
+    },
+    "popularCities": [
+      "Bandung",
+      "Jakarta",
+      "Yogyakarta",
+      "Surabaya",
+      "Malang"
+    ]
   },
   "promo": {
-    "title": "Promo Spesial",
-    "subtitle": "Penawaran terbatas bulan ini",
+    "title": "Penawaran Terbaik",
+    "subtitle": "Khusus bulan ini",
     "viewAll": "Lihat semua promo",
     "items": {
       "1": {
@@ -89,7 +99,9 @@
     "verified": "Terverifikasi",
     "genderMixed": "Campuran",
     "genderMale": "Putra",
-    "genderFemale": "Putri"
+    "genderFemale": "Putri",
+    "roomTypes": "tipe",
+    "full": "Penuh"
   },
   "detail": {
     "back": "Kembali",
@@ -133,11 +145,39 @@
     "terms": "Syarat & Ketentuan",
     "privacy": "Kebijakan Privasi",
     "rights": "Hak cipta dilindungi.",
-    "verifiedBadge": "Semua kost di NgeKost melewati verifikasi tim kami."
+    "verifiedBadge": "Semua kost di NgeKost melewati verifikasi tim kami.",
+    "exploreAll": "Semua Kost",
+    "jakarta": "Kost Jakarta",
+    "bandung": "Kost Bandung",
+    "yogyakarta": "Kost Yogyakarta",
+    "malang": "Kost Malang",
+    "partners": "Mitra Pengelola",
+    "listProperty": "Pasang Kost",
+    "guide": "Panduan Ngekos"
   },
   "common": {
     "loading": "Memuat...",
     "error": "Terjadi kesalahan",
     "retry": "Coba lagi"
+  },
+  "why": {
+    "heading": "Kenapa NgeKost?",
+    "subheading": "Dengan NgeKost kamu bisa langsung nemuin kost impian, tanpa ribet.",
+    "agent": "Bicara dengan tim kami",
+    "favorite": "Temukan kost favoritmu",
+    "promo": "Akses promo terbaik",
+    "guide": "Panduan ngekos lengkap",
+    "verified": "Terverifikasi Tim",
+    "transparent": "Harga Transparan",
+    "nearCampus": "Dekat Kampus"
+  },
+  "stats": {
+    "heading": "Lebih dari sekadar platform pencari kost",
+    "cta": "Jelajahi Sekarang"
+  },
+  "cta": {
+    "badge": "Panduan Gratis",
+    "heading": "Pelajari hal penting sebelum memilih kost.",
+    "button": "Mulai Cari Kost"
   }
 }

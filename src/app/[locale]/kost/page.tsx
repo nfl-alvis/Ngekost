@@ -62,24 +62,24 @@ export default async function ListPage({
 
   return (
     <>
-      {/* Header */}
-      <section className="border-b border-nk-border bg-nk-surface">
-        <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
+      {/* Header — editorial */}
+      <section className="border-b border-nk-border">
+        <div className="mx-auto w-full max-w-7xl px-6 py-14 lg:px-10 lg:py-20">
+          <div className="max-w-3xl">
+            <h1 className="font-serif text-4xl font-medium tracking-tight md:text-5xl">
               {t("list.title")}
             </h1>
-            <p className="text-sm text-nk-text-muted sm:text-base">
+            <p className="mt-4 text-base text-nk-text-muted">
               {t("list.subtitle")}
             </p>
-            <p className="text-sm font-medium text-nk-text-muted">
+            <p className="mt-3 text-sm font-medium text-nk-text-muted">
               {t("list.resultCount", { count: filtered.length })}
             </p>
           </div>
         </div>
       </section>
 
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[280px_1fr] lg:px-8 lg:py-10">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-6 py-12 lg:grid-cols-[300px_1fr] lg:px-10 lg:py-16">
         {/* Sidebar filter */}
         <aside>
           <FilterPanel state={filterState} />
@@ -93,15 +93,15 @@ export default async function ListPage({
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center py-20 text-center">
-            <div className="mb-6 grid size-16 place-items-center rounded-full bg-nk-accent-subtle">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-nk-accent" aria-hidden="true">
+          <div className="flex flex-col items-center justify-center py-24 text-center">
+            <div className="mb-6 grid size-16 place-items-center rounded-full bg-nk-section">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-nk-text-muted" aria-hidden="true">
                 <circle cx="11" cy="11" r="7" />
                 <path d="m21 21-4.3-4.3" />
               </svg>
             </div>
-            <h3 className="text-lg font-semibold text-nk-text">{t("list.emptyTitle")}</h3>
-            <p className="mt-1 text-sm text-nk-text-muted">{t("list.emptyBody")}</p>
+            <h3 className="font-serif text-xl font-medium text-nk-text">{t("list.emptyTitle")}</h3>
+            <p className="mt-2 max-w-sm text-sm text-nk-text-muted">{t("list.emptyBody")}</p>
           </div>
         )}
       </div>

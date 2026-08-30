@@ -5,80 +5,90 @@
     "help": "Help Center",
     "login": "Log in",
     "register": "Sign up",
-    "locale": "EN"
+    "locale": "EN",
+    "home": "Home",
+    "menu": "Menu",
+    "explore": "Explore"
   },
   "hero": {
     "badge": "Hundreds of verified boarding houses",
-    "title1": "Find your dream",
-    "title2": "boarding house.",
+    "title1": "Find your dream kost",
+    "title2": "easy with NgeKost.",
     "subtitle": "Discover verified boarding houses near your campus or office. Transparent pricing, complete facilities, fast booking.",
-    "placeholder": "Enter location/area/address",
+    "placeholder": "Search location/area/address",
     "search": "Search",
     "popular": "Popular:",
     "stats": {
-      "properties": "verified boarding houses",
+      "properties": "verified properties",
       "cities": "cities",
       "tenants": "active tenants"
-    }
+    },
+    "popularCities": [
+      "Bandung",
+      "Jakarta",
+      "Yogyakarta",
+      "Surabaya",
+      "Malang"
+    ]
   },
   "promo": {
-    "title": "Special Promos",
-    "subtitle": "Limited offers this month",
+    "title": "Best Offers",
+    "subtitle": "This month only",
     "viewAll": "View all promos",
     "items": {
       "1": {
-        "title": "Up to 800K off",
-        "body": "Boarding houses near top campuses. Limited slots.",
+        "title": "Up to 800k discount",
+        "body": "Near campus favorites. Limited quota.",
         "tag": "Students"
       },
       "2": {
-        "title": "Move in 1 day early",
-        "body": "Flexible check-in for those new to the city.",
+        "title": "Early check-in",
+        "body": "Flexible move-in for newcomers.",
         "tag": "Flexible"
       },
       "3": {
-        "title": "No deposit required",
-        "body": "Pick boarding houses with no-deposit policy.",
+        "title": "No deposit needed",
+        "body": "Choose properties with zero deposit policy.",
         "tag": "No DP"
       },
       "4": {
-        "title": "Stay calm for a full year",
-        "body": "Special pricing for yearly stays.",
-        "tag": "Yearly"
+        "title": "Year-long peace of mind",
+        "body": "Special pricing for annual stays.",
+        "tag": "Annual"
       }
     }
   },
   "featured": {
-    "title": "Featured Boarding Houses",
-    "subtitle": "Top picks with the highest ratings",
-    "viewAll": "View all boarding houses",
+    "title": "Featured Properties",
+    "subtitle": "Top-rated boarding houses",
+    "viewAll": "View all properties",
     "from": "from",
     "perMonth": "/month",
     "verified": "Verified",
-    "noResult": "No matching boarding houses yet."
+    "noResult": "No matching properties yet."
   },
   "list": {
-    "title": "Explore Boarding Houses",
-    "subtitle": "Find verified boarding houses in your favorite city",
+    "title": "Explore Properties",
+    "subtitle": "Discover verified boarding houses in your favorite cities",
     "filter": "Filter",
     "city": "City",
     "allCities": "All cities",
     "priceRange": "Price Range",
-    "maxPrice": "Maximum",
+    "maxPrice": "Max Price",
     "facilities": "Facilities",
-    "gender": "Boarding House Type",
+    "gender": "Type",
     "genderAll": "All",
     "genderMixed": "Mixed",
-    "genderMale": "Male only",
-    "genderFemale": "Female only",
-    "sort": "Sort",
+    "genderMale": "Male Only",
+    "genderFemale": "Female Only",
+    "sort": "Sort by",
     "sortNewest": "Newest",
-    "sortPriceAsc": "Lowest price",
-    "sortPriceDesc": "Highest price",
-    "sortRating": "Highest rating",
-    "resultCount": "{count, plural, =0 {No boarding houses} =1 {1 boarding house} other {# boarding houses}} found",
-    "emptyTitle": "No matching boarding houses",
-    "emptyBody": "Try adjusting your filters or search another city.",
+    "sortPriceAsc": "Price: Low to High",
+    "sortPriceDesc": "Price: High to Low",
+    "sortRating": "Highest Rated",
+    "resultCount": "{count, plural, =0 {No properties} =1 {1 property} other {# properties}} found",
+    "emptyTitle": "No matching properties",
+    "emptyBody": "Try adjusting your filters or search in another city.",
     "reset": "Reset filters",
     "apply": "Apply"
   },
@@ -89,7 +99,9 @@
     "verified": "Verified",
     "genderMixed": "Mixed",
     "genderMale": "Male",
-    "genderFemale": "Female"
+    "genderFemale": "Female",
+    "roomTypes": "types",
+    "full": "Full"
   },
   "detail": {
     "back": "Back",
@@ -98,14 +110,14 @@
     "available": "rooms available",
     "roomTypes": "Room Types",
     "facilities": "Facilities",
-    "description": "About This Boarding House",
+    "description": "About This Property",
     "location": "Location",
     "deposit": "Deposit Policy",
     "reviews": "reviews",
     "book": "Book Now",
     "call": "Contact Owner",
-    "notFound": "Boarding house not found",
-    "notFoundBody": "The boarding house you are looking for is unavailable or has been removed.",
+    "notFound": "Property not found",
+    "notFoundBody": "The property you are looking for is no longer available.",
     "backToList": "Back to listings",
     "roomType": "Type",
     "size": "Size",
@@ -113,8 +125,8 @@
     "availability": "Availability",
     "availableNow": "Available",
     "full": "Full",
-    "distance": "distance to campus",
-    "gender": "Boarding House Type",
+    "distance": "to campus",
+    "gender": "Boarding Type",
     "share": "Share",
     "verified": "Verified"
   },
@@ -133,11 +145,39 @@
     "terms": "Terms & Conditions",
     "privacy": "Privacy Policy",
     "rights": "All rights reserved.",
-    "verifiedBadge": "Every boarding house on NgeKost is verified by our team."
+    "verifiedBadge": "Every property on NgeKost is verified by our team.",
+    "exploreAll": "All Properties",
+    "jakarta": "Kost Jakarta",
+    "bandung": "Kost Bandung",
+    "yogyakarta": "Kost Yogyakarta",
+    "malang": "Kost Malang",
+    "partners": "Partner with Us",
+    "listProperty": "List Your Property",
+    "guide": "Renting Guide"
   },
   "common": {
     "loading": "Loading...",
-    "error": "Something went wrong",
+    "error": "An error occurred",
     "retry": "Try again"
+  },
+  "why": {
+    "heading": "Why NgeKost?",
+    "subheading": "With NgeKost you can quickly find your dream boarding house.",
+    "agent": "Talk to our team",
+    "favorite": "Find your dream kost",
+    "promo": "Access the best promos",
+    "guide": "Complete renting guide",
+    "verified": "Team Verified",
+    "transparent": "Transparent Pricing",
+    "nearCampus": "Near Campus"
+  },
+  "stats": {
+    "heading": "More than just a boarding house search platform",
+    "cta": "Explore Now"
+  },
+  "cta": {
+    "badge": "Free Guide",
+    "heading": "Learn what matters before choosing a boarding house.",
+    "button": "Start Searching"
   }
 }

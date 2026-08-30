@@ -22,9 +22,9 @@ export default function SearchBar() {
   return (
     <form
       onSubmit={submit}
-      className="flex w-full max-w-2xl flex-col gap-2 sm:flex-row sm:items-center sm:gap-0 sm:rounded-2xl sm:border sm:border-nk-border sm:bg-nk-surface sm:p-2 sm:shadow-[0_12px_40px_-12px_rgba(28,25,23,0.12)]"
+      className="flex w-full max-w-2xl flex-col gap-2 sm:flex-row sm:items-center sm:gap-0 sm:rounded-md sm:border sm:border-nk-border sm:bg-white sm:p-2 sm:shadow-sm"
     >
-      <div className="flex flex-1 items-center gap-2.5 rounded-xl border border-nk-border bg-nk-surface px-4 py-3 sm:border-0 sm:bg-transparent">
+      <div className="flex flex-1 items-center gap-2.5 rounded-md border border-nk-border bg-white px-4 py-3 sm:border-0 sm:bg-transparent">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-nk-text-muted" aria-hidden="true">
           <circle cx="11" cy="11" r="7" />
           <path d="m21 21-4.3-4.3" />
@@ -39,7 +39,7 @@ export default function SearchBar() {
         />
       </div>
 
-      <div className="flex items-center gap-2.5 rounded-xl border border-nk-border bg-nk-surface px-4 py-3 sm:border-0 sm:bg-transparent">
+      <div className="flex items-center gap-2.5 rounded-md border border-nk-border bg-white px-4 py-3 sm:border-0 sm:bg-transparent">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-nk-text-muted" aria-hidden="true">
           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
           <circle cx="12" cy="10" r="3" />
@@ -59,7 +59,7 @@ export default function SearchBar() {
 
       <button
         type="submit"
-        className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-nk-accent px-6 text-sm font-semibold text-nk-text-inverse transition-all hover:bg-nk-accent-hover active:scale-[0.98] sm:h-auto sm:rounded-xl"
+        className="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-gradient-to-b from-nk-accent to-nk-accent-dark px-6 text-sm font-medium text-white shadow-sm transition-all hover:shadow-md active:scale-[0.98] sm:h-auto sm:rounded-md"
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <circle cx="11" cy="11" r="7" />
