@@ -46,11 +46,11 @@ export default async function HomePage({
     <>
       {/* ===== HERO — giant uppercase type + search ===== */}
       <section className="relative overflow-hidden border-b border-nk-border">
-        {/* full-bleed background image at low opacity */}
+        {/* full-bleed background image, slightly transparent */}
         <img
-          src="https://picsum.photos/seed/ngekost-hero-bg/1600/900"
+          src="/assets/hero-bg.png"
           alt=""
-          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.08]"
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover object-right opacity-30"
         />
         <div className="relative mx-auto w-full max-w-7xl px-6 py-24 md:py-32 lg:px-10">
           <p className="mb-6 text-xs font-light uppercase tracking-[0.3em] text-nk-text-muted">
