@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { getPropertyBySlug, getVerifiedProperties } from "@/lib/data/properties";
 import { FACILITY_META } from "@/lib/data/facilities";
 import { formatIDR, formatDistance, cn } from "@/lib/utils";
+import IsoHouse from "@/components/IsoHouse";
 
 export async function generateStaticParams() {
   const props = getVerifiedProperties();
@@ -144,9 +145,12 @@ export default async function DetailPage({
 
             {/* Facilities */}
             <div className="space-y-4">
-              <h2 className="font-serif text-2xl font-medium tracking-tight text-nk-text">
-                {t("detail.facilities")}
-              </h2>
+              <div className="flex items-center justify-between">
+                <h2 className="font-serif text-2xl font-medium tracking-tight text-nk-text">
+                  {t("detail.facilities")}
+                </h2>
+                <IsoHouse seed="fac" className="hidden w-16 lg:block" />
+              </div>
               <div className="flex flex-wrap gap-2">
                 {p.facilities.map((f) => (
                   <span

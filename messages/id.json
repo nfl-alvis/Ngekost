@@ -29,7 +29,8 @@
       "Yogyakarta",
       "Surabaya",
       "Malang"
-    ]
+    ],
+    "visual": "Ilustrasi 3D rumah kost"
   },
   "promo": {
     "title": "Penawaran Terbaik",
@@ -158,7 +159,8 @@
   "common": {
     "loading": "Memuat...",
     "error": "Terjadi kesalahan",
-    "retry": "Coba lagi"
+    "retry": "Coba lagi",
+    "skip": "Lewati ke konten"
   },
   "why": {
     "heading": "Kenapa NgeKost?",

@@ -29,7 +29,8 @@
       "Yogyakarta",
       "Surabaya",
       "Malang"
-    ]
+    ],
+    "visual": "3D boarding house illustration"
   },
   "promo": {
     "title": "Best Offers",
@@ -158,7 +159,8 @@
   "common": {
     "loading": "Loading...",
     "error": "An error occurred",
-    "retry": "Try again"
+    "retry": "Try again",
+    "skip": "Skip to content"
   },
   "why": {
     "heading": "Why NgeKost?",

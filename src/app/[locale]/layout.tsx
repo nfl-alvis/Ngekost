@@ -49,10 +49,13 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`${serif.variable} ${sans.variable}`}>
-      <body className="min-h-dvh flex flex-col bg-nk-bg text-nk-text antialiased selection:bg-nk-accent selection:text-white">
+      <body className="grain min-h-dvh flex flex-col bg-nk-bg text-nk-text antialiased selection:bg-nk-accent selection:text-white">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[99] focus:rounded-md focus:bg-nk-accent focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white">
+          {(messages as any)?.common?.skip || "Skip to content"}
+        </a>
         <NextIntlClientProvider messages={messages}>
           <Navbar />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1">{children}</main>
           <Footer />
         </NextIntlClientProvider>
       </body>

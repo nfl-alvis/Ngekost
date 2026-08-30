@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getVerifiedProperties } from "@/lib/data/properties";
 import FilterPanel, { type FilterState } from "@/components/FilterPanel";
 import PropertyCard from "@/components/PropertyCard";
+import IsoHouse from "@/components/IsoHouse";
 import type { Property, Facility } from "@/lib/data/types";
 
 export function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -94,12 +95,7 @@ export default async function ListPage({
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center py-24 text-center">
-            <div className="mb-6 grid size-16 place-items-center rounded-full bg-nk-section">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-nk-text-muted" aria-hidden="true">
-                <circle cx="11" cy="11" r="7" />
-                <path d="m21 21-4.3-4.3" />
-              </svg>
-            </div>
+            <IsoHouse seed="empty" className="mb-6 w-40" />
             <h3 className="font-serif text-xl font-medium text-nk-text">{t("list.emptyTitle")}</h3>
             <p className="mt-2 max-w-sm text-sm text-nk-text-muted">{t("list.emptyBody")}</p>
           </div>

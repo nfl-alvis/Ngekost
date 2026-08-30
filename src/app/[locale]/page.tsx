@@ -4,8 +4,9 @@ import { Link } from "@/i18n/navigation";
 import SearchBar from "@/components/SearchBar";
 import PromoCarousel from "@/components/PromoCarousel";
 import PropertyCard from "@/components/PropertyCard";
+import Kost3D from "@/components/Kost3D";
+import IsoHouse from "@/components/IsoHouse";
 import { getVerifiedProperties } from "@/lib/data/properties";
-
 
 export async function generateMetadata({
   params,
@@ -54,34 +55,43 @@ export default async function HomePage({
 
   return (
     <>
-      {/* ===== HERO — editorial two-line headline ===== */}
-      <section className="mx-auto w-full max-w-7xl px-6 pb-16 pt-20 md:pt-28 lg:px-10 md:pb-20">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end md:gap-10">
-          <h1 className="font-serif text-4xl font-medium leading-[1.12] tracking-tight text-nk-text md:w-1/2 md:text-5xl lg:text-[4.2rem]">
-            {t("hero.title1")}
-          </h1>
-          <h2 className="pb-1 font-sans text-2xl font-semibold leading-[1.12] tracking-tight text-nk-text-muted md:w-1/2 md:pb-2 md:text-3xl lg:text-[3rem]">
-            {t("hero.title2")}
-          </h2>
+      {/* ===== HERO — split: editorial headline + 3D diorama ===== */}
+      <section className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 pb-16 pt-16 md:pt-24 lg:grid-cols-2 lg:gap-6 lg:px-10">
+        {/* Left — text */}
+        <div className="flex flex-col items-start">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end md:gap-10">
+            <h1 className="font-serif text-4xl font-medium leading-[1.12] tracking-tight text-nk-text md:text-5xl lg:text-[4rem]">
+              {t("hero.title1")}
+            </h1>
+            <h2 className="pb-1 font-sans text-2xl font-semibold leading-[1.12] tracking-tight text-nk-text-muted md:pb-2 md:text-3xl">
+              {t("hero.title2")}
+            </h2>
+          </div>
+
+          <div className="mt-8 w-full md:mt-10">
+            <SearchBar />
+            <p className="mt-4 text-sm font-medium text-nk-text-muted">
+              {t("hero.popular")}{" "}
+              {cities.map((c, i) => (
+                <span key={c}>
+                  {i > 0 && <span className="mx-1 text-nk-border">·</span>}
+                  <Link
+                    href={`/kost?kota=${encodeURIComponent(c)}`}
+                    className="text-nk-text transition-colors hover:text-nk-accent"
+                  >
+                    {c}
+                  </Link>
+                </span>
+              ))}
+            </p>
+          </div>
         </div>
 
-        {/* Search */}
-        <div className="mt-10 md:mt-14">
-          <SearchBar />
-          <p className="mt-4 text-sm font-medium text-nk-text-muted">
-            {t("hero.popular")}{" "}
-            {cities.map((c, i) => (
-              <span key={c}>
-                {i > 0 && <span className="mx-1 text-nk-border">·</span>}
-                <Link
-                  href={`/kost?kota=${encodeURIComponent(c)}`}
-                  className="text-nk-text transition-colors hover:text-nk-accent"
-                >
-                  {c}
-                </Link>
-              </span>
-            ))}
-          </p>
+        {/* Right — 3D house */}
+        <div className="relative mx-auto w-full max-w-[520px]">
+          <div className="absolute -left-6 -top-6 size-40 rounded-full bg-nk-accent-light blur-2xl" aria-hidden="true" />
+          <div className="absolute -bottom-8 -right-4 size-48 rounded-full bg-nk-accent/10 blur-2xl" aria-hidden="true" />
+          <Kost3D className="relative" />
         </div>
       </section>
 
@@ -135,7 +145,7 @@ export default async function HomePage({
             <Link
               key={f.label}
               href="/kost"
-              className="group flex items-center gap-4 rounded-xl border border-nk-border bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
+              className="group flex items-center gap-4 rounded-xl border border-nk-border bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
             >
               <div className="flex size-12 shrink-0 items-center justify-center rounded-lg border border-nk-border bg-nk-section">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="text-nk-text" aria-hidden="true">
@@ -153,7 +163,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ===== WHY NGEKOST — image grid ===== */}
+      {/* ===== WHY NGEKOST — image grid with IsoHouse accents ===== */}
       <section className="bg-nk-section py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <div className="mb-14 max-w-3xl">
@@ -295,26 +305,30 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ===== DARK CTA — ebook style ===== */}
+      {/* ===== DARK CTA — with 3D house ===== */}
       <section className="bg-nk-dark pb-20 md:pb-28">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="relative flex flex-col items-center overflow-hidden rounded-2xl bg-nk-text p-10 text-center md:p-16 lg:p-24">
+          <div className="relative flex flex-col items-center overflow-hidden rounded-2xl bg-nk-text p-10 text-center md:p-16 lg:p-20">
             <img
               src="https://picsum.photos/seed/ngekost-cta/1200/600"
               alt=""
               className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20"
             />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-nk-dark/60 via-transparent to-transparent" />
             <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-6">
-              <p className="text-sm font-medium text-white/80">{t("cta.badge")}</p>
-              <h2 className="font-serif text-3xl font-medium leading-tight tracking-tight text-white md:text-4xl lg:text-5xl">
-                {t("cta.heading")}
-              </h2>
-              <Link
-                href="/kost"
-                className="inline-block rounded-md bg-gradient-to-b from-nk-accent to-nk-accent-dark px-8 py-3 text-sm font-medium text-white shadow-sm transition-all hover:shadow-md"
-              >
-                {t("cta.button")}
-              </Link>
+              <Kost3D tone="dark" className="pointer-events-none absolute -top-10 left-1/2 hidden -translate-x-1/2 opacity-90 lg:block" />
+              <div className="mt-40 lg:mt-0">
+                <p className="text-sm font-medium text-white/80">{t("cta.badge")}</p>
+                <h2 className="mt-4 font-serif text-3xl font-medium leading-tight tracking-tight text-white md:text-4xl lg:text-5xl">
+                  {t("cta.heading")}
+                </h2>
+                <Link
+                  href="/kost"
+                  className="mt-8 inline-block rounded-md bg-gradient-to-b from-nk-accent to-nk-accent-dark px-8 py-3 text-sm font-medium text-white shadow-sm transition-all hover:shadow-md"
+                >
+                  {t("cta.button")}
+                </Link>
+              </div>
             </div>
           </div>
         </div>
