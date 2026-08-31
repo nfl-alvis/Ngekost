@@ -219,12 +219,12 @@ export default async function HomePage({
               return (
                 <div
                   key={item.key}
-                  className={`grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-20 ${
-                    flip ? "lg:[&>*:first-child]:order-2" : ""
+                  className={`grid grid-cols-1 items-center gap-10 lg:items-center lg:grid-cols-2 lg:gap-20 ${
+                    flip ? "lg:flex-row-reverse" : ""
                   }`}
                 >
                   {/* Text */}
-                  <div className="flex flex-col gap-4">
+                  <div className={`flex flex-col gap-4 ${flip ? "lg:order-2" : ""}`}>
                     <svg
                       width="28"
                       height="28"
@@ -257,11 +257,11 @@ export default async function HomePage({
                   </div>
 
                   {/* Image */}
-                  <div className="overflow-hidden bg-nk-section">
+                  <div className={`overflow-hidden bg-nk-section ${flip ? "lg:order-1" : ""}`}>
                     <img
                       src={`https://picsum.photos/seed/${item.seed}/900/680`}
                       alt={t(`why.${item.key}`)}
-                      className="aspect-[4/3] w-full object-cover"
+                      className="aspect-[4/3] w-full object-cover lg:aspect-auto lg:h-full"
                     />
                   </div>
                 </div>
