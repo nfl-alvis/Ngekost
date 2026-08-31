@@ -204,7 +204,7 @@ export default async function HomePage({
       </section>
 
       {/* ===== WHY NGEKOST — 2x2 checkerboard (text/img / img/FAQ) ===== */}
-      <section className="mt-16 border-b border-nk-border md:mt-24">
+      <section className="mt-16 border-y border-nk-border md:mt-24">
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-[1px] bg-nk-border md:grid-cols-2">
           {/* Row 1 · Left: agent (verified) text */}
           <div className="flex flex-col justify-center gap-3 bg-nk-bg px-6 py-12 md:px-10 lg:py-16">
