@@ -151,7 +151,28 @@
     "favoriteBody": "Simpan kost yang kamu suka, bandingkan fasilitas, harga, dan lokasi dalam satu tempat.",
     "promoBody": "Promo khusus dari pengelola langsung ke kamu. Nggak ada di tempat lain.",
     "guideBody": "Panduan dari pilih lokasi sampai tanda tangan kontrak, langkah demi langkah.",
-    "learnMore": "Coba sekarang"
+    "learnMore": "Coba sekarang",
+    "faq": {
+      "title": "Kenapa pilih NgeKost?",
+      "items": [
+        {
+          "q": "Kost di NgeKost sudah pasti terverifikasi?",
+          "a": "Iya. Tim kami mengecek setiap kost sebelum tampil. Yang lolos yang tampil."
+        },
+        {
+          "q": "Kenapa harga di sini lebih transparan?",
+          "a": "Harga bersih, tanpa biaya tersembunyi. Yang kamu lihat, yang kamu bayar."
+        },
+        {
+          "q": "Gimana cara dapat promo terbaik?",
+          "a": "Promo khusus langsung dari pengelola ke kamu. Nggak ada di tempat lain."
+        },
+        {
+          "q": "Baru mau ngekos, mulai dari mana?",
+          "a": "Panduan langkah demi langkah, dari pilih lokasi sampai tanda tangan kontrak."
+        }
+      ]
+    }
   },
   "stats": {
     "heading": "Lebih dari sekadar platform pencari kost",

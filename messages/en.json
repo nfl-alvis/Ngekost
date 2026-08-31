@@ -151,7 +151,28 @@
     "favoriteBody": "Save the kosts you like, compare facilities, price, and location in one place.",
     "promoBody": "Exclusive promos straight from owners. You won't find them elsewhere.",
     "guideBody": "A step-by-step guide from choosing a location to signing the contract.",
-    "learnMore": "Try it now"
+    "learnMore": "Try it now",
+    "faq": {
+      "title": "Why choose NgeKost?",
+      "items": [
+        {
+          "q": "Are the kosts on NgeKost verified?",
+          "a": "Yes. Our team checks every kost before it goes live. Only verified ones show up."
+        },
+        {
+          "q": "Why is pricing here transparent?",
+          "a": "Clean prices, no hidden fees. What you see is what you pay."
+        },
+        {
+          "q": "How do I get the best promos?",
+          "a": "Exclusive promos straight from owners. You won't find them elsewhere."
+        },
+        {
+          "q": "New to boarding, where do I start?",
+          "a": "A step-by-step guide from choosing a location to signing the contract."
+        }
+      ]
+    }
   },
   "stats": {
     "heading": "More than just a boarding house search platform",

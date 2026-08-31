@@ -1,3 +1,4 @@
+import WhyFaq from "@/components/WhyFaq";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -271,6 +272,30 @@ export default async function HomePage({
                 </div>
               </div>
             </section>
+
+      {/* ===== WHY NGEKOST — FAQ (why choose us) ===== */}
+      <section className="border-b border-nk-border">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-6 py-12 lg:grid-cols-2 lg:gap-20 lg:px-10 lg:py-16">
+          {/* Left: title + CTA */}
+          <div className="flex flex-col justify-center">
+            <h2 className="text-3xl font-light leading-tight tracking-tight text-nk-text sm:text-4xl">
+              {t("why.faq.title")}
+            </h2>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-nk-text-muted sm:text-base">
+              {t("why.subheading")}
+            </p>
+            <Link
+              href="/kost"
+              className="mt-6 inline-flex w-fit items-center gap-2 bg-nk-accent px-6 py-3 text-sm font-medium text-nk-text-inverse transition-colors hover:bg-nk-accent-dark"
+            >
+              {t("why.learnMore")}
+            </Link>
+          </div>
+
+          {/* Right: accordion */}
+          <WhyFaq />
+        </div>
+      </section>
 
       {/* ===== STATS STRIP ===== */}
       <section className="bg-nk-dark text-nk-text-inverse">
