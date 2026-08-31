@@ -277,7 +277,7 @@ export default async function HomePage({
       </section>
 
       {/* ===== STATS STRIP ===== */}
-      <section className="border-t border-nk-dark-border bg-nk-dark text-nk-text-inverse">
+      <section className="border-y border-nk-dark-border bg-nk-dark text-nk-text-inverse">
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-[1px] bg-nk-dark-border md:grid-cols-3">
           {[
             { value: "120+", label: t("stats.properties") },
