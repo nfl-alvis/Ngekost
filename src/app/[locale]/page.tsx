@@ -262,11 +262,11 @@ export default async function HomePage({
           </div>
 
           {/* Row 2 · Right: FAQ (heading + accordion) */}
-          <div className="bg-nk-bg px-6 py-12 md:px-10 lg:py-16">
+          <div className="bg-nk-bg px-6 py-12 text-left md:px-10 lg:py-16">
             <h2 className="text-2xl font-light leading-tight tracking-tight text-nk-text sm:text-3xl">
               {t("why.heading")}
             </h2>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-nk-text-muted sm:text-base">
+            <p className="mt-3 max-w-md text-left text-sm leading-relaxed text-nk-text-muted sm:text-base">
               {t("why.subheading")}
             </p>
             <div className="mt-6">
