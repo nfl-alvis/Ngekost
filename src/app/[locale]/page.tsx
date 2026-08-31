@@ -277,21 +277,23 @@ export default async function HomePage({
       </section>
 
       {/* ===== STATS STRIP ===== */}
-      <section className="border-y border-nk-dark-border bg-nk-dark text-nk-text-inverse">
-        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-[1px] bg-nk-dark-border md:grid-cols-3">
+      <section className="border-y border-nk-dark-border/40 bg-nk-dark text-nk-text-inverse">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 md:grid-cols-3">
           {[
             { value: "120+", label: t("stats.properties") },
             { value: "6", label: t("stats.cities") },
             { value: "8.4rb", label: t("stats.tenants") },
-          ].map((s) => (
+          ].map((s, i) => (
             <div
               key={s.label}
-              className="flex flex-col items-center justify-center gap-2 bg-nk-dark px-6 py-10 text-center"
+              className={`flex flex-col items-center justify-center gap-2 bg-nk-dark px-6 py-10 text-center border-nk-dark-border/40 ${
+                i > 0 ? "border-t md:border-t-0 md:border-l" : ""
+              }`}
             >
               <div className="text-4xl font-light tracking-tight md:text-5xl">
                 {s.value}
               </div>
-              <div className="text-sm text-nk-dark-border">
+              <div className="text-sm text-nk-dark-border/70">
                 {s.label}
               </div>
             </div>
