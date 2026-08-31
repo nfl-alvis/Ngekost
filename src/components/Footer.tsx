@@ -38,7 +38,7 @@ export default function Footer() {
               {t("tagline")}
             </p>
           </div>
-          <p className="text-xs font-light uppercase tracking-widest text-nk-dark-border">
+          <p className="text-xs text-nk-dark-border">
             {t("verifiedBadge")}
           </p>
         </div>
