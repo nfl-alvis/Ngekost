@@ -141,7 +141,15 @@
     "forgot": "Lupa password?",
     "submit": "Masuk",
     "noAccount": "Belum punya akun?",
-    "register": "Daftar"
+    "register": "Daftar",
+    "roleTitle": "Masuk sebagai",
+    "roleSeeker": "Pencari Kos",
+    "roleSeekerDesc": "Cari, bandingkan, dan sewa kost.",
+    "roleOwner": "Pemilik Kos",
+    "roleOwnerDesc": "Kelola listing & sewa kostmu.",
+    "cancel": "Batal",
+    "titleSeeker": "Masuk sebagai Pencari Kos",
+    "titleOwner": "Masuk sebagai Pemilik Kos"
   },
   "common": {
     "loading": "Memuat...",

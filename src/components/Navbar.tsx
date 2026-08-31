@@ -1,13 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Logo from "@/components/Logo";
 
 export default function Navbar() {
   const t = useTranslations("nav");
+  const loginT = useTranslations("login");
   const pathname = usePathname();
+  const router = useRouter();
+  const [roleOpen, setRoleOpen] = useState(false);
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
@@ -15,6 +19,11 @@ export default function Navbar() {
   const navLinks = [
     { href: "/kost", label: t("listings") },
   ];
+
+  const goRole = (role: "seeker" | "owner") => {
+    setRoleOpen(false);
+    router.push(`/login?role=${role}`);
+  };
 
   return (
     <nav className="sticky top-0 z-50 border-b border-nk-border bg-nk-bg/90 backdrop-blur-md">
@@ -51,12 +60,13 @@ export default function Navbar() {
             </svg>
             {t("search")}
           </Link>
-          <Link
-            href="/login"
+          <button
+            type="button"
+            onClick={() => setRoleOpen(true)}
             className="inline-flex items-center rounded-lg bg-nk-accent px-5 py-2.5 text-sm font-medium text-nk-text-inverse transition-opacity hover:opacity-90 active:scale-[0.99]"
           >
             {t("login")}
-          </Link>
+          </button>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -71,6 +81,93 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
+      {/* Role picker modal */}
+      {roleOpen && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-nk-dark/40 p-4 backdrop-blur-sm"
+          onClick={() => setRoleOpen(false)}
+        >
+          <div
+            className="w-full max-w-sm rounded-lg border border-nk-border bg-nk-surface p-6 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between">
+              <h2 className="text-lg font-medium tracking-tight text-nk-text">
+                {loginT("roleTitle")}
+              </h2>
+              <button
+                type="button"
+                aria-label={loginT("cancel")}
+                onClick={() => setRoleOpen(false)}
+                className="text-nk-text-muted transition-colors hover:text-nk-text"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M18 6 6 18M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="mt-5 flex flex-col gap-3">
+              <button
+                type="button"
+                onClick={() => goRole("seeker")}
+                className="group flex w-full items-center gap-3 rounded-lg border border-nk-border bg-nk-bg px-4 py-4 text-left transition-colors hover:border-nk-accent"
+              >
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-nk-accent/10 text-nk-accent">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </span>
+                <span className="flex flex-col">
+                  <span className="text-sm font-medium text-nk-text">
+                    {loginT("roleSeeker")}
+                  </span>
+                  <span className="text-xs text-nk-text-muted">
+                    {loginT("roleSeekerDesc")}
+                  </span>
+                </span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="ml-auto text-nk-text-muted transition-colors group-hover:text-nk-accent" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => goRole("owner")}
+                className="group flex w-full items-center gap-3 rounded-lg border border-nk-border bg-nk-bg px-4 py-4 text-left transition-colors hover:border-nk-accent"
+              >
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-nk-accent/10 text-nk-accent">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M3 21h18M5 21V7l7-4 7 4v14" />
+                    <path d="M9 21v-6h6v6" />
+                  </svg>
+                </span>
+                <span className="flex flex-col">
+                  <span className="text-sm font-medium text-nk-text">
+                    {loginT("roleOwner")}
+                  </span>
+                  <span className="text-xs text-nk-text-muted">
+                    {loginT("roleOwnerDesc")}
+                  </span>
+                </span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="ml-auto text-nk-text-muted transition-colors group-hover:text-nk-accent" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setRoleOpen(false)}
+              className="mt-4 w-full text-center text-sm text-nk-text-muted transition-colors hover:text-nk-text"
+            >
+              {loginT("cancel")}
+            </button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

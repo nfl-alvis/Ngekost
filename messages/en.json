@@ -141,7 +141,15 @@
     "forgot": "Forgot password?",
     "submit": "Log in",
     "noAccount": "Don't have an account?",
-    "register": "Sign up"
+    "register": "Sign up",
+    "roleTitle": "Log in as",
+    "roleSeeker": "Tenant",
+    "roleSeekerDesc": "Search, compare, and rent boarding houses.",
+    "roleOwner": "Owner",
+    "roleOwnerDesc": "Manage your listings and bookings.",
+    "cancel": "Cancel",
+    "titleSeeker": "Log in as a Tenant",
+    "titleOwner": "Log in as an Owner"
   },
   "common": {
     "loading": "Loading...",

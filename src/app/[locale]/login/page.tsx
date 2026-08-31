@@ -1,13 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { useSearchParams } from "next/navigation";
 import Logo from "@/components/Logo";
 
 export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginInner />
+    </Suspense>
+  );
+}
+
+function LoginInner() {
   const t = useTranslations("login");
   const nav = useTranslations("nav");
+  const searchParams = useSearchParams();
+  const role = searchParams.get("role") === "owner" ? "owner" : "seeker";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
@@ -22,8 +33,13 @@ export default function LoginPage() {
         </div>
 
         <div className="rounded-lg border border-nk-border bg-nk-surface p-8 shadow-sm">
-          <h1 className="text-2xl font-light tracking-tight text-nk-text">
-            {t("title")}
+          <div className="flex items-center gap-2">
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-nk-accent/10 px-3 py-1 text-xs font-medium text-nk-accent">
+              {role === "seeker" ? t("roleSeeker") : t("roleOwner")}
+            </span>
+          </div>
+          <h1 className="mt-4 text-2xl font-light tracking-tight text-nk-text">
+            {role === "seeker" ? t("titleSeeker") : t("titleOwner")}
           </h1>
           <p className="mt-2 text-sm leading-relaxed text-nk-text-muted">
             {t("subtitle")}
