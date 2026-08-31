@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import SearchBar from "@/components/SearchBar";
 import PropertyCard from "@/components/PropertyCard";
-import { getVerifiedProperties, CITIES } from "@/lib/data/properties";
+import { getVerifiedProperties } from "@/lib/data/properties";
 
 export async function generateMetadata({
   params,
@@ -158,7 +159,7 @@ export default async function HomePage({
         </div>
 
         <div className="flex flex-col border-t border-nk-border lg:h-[75vh] lg:flex-row">
-          {CATEGORY_IMAGES.map((cat, i) => (
+          {CATEGORY_IMAGES.map((cat) => (
             <Link
               key={cat.label}
               href={`/kost?kota=${encodeURIComponent(cat.label)}`}
@@ -256,9 +257,11 @@ export default async function HomePage({
 
                         {/* Image */}
                         <div className={`overflow-hidden bg-nk-section ${flip ? "md:order-1" : ""}`}>
-                          <img
+                          <Image
                             src={`https://picsum.photos/seed/${item.seed}/900/680`}
                             alt={t(`why.${item.key}`)}
+                            width={900}
+                            height={680}
                             className="h-full w-full object-cover"
                           />
                         </div>
