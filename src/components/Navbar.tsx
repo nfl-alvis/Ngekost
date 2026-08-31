@@ -26,7 +26,8 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-nk-border bg-nk-bg/90 backdrop-blur-md">
+    <>
+      <nav className="sticky top-0 z-50 border-b border-nk-border bg-nk-bg/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <Link href="/" aria-label={t("home")}>
           <Logo className="h-8 w-auto text-nk-text" />
@@ -82,7 +83,11 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Role picker modal */}
+      </nav>
+
+      {/* Role picker modal — must live OUTSIDE <nav>: backdrop-filter on the
+          nav creates a containing block that breaks position:fixed, pinning
+          the modal to the nav's box (top of page) instead of the viewport. */}
       {roleOpen && (
         <div
           className="fixed inset-0 z-[60] flex items-center justify-center bg-nk-dark/40 p-4 backdrop-blur-sm"
@@ -168,6 +173,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </nav>
+    </>
   );
 }
