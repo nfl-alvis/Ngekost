@@ -142,18 +142,12 @@
     "subheading": "Dengan NgeKost kamu bisa langsung nemuin kost impian, tanpa ribet.",
     "agent": "Bicara dengan tim kami",
     "favorite": "Temukan kost favoritmu",
-    "promo": "Akses promo terbaik",
-    "guide": "Panduan ngekos lengkap",
     "verified": "Terverifikasi Tim",
     "transparent": "Harga Transparan",
     "nearCampus": "Dekat Kampus",
     "agentBody": "Tim kami mengecek setiap kost sebelum tampil. Yang lolos yang tampil.",
-    "favoriteBody": "Simpan kost yang kamu suka, bandingkan fasilitas, harga, dan lokasi dalam satu tempat.",
-    "promoBody": "Promo khusus dari pengelola langsung ke kamu. Nggak ada di tempat lain.",
-    "guideBody": "Panduan dari pilih lokasi sampai tanda tangan kontrak, langkah demi langkah.",
     "learnMore": "Coba sekarang",
     "faq": {
-      "title": "Kenapa pilih NgeKost?",
       "items": [
         {
           "q": "Kost di NgeKost sudah pasti terverifikasi?",

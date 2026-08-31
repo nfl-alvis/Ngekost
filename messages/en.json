@@ -142,18 +142,12 @@
     "subheading": "With NgeKost you can quickly find your dream boarding house.",
     "agent": "Talk to our team",
     "favorite": "Find your dream kost",
-    "promo": "Access the best promos",
-    "guide": "Complete renting guide",
     "verified": "Team Verified",
     "transparent": "Transparent Pricing",
     "nearCampus": "Near Campus",
     "agentBody": "Our team checks every kost before it goes live. Only verified ones show up.",
-    "favoriteBody": "Save the kosts you like, compare facilities, price, and location in one place.",
-    "promoBody": "Exclusive promos straight from owners. You won't find them elsewhere.",
-    "guideBody": "A step-by-step guide from choosing a location to signing the contract.",
     "learnMore": "Try it now",
     "faq": {
-      "title": "Why choose NgeKost?",
       "items": [
         {
           "q": "Are the kosts on NgeKost verified?",
