@@ -131,6 +131,18 @@
     "guide": "Panduan Ngekos",
     "contact": "Kontak"
   },
+  "login": {
+    "title": "Masuk ke akunmu",
+    "subtitle": "Lanjutkan pencarian kost impianmu.",
+    "email": "Email",
+    "emailPlaceholder": "nama@email.com",
+    "password": "Password",
+    "passwordPlaceholder": "Masukkan password",
+    "forgot": "Lupa password?",
+    "submit": "Masuk",
+    "noAccount": "Belum punya akun?",
+    "register": "Daftar"
+  },
   "common": {
     "loading": "Memuat...",
     "error": "Terjadi kesalahan",

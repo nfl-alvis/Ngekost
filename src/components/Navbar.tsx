@@ -51,6 +51,12 @@ export default function Navbar() {
             </svg>
             {t("search")}
           </Link>
+          <Link
+            href="/login"
+            className="inline-flex items-center rounded-lg bg-nk-accent px-5 py-2.5 text-sm font-medium text-nk-text-inverse transition-opacity hover:opacity-90 active:scale-[0.99]"
+          >
+            {t("login")}
+          </Link>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">

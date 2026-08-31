@@ -131,6 +131,18 @@
     "guide": "Renting Guide",
     "contact": "Contact"
   },
+  "login": {
+    "title": "Log in to your account",
+    "subtitle": "Continue your search for the perfect boarding house.",
+    "email": "Email",
+    "emailPlaceholder": "name@email.com",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "forgot": "Forgot password?",
+    "submit": "Log in",
+    "noAccount": "Don't have an account?",
+    "register": "Sign up"
+  },
   "common": {
     "loading": "Loading...",
     "error": "An error occurred",
