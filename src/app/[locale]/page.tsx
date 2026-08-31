@@ -230,7 +230,7 @@ export default async function HomePage({
             </p>
             <Link
               href="/kost"
-              className="mt-1 inline-flex w-fit items-center gap-1.5 text-xs font-medium text-nk-text underline underline-offset-4 transition-colors hover:text-nk-accent"
+              className="mt-2 inline-flex w-fit items-center gap-2 bg-nk-accent px-6 py-3 text-sm font-medium text-nk-text-inverse transition-opacity hover:opacity-90 active:scale-[0.99]"
             >
               {t("why.learnMore")}
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
