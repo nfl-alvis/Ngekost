@@ -147,10 +147,11 @@
     "verified": "Terverifikasi Tim",
     "transparent": "Harga Transparan",
     "nearCampus": "Dekat Kampus",
-    "agentBody": "Tim kami memverifikasi setiap kost sebelum tampil, jadi kamu nggak perlu khawatir ditipu.",
-    "favoriteBody": "Simpan kost favoritmu dan bandingkan fasilitas, harga, dan lokasi dalam satu tempat.",
-    "promoBody": "Dapatkan akses ke promo khusus yang nggak ada di tempat lain, langsung dari pengelola.",
-    "guideBody": "Panduan lengkap dari memilih lokasi sampai tanda tangan kontrak — semua ada di sini."
+    "agentBody": "Tim kami mengecek setiap kost sebelum tampil. Yang lolos yang tampil.",
+    "favoriteBody": "Simpan kost yang kamu suka, bandingkan fasilitas, harga, dan lokasi dalam satu tempat.",
+    "promoBody": "Promo khusus dari pengelola langsung ke kamu. Nggak ada di tempat lain.",
+    "guideBody": "Panduan dari pilih lokasi sampai tanda tangan kontrak, langkah demi langkah.",
+    "learnMore": "Coba sekarang"
   },
   "stats": {
     "heading": "Lebih dari sekadar platform pencari kost",

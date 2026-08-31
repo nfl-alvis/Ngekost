@@ -147,10 +147,11 @@
     "verified": "Team Verified",
     "transparent": "Transparent Pricing",
     "nearCampus": "Near Campus",
-    "agentBody": "Our team verifies every property before it's listed, so you never have to worry about scams.",
-    "favoriteBody": "Save your favorite properties and compare facilities, prices, and locations in one place.",
-    "promoBody": "Get access to exclusive promos you won't find anywhere else, straight from the manager.",
-    "guideBody": "A complete guide from choosing a location to signing the contract — all in one place."
+    "agentBody": "Our team checks every kost before it goes live. Only verified ones show up.",
+    "favoriteBody": "Save the kosts you like, compare facilities, price, and location in one place.",
+    "promoBody": "Exclusive promos straight from owners. You won't find them elsewhere.",
+    "guideBody": "A step-by-step guide from choosing a location to signing the contract.",
+    "learnMore": "Try it now"
   },
   "stats": {
     "heading": "More than just a boarding house search platform",

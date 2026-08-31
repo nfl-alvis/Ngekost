@@ -26,18 +26,22 @@ const CATEGORY_IMAGES = [
 const WHY_ICONS = [
   {
     key: "agent",
+    seed: "ngekost-why-agent",
     path: "M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z M16 10a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z",
   },
   {
     key: "favorite",
+    seed: "ngekost-why-favorite",
     path: "M12 2l2.9 6.26L21.5 9.27l-5 4.87L17.8 21 12 17.77 6.2 21l1.3-6.86-5-4.87 6.6-1.01L12 2z",
   },
   {
     key: "promo",
+    seed: "ngekost-why-promo",
     path: "M21 8l-9-5-9 5 9 5 9-5ZM3 8v8l9 5 9-5V8",
   },
   {
     key: "guide",
+    seed: "ngekost-why-guide",
     path: "M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15ZM10 6h4",
   },
 ];
@@ -197,7 +201,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ===== WHY NGEKOST — reasons to choose, hairline grid ===== */}
+      {/* ===== WHY NGEKOST — editorial zigzag (text/image alternating) ===== */}
       <section className="border-b border-nk-border">
         <div className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
           <div className="max-w-2xl">
@@ -209,36 +213,60 @@ export default async function HomePage({
             </h2>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 gap-[1px] bg-nk-border sm:grid-cols-2 lg:grid-cols-4">
-            {WHY_ICONS.map((item) => (
-              <div
-                key={item.key}
-                className="flex flex-col gap-8 bg-nk-bg p-8"
-              >
-                <svg
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-nk-text"
-                  aria-hidden="true"
+          <div className="mt-16 space-y-20 lg:space-y-28">
+            {WHY_ICONS.map((item, i) => {
+              const flip = i % 2 === 1;
+              return (
+                <div
+                  key={item.key}
+                  className={`grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-20 ${
+                    flip ? "lg:[&>*:first-child]:order-2" : ""
+                  }`}
                 >
-                  <path d={item.path} />
-                </svg>
-                <div className="mt-auto">
-                  <h3 className="text-lg font-medium tracking-tight text-nk-text">
-                    {t(`why.${item.key}`)}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-nk-text-muted">
-                    {t(`why.${item.key}Body`)}
-                  </p>
+                  {/* Text */}
+                  <div className="flex flex-col gap-4">
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-nk-text"
+                      aria-hidden="true"
+                    >
+                      <path d={item.path} />
+                    </svg>
+                    <h3 className="text-2xl font-light tracking-tight text-nk-text sm:text-3xl">
+                      {t(`why.${item.key}`)}
+                    </h3>
+                    <p className="max-w-md text-base leading-relaxed text-nk-text-muted sm:text-lg">
+                      {t(`why.${item.key}Body`)}
+                    </p>
+                    <Link
+                      href="/kost"
+                      className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-nk-text underline underline-offset-4 transition-colors hover:text-nk-accent"
+                    >
+                      {t("why.learnMore")}
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+
+                  {/* Image */}
+                  <div className="overflow-hidden bg-nk-section">
+                    <img
+                      src={`https://picsum.photos/seed/${item.seed}/900/680`}
+                      alt={t(`why.${item.key}`)}
+                      className="aspect-[4/3] w-full object-cover"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
