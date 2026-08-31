@@ -13,8 +13,21 @@ export function slugify(s: string): string {
     .replace(/(^-|-$)/g, "");
 }
 
-export function cn(...classes: Array<string | false | null | undefined>): string {
-  return classes.filter(Boolean).join(" ");
+type ClassValue =
+  | string
+  | false
+  | null
+  | undefined
+  // Base UI passes className as a function of state (e.g. (state) => state.open ? 'x' : 'y')
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  | ((state: any) => string | undefined);
+
+export function cn(...classes: Array<ClassValue>): string {
+  return classes
+    .filter(Boolean)
+    .map((c) => (typeof c === "function" ? (c as (s: unknown) => string | undefined)({}) ?? "" : c))
+    .filter(Boolean)
+    .join(" ");
 }
 
 export function formatDistance(m: number): string {
