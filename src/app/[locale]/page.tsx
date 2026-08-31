@@ -201,75 +201,73 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ===== WHY NGEKOST — editorial zigzag (text/image alternating) ===== */}
-      <section className="border-b border-nk-border">
-        <div className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
-          <div className="max-w-2xl">
-            <p className="mb-4 text-sm font-medium text-nk-text-muted">
-              {t("why.heading")}
-            </p>
-            <h2 className="text-3xl font-light leading-tight tracking-tight text-nk-text sm:text-4xl">
-              {t("why.subheading")}
-            </h2>
-          </div>
-
-          <div className="mt-16 space-y-20 lg:space-y-28">
-            {WHY_ICONS.map((item, i) => {
-              const flip = i % 2 === 1;
-              return (
-                <div
-                  key={item.key}
-                  className={`grid grid-cols-1 items-center gap-10 lg:items-center lg:grid-cols-2 lg:gap-20 ${
-                    flip ? "lg:flex-row-reverse" : ""
-                  }`}
-                >
-                  {/* Text */}
-                  <div className={`flex flex-col gap-4 ${flip ? "lg:order-2" : ""}`}>
-                    <svg
-                      width="28"
-                      height="28"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-nk-text"
-                      aria-hidden="true"
-                    >
-                      <path d={item.path} />
-                    </svg>
-                    <h3 className="text-2xl font-light tracking-tight text-nk-text sm:text-3xl">
-                      {t(`why.${item.key}`)}
-                    </h3>
-                    <p className="max-w-md text-base leading-relaxed text-nk-text-muted sm:text-lg">
-                      {t(`why.${item.key}Body`)}
-                    </p>
-                    <Link
-                      href="/kost"
-                      className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-nk-text underline underline-offset-4 transition-colors hover:text-nk-accent"
-                    >
-                      {t("why.learnMore")}
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
-                    </Link>
-                  </div>
-
-                  {/* Image */}
-                  <div className={`overflow-hidden bg-nk-section ${flip ? "lg:order-1" : ""}`}>
-                    <img
-                      src={`https://picsum.photos/seed/${item.seed}/900/680`}
-                      alt={t(`why.${item.key}`)}
-                      className="aspect-[4/3] w-full object-cover lg:aspect-auto lg:h-full"
-                    />
-                  </div>
+      {/* ===== WHY NGEKOST — editorial zigzag with hairline gap ===== */}
+            <section className="border-b border-nk-border">
+              <div className="mx-auto w-full max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
+                <div className="max-w-2xl">
+                  <p className="mb-4 text-sm font-medium text-nk-text-muted">
+                    {t("why.heading")}
+                  </p>
+                  <h2 className="text-3xl font-light leading-tight tracking-tight text-nk-text sm:text-4xl">
+                    {t("why.subheading")}
+                  </h2>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+
+                <div className="mt-10 divide-y divide-nk-border">
+                  {WHY_ICONS.map((item, i) => {
+                    const flip = i % 2 === 1;
+                    return (
+                      <div
+                        key={item.key}
+                        className="grid grid-cols-1 md:grid-cols-2"
+                      >
+                        {/* Text */}
+                        <div className={`flex flex-col justify-center gap-3 px-0 py-8 md:px-10 md:py-12 ${flip ? "md:order-2" : ""}`}>
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.4"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="text-nk-text"
+                            aria-hidden="true"
+                          >
+                            <path d={item.path} />
+                          </svg>
+                          <h3 className="text-xl font-light tracking-tight text-nk-text sm:text-2xl">
+                            {t(`why.${item.key}`)}
+                          </h3>
+                          <p className="max-w-sm text-sm leading-relaxed text-nk-text-muted sm:text-base">
+                            {t(`why.${item.key}Body`)}
+                          </p>
+                          <Link
+                            href="/kost"
+                            className="mt-1 inline-flex items-center gap-1.5 text-xs font-medium text-nk-text underline underline-offset-4 transition-colors hover:text-nk-accent"
+                          >
+                            {t("why.learnMore")}
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                              <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                          </Link>
+                        </div>
+
+                        {/* Image */}
+                        <div className={`overflow-hidden bg-nk-section ${flip ? "md:order-1" : ""}`}>
+                          <img
+                            src={`https://picsum.photos/seed/${item.seed}/900/680`}
+                            alt={t(`why.${item.key}`)}
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </section>
 
       {/* ===== STATS STRIP ===== */}
       <section className="bg-nk-dark text-nk-text-inverse">
