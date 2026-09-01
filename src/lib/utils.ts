@@ -13,6 +13,8 @@ export function slugify(s: string): string {
     .replace(/(^-|-$)/g, "");
 }
 
+import { twMerge } from "tailwind-merge";
+
 type ClassValue =
   | string
   | false
@@ -23,11 +25,17 @@ type ClassValue =
   | ((state: any) => string | undefined);
 
 export function cn(...classes: Array<ClassValue>): string {
-  return classes
-    .filter(Boolean)
-    .map((c) => (typeof c === "function" ? (c as (s: unknown) => string | undefined)({}) ?? "" : c))
-    .filter(Boolean)
-    .join(" ");
+  return twMerge(
+    classes
+      .filter(Boolean)
+      .map((c) =>
+        typeof c === "function"
+          ? (c as (s: unknown) => string | undefined)({}) ?? ""
+          : c
+      )
+      .filter(Boolean)
+      .join(" ")
+  );
 }
 
 export function formatDistance(m: number): string {

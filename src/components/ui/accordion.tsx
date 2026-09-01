@@ -19,7 +19,7 @@ function AccordionItem({ className, ...props }: AccordionPrimitive.Item.Props) {
   return (
     <AccordionPrimitive.Item
       data-slot="accordion-item"
-      className={cn("border-b border-nk-border not-last:border-b", className)}
+      className={cn("border-b border-current/15 not-last:border-b", className)}
       {...props}
     />
   );
@@ -51,7 +51,7 @@ function AccordionTrigger({
           strokeWidth="1.6"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="shrink-0 text-nk-text-muted transition-transform duration-200 group-aria-expanded/accordion-trigger:rotate-180"
+          className="shrink-0 text-current/40 transition-transform duration-200 group-aria-expanded/accordion-trigger:rotate-180"
           aria-hidden="true"
         >
           <path d="m6 9 6 6 6-6" />
@@ -74,7 +74,7 @@ function AccordionContent({
     >
       <div
         className={cn(
-          "h-(--accordion-panel-height) pb-4 pt-0 text-sm leading-relaxed text-nk-text-muted data-ending-style:h-0 data-starting-style:h-0",
+          "h-(--accordion-panel-height) pb-4 pt-0 text-sm leading-relaxed text-current/65 data-ending-style:h-0 data-starting-style:h-0",
           className
         )}
       >

@@ -202,12 +202,11 @@ export default async function HomePage({
           ))}
         </div>
       </section>
-
-      {/* ===== WHY NGEKOST — 2x2 checkerboard (text/img / img/FAQ) ===== */}
-      <section className="mt-16 border-y border-nk-border md:mt-24">
-        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-[1px] bg-nk-border md:grid-cols-2">
+      {/* ===== WHY NGEKOST — 2x2 checkerboard, dark (obsidian-style) ===== */}
+      <section className="mt-16 border-y border-nk-ink-border bg-nk-ink md:mt-24">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-[1px] bg-nk-ink-border md:grid-cols-2">
           {/* Row 1 · Left: agent (verified) text */}
-          <div className="flex flex-col justify-center gap-3 bg-nk-bg px-6 py-12 md:px-10 lg:py-16">
+          <div className="flex flex-col justify-center gap-3 bg-nk-ink px-6 py-12 md:px-10 lg:py-16">
             <svg
               width="24"
               height="24"
@@ -217,20 +216,20 @@ export default async function HomePage({
               strokeWidth="1.4"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-nk-text"
+              className="text-nk-ink-fg"
               aria-hidden="true"
             >
               <path d={WHY_ICONS[0].path} />
             </svg>
-            <h3 className="text-2xl font-light leading-tight tracking-tight text-nk-text sm:text-3xl">
+            <h3 className="text-2xl font-light leading-tight tracking-tight text-nk-ink-fg sm:text-3xl">
               {t("why.agent")}
             </h3>
-            <p className="max-w-sm text-sm leading-relaxed text-nk-text-muted sm:text-base">
+            <p className="max-w-sm text-sm leading-relaxed text-nk-ink-muted sm:text-base">
               {t("why.agentBody")}
             </p>
             <Link
               href="/kost"
-              className="mt-2 inline-flex w-fit items-center gap-2 bg-nk-accent px-6 py-3 text-sm font-medium text-nk-text-inverse transition-opacity hover:opacity-90 active:scale-[0.99]"
+              className="mt-2 inline-flex w-fit items-center gap-2 bg-nk-ink-fg px-6 py-3 text-sm font-medium text-nk-ink transition-opacity hover:opacity-90 active:scale-[0.99]"
             >
               {t("why.learnMore")}
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -240,7 +239,7 @@ export default async function HomePage({
           </div>
 
           {/* Row 1 · Right: image */}
-          <div className="overflow-hidden bg-nk-bg">
+          <div className="overflow-hidden bg-nk-ink">
             <Image
               src={`https://picsum.photos/seed/${WHY_ICONS[0].seed}/900/680`}
               alt={t("why.agent")}
@@ -251,7 +250,7 @@ export default async function HomePage({
           </div>
 
           {/* Row 2 · Left: image */}
-          <div className="overflow-hidden bg-nk-bg">
+          <div className="overflow-hidden bg-nk-ink">
             <Image
               src={`https://picsum.photos/seed/${WHY_ICONS[1].seed}/900/680`}
               alt={t("why.favorite")}
@@ -262,11 +261,11 @@ export default async function HomePage({
           </div>
 
           {/* Row 2 · Right: FAQ (heading + accordion) */}
-          <div className="bg-nk-bg px-6 py-12 text-left md:px-10 lg:py-16">
-            <h2 className="text-2xl font-light leading-tight tracking-tight text-nk-text sm:text-3xl">
+          <div className="bg-nk-ink px-6 py-12 text-left md:px-10 lg:py-16">
+            <h2 className="text-2xl font-light leading-tight tracking-tight text-nk-ink-fg sm:text-3xl">
               {t("why.heading")}
             </h2>
-            <p className="mt-3 max-w-md text-left text-sm leading-relaxed text-nk-text-muted sm:text-base">
+            <p className="mt-3 max-w-md text-left text-sm leading-relaxed text-nk-ink-muted sm:text-base">
               {t("why.subheading")}
             </p>
             <div className="mt-6">
