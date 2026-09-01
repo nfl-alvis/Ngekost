@@ -15,11 +15,8 @@
   --color-nk-dark: #3A2618;
   --color-nk-dark-border: #a89a8f;
 
-  /* dark section (obsidian-style) */
-  --color-nk-ink: #171717;
-  --color-nk-ink-fg: #FAFAFA;
-  --color-nk-ink-muted: #A6A6A6;
-  --color-nk-ink-border: #333333;
+  /* warm section tint (nk-bg shifted slightly brown) */
+  --color-nk-warm: #F5EEE3;
 
   --font-serif: var(--font-sans);
   --font-sans: var(--font-sans);

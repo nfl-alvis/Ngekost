@@ -21,10 +21,10 @@ export default function WhyFaq() {
                 goes right. Splitting into two direct children would push
                 the question toward the right edge. */}
             <span className="flex items-baseline gap-3 text-left">
-              <span className="text-xs tabular-nums text-nk-ink-muted">
+              <span className="text-xs tabular-nums text-nk-text-muted">
                 {String(i + 1).padStart(2, "0")}.
               </span>
-              <span className="tracking-tight text-nk-ink-fg">
+              <span className="tracking-tight text-nk-text">
                 {t(`items.${i}.q`)}
               </span>
             </span>
