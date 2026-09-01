@@ -40,12 +40,11 @@ export default async function PropertyCard({ property }: { property: Property })
       </div>
 
       <div className="flex items-center gap-2">
-        <h3 className="truncate text-lg font-medium tracking-tight text-nk-text">
+        <h3 className="min-w-0 truncate text-lg font-medium tracking-tight text-nk-text">
           {property.name}
         </h3>
-        <span className="text-nk-text-muted">·</span>
-        <span className="truncate text-lg font-light tracking-tight text-nk-text-muted">
-          {t(GENDER_LABEL[property.gender])}
+        <span className="shrink-0 whitespace-nowrap text-lg font-light tracking-tight text-nk-text-muted">
+          · {t(GENDER_LABEL[property.gender])}
         </span>
       </div>
 
@@ -57,7 +56,7 @@ export default async function PropertyCard({ property }: { property: Property })
         {property.district}, {property.city}
       </p>
 
-      <div className="mt-4 flex items-center gap-4 text-xs text-nk-text-muted">
+      <div className="mt-auto flex items-center gap-4 pt-4 text-xs text-nk-text-muted">
         <span className="flex items-center gap-1.5">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M12 2l2.9 6.26L21.5 9.27l-5 4.87L17.8 21 12 17.77 6.2 21l1.3-6.86-5-4.87 6.6-1.01L12 2z" />
@@ -73,7 +72,7 @@ export default async function PropertyCard({ property }: { property: Property })
         </span>
       </div>
 
-      <div className="mt-auto flex items-baseline gap-1.5 border-t border-nk-border pt-4">
+      <div className="mt-4 flex items-baseline gap-1.5 border-t border-nk-border pt-4">
         <span className="text-xs text-nk-text-muted">{t("from")}</span>
         <span className="text-xl font-medium tracking-tight text-nk-text">
           {formatIDR(property.minPrice)}
