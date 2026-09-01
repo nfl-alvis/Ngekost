@@ -12,6 +12,7 @@ const GENDER_LABEL: Record<Property["gender"], "genderMixed" | "genderMale" | "g
 
 export default async function PropertyCard({ property }: { property: Property }) {
   const t = await getTranslations("card");
+  const totalAvailable = property.roomTypes.reduce((s, r) => s + r.available, 0);
 
   return (
     <Link
@@ -39,16 +40,28 @@ export default async function PropertyCard({ property }: { property: Property })
         </span>
       </div>
 
+      {/* tipe (putra/putri/campur) + jumlah tersedia, di atas nama */}
       <div className="flex items-center gap-2">
-        <h3 className="min-w-0 truncate text-lg font-medium tracking-tight text-nk-text">
-          {property.name}
-        </h3>
-        <span className="shrink-0 whitespace-nowrap text-lg font-light tracking-tight text-nk-text-muted">
-          · {t(GENDER_LABEL[property.gender])}
+        <span className="inline-flex shrink-0 items-center rounded-md bg-nk-section px-2 py-0.5 text-xs font-medium text-nk-text">
+          {t(GENDER_LABEL[property.gender])}
+        </span>
+        <span className="flex min-w-0 items-center gap-1 text-xs text-nk-text-muted">
+          {totalAvailable > 0 ? (
+            <>
+              <span className="font-medium text-nk-text">{totalAvailable}</span>
+              <span className="truncate">{t("available")}</span>
+            </>
+          ) : (
+            <span>{t("full")}</span>
+          )}
         </span>
       </div>
 
-      <p className="mt-1.5 flex items-center gap-1 text-xs text-nk-text-muted">
+      <h3 className="mt-2.5 min-w-0 truncate text-base font-medium tracking-tight text-nk-text">
+        {property.name}
+      </h3>
+
+      <p className="mt-1 flex items-center gap-1 text-xs text-nk-text-muted">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
           <circle cx="12" cy="10" r="3" />
@@ -80,13 +93,9 @@ export default async function PropertyCard({ property }: { property: Property })
         <span className="text-xs text-nk-text-muted">{t("perMonth")}</span>
         <span className={cn(
           "ml-auto inline-flex items-center text-xs font-medium",
-          property.roomTypes.some((r) => r.available > 0)
-            ? "text-nk-accent"
-            : "text-nk-text-muted"
+          totalAvailable > 0 ? "text-nk-accent" : "text-nk-text-muted"
         )}>
-          {property.roomTypes.some((r) => r.available > 0)
-            ? `${property.roomTypes.reduce((s, r) => s + r.available, 0)} ${t("available")}`
-            : t("full")}
+          {totalAvailable > 0 ? `${totalAvailable} ${t("available")}` : t("full")}
         </span>
       </div>
     </Link>
