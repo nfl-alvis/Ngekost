@@ -2,7 +2,7 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import type { Property } from "@/lib/data/types";
-import { formatIDR, formatDistance, cn } from "@/lib/utils";
+import { formatIDR, formatDistance } from "@/lib/utils";
 
 const GENDER_LABEL: Record<Property["gender"], "genderMixed" | "genderMale" | "genderFemale"> = {
   mixed: "genderMixed",
@@ -91,12 +91,6 @@ export default async function PropertyCard({ property }: { property: Property })
           {formatIDR(property.minPrice)}
         </span>
         <span className="text-xs text-nk-text-muted">{t("perMonth")}</span>
-        <span className={cn(
-          "ml-auto inline-flex items-center text-xs font-medium",
-          totalAvailable > 0 ? "text-nk-accent" : "text-nk-text-muted"
-        )}>
-          {totalAvailable > 0 ? `${totalAvailable} ${t("available")}` : t("full")}
-        </span>
       </div>
     </Link>
   );
