@@ -42,7 +42,7 @@ export default async function PropertyCard({ property }: { property: Property })
 
       {/* tipe (putra/putri/campur) + jumlah tersedia, di atas nama */}
       <div className="flex items-center gap-2">
-        <span className="inline-flex shrink-0 items-center rounded-md bg-nk-section px-2 py-0.5 text-xs font-medium text-nk-text">
+        <span className="inline-flex shrink-0 items-center rounded-md border border-nk-dark-border bg-nk-section px-2 py-0.5 text-xs font-medium text-nk-text">
           {t(GENDER_LABEL[property.gender])}
         </span>
         <span className="flex min-w-0 items-center gap-1 text-xs text-nk-text-muted">
