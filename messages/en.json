@@ -199,5 +199,10 @@
     "title": "Explore by City",
     "viewAll": "View All",
     "explore": "Explore Kost"
+  },
+  "campus": {
+    "title": "Kos Near Campus",
+    "subtitle": "Find kosts within walking distance of your favorite campus.",
+    "seeAll": "View all campuses"
   }
 }

@@ -199,5 +199,10 @@
     "title": "Jelajahi Berdasarkan Kota",
     "viewAll": "Lihat Semua",
     "explore": "Jelajahi Kost"
+  },
+  "campus": {
+    "title": "Kos Sekitar Kampus",
+    "subtitle": "Temukan kost dalam jangkauan jalan kaki dari kampus favoritmu.",
+    "seeAll": "Lihat semua kampus"
   }
 }

@@ -25,6 +25,73 @@ const CATEGORY_IMAGES = [
   { seed: "ngekost-cat-malang", label: "Malang", area: "Sumbersari · Dinoyo", hero: 3 },
 ];
 
+const CAMPUS_GROUPS = [
+  {
+    city: "Bandung",
+    campuses: [
+      { name: "ITB" },
+      { name: "UPI" },
+      { name: "Telkom" },
+      { name: "UNPAD" },
+      { name: "UNPAR" },
+      { name: "Maranatha" },
+      { name: "UNISBA" },
+    ],
+  },
+  {
+    city: "Yogyakarta",
+    campuses: [
+      { name: "UGM" },
+      { name: "UNY" },
+      { name: "UIN" },
+      { name: "UMY" },
+      { name: "UAD" },
+      { name: "USD" },
+    ],
+  },
+  {
+    city: "Jakarta",
+    campuses: [
+      { name: "UI" },
+      { name: "BINUS" },
+      { name: "UNTAR" },
+      { name: "Trisakti" },
+      { name: "UIN" },
+      { name: "STAN" },
+    ],
+  },
+  {
+    city: "Surabaya",
+    campuses: [
+      { name: "ITS" },
+      { name: "UNAIR" },
+      { name: "UNESA" },
+      { name: "UPN" },
+      { name: "UBAYA" },
+      { name: "Petra" },
+    ],
+  },
+  {
+    city: "Malang",
+    campuses: [
+      { name: "UB" },
+      { name: "UM" },
+      { name: "UMM" },
+      { name: "UIN" },
+      { name: "Polinema" },
+    ],
+  },
+  {
+    city: "Semarang",
+    campuses: [
+      { name: "UNDIP" },
+      { name: "UNNES" },
+      { name: "UDINUS" },
+      { name: "UNISSULA" },
+    ],
+  },
+];
+
 const WHY_ICONS = [
   {
     key: "agent",
@@ -202,6 +269,41 @@ export default async function HomePage({
           ))}
         </div>
       </section>
+      {/* ===== KOS SEKITAR KAMPUS — grouped campus pills (mamikos ref) ===== */}
+      <section className="border-b border-nk-border">
+        <div className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
+          <div className="flex flex-col gap-2 pb-10">
+            <h2 className="text-2xl font-light tracking-tight text-nk-text sm:text-3xl">
+              {t("campus.title")}
+            </h2>
+            <p className="max-w-md text-sm text-nk-text-muted">{t("campus.subtitle")}</p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+            {CAMPUS_GROUPS.map((group) => (
+              <div key={group.city} className="flex flex-col">
+                <div className="flex items-center justify-between border-b border-nk-border pb-3">
+                  <h3 className="text-sm font-medium tracking-tight text-nk-text">{group.city}</h3>
+                  <span className="text-xs text-nk-text-muted">{group.campuses.length}</span>
+                </div>
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {group.campuses.map((campus) => (
+                    <li key={campus.name} className="m-0">
+                      <Link
+                        href={`/kost?kota=${encodeURIComponent(group.city)}`}
+                        className="inline-flex items-center rounded-md border border-nk-dark-border bg-nk-bg px-3 py-1.5 text-xs font-medium text-nk-text transition-colors hover:bg-nk-section"
+                      >
+                        {campus.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== WHY NGEKOST — 2x2 checkerboard, warm tint ===== */}
       <section className="mt-16 border-y border-nk-border bg-nk-warm md:mt-24">
         <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-[1px] bg-nk-border md:grid-cols-2">
