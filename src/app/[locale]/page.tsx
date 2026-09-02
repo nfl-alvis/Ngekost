@@ -25,71 +25,15 @@ const CATEGORY_IMAGES = [
   { seed: "ngekost-cat-malang", label: "Malang", area: "Sumbersari · Dinoyo", hero: 3 },
 ];
 
-const CAMPUS_GROUPS = [
-  {
-    city: "Bandung",
-    campuses: [
-      { name: "ITB" },
-      { name: "UPI" },
-      { name: "Telkom" },
-      { name: "UNPAD" },
-      { name: "UNPAR" },
-      { name: "Maranatha" },
-      { name: "UNISBA" },
-    ],
-  },
-  {
-    city: "Yogyakarta",
-    campuses: [
-      { name: "UGM" },
-      { name: "UNY" },
-      { name: "UIN" },
-      { name: "UMY" },
-      { name: "UAD" },
-      { name: "USD" },
-    ],
-  },
-  {
-    city: "Jakarta",
-    campuses: [
-      { name: "UI" },
-      { name: "BINUS" },
-      { name: "UNTAR" },
-      { name: "Trisakti" },
-      { name: "UIN" },
-      { name: "STAN" },
-    ],
-  },
-  {
-    city: "Surabaya",
-    campuses: [
-      { name: "ITS" },
-      { name: "UNAIR" },
-      { name: "UNESA" },
-      { name: "UPN" },
-      { name: "UBAYA" },
-      { name: "Petra" },
-    ],
-  },
-  {
-    city: "Malang",
-    campuses: [
-      { name: "UB" },
-      { name: "UM" },
-      { name: "UMM" },
-      { name: "UIN" },
-      { name: "Polinema" },
-    ],
-  },
-  {
-    city: "Semarang",
-    campuses: [
-      { name: "UNDIP" },
-      { name: "UNNES" },
-      { name: "UDINUS" },
-      { name: "UNISSULA" },
-    ],
-  },
+const CAMPUS_TILES = [
+  { name: "UGM", city: "Yogyakarta", seed: "ngekost-kampus-ugm" },
+  { name: "UI", city: "Jakarta", seed: "ngekost-kampus-ui" },
+  { name: "ITB", city: "Bandung", seed: "ngekost-kampus-itb" },
+  { name: "ITS", city: "Surabaya", seed: "ngekost-kampus-its" },
+  { name: "UNPAD", city: "Bandung", seed: "ngekost-kampus-unpad" },
+  { name: "UNAIR", city: "Surabaya", seed: "ngekost-kampus-unair" },
+  { name: "UNDIP", city: "Semarang", seed: "ngekost-kampus-undip" },
+  { name: "UB", city: "Malang", seed: "ngekost-kampus-ub" },
 ];
 
 const WHY_ICONS = [
@@ -269,7 +213,7 @@ export default async function HomePage({
           ))}
         </div>
       </section>
-      {/* ===== KOS SEKITAR KAMPUS — grouped campus pills (mamikos ref) ===== */}
+      {/* ===== KOS SEKITAR KAMPUS — clickable campus image tiles (mamikos ref) ===== */}
       <section className="border-b border-nk-border">
         <div className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
           <div className="flex flex-col gap-2 pb-10">
@@ -279,26 +223,45 @@ export default async function HomePage({
             <p className="max-w-md text-sm text-nk-text-muted">{t("campus.subtitle")}</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-            {CAMPUS_GROUPS.map((group) => (
-              <div key={group.city} className="flex flex-col">
-                <div className="flex items-center justify-between border-b border-nk-border pb-3">
-                  <h3 className="text-sm font-medium tracking-tight text-nk-text">{group.city}</h3>
-                  <span className="text-xs text-nk-text-muted">{group.campuses.length}</span>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {CAMPUS_TILES.map((campus) => (
+              <Link
+                key={campus.name}
+                href={`/kost?kota=${encodeURIComponent(campus.city)}`}
+                className="group relative block overflow-hidden rounded-lg"
+              >
+                <Image
+                  src={`https://picsum.photos/seed/${campus.seed}/640/480`}
+                  alt={`Kos sekitar ${campus.name} ${campus.city}`}
+                  width={640}
+                  height={480}
+                  className="aspect-[4/3] w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-nk-dark/80 via-nk-dark/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4">
+                  <div className="flex flex-col">
+                    <span className="text-base font-medium tracking-tight text-white">
+                      {campus.name}
+                    </span>
+                    <span className="text-xs text-white/70">{campus.city}</span>
+                  </div>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-white opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+                    style={{ transform: "translateX(-8px)" }}
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
                 </div>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {group.campuses.map((campus) => (
-                    <li key={campus.name} className="m-0">
-                      <Link
-                        href={`/kost?kota=${encodeURIComponent(group.city)}`}
-                        className="inline-flex items-center rounded-md border border-nk-dark-border bg-nk-bg px-3 py-1.5 text-xs font-medium text-nk-text transition-colors hover:bg-nk-section"
-                      >
-                        {campus.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
