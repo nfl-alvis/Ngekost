@@ -3,6 +3,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 type GeoResult = {
   name: string;
@@ -28,6 +34,7 @@ export type LocationPick =
 const TABS = ["campus", "area", "station"] as const;
 type Tab = (typeof TABS)[number];
 
+// ── Quick picks (popular, shown as inline chips above the directory) ──
 const QUICK_OPTIONS: Record<Tab, { label: string; city: string }[]> = {
   campus: [
     { label: "UGM", city: "Yogyakarta" },
@@ -67,6 +74,151 @@ const QUICK_OPTIONS: Record<Tab, { label: string; city: string }[]> = {
   ],
 };
 
+// ── Directory: organised by city, each tab has its own city-tree ──
+const CITIES = [
+  "Bandung",
+  "Yogyakarta",
+  "Jakarta",
+  "Surabaya",
+  "Malang",
+  "Semarang",
+] as const;
+
+const DIRECTORY: Record<Tab, Record<string, { label: string; city: string }[]>> = {
+  campus: {
+    Bandung: [
+      { label: "ITB", city: "Bandung" },
+      { label: "UNPAD", city: "Bandung" },
+      { label: "UPI", city: "Bandung" },
+      { label: "Telkom University", city: "Bandung" },
+      { label: "UNPAR", city: "Bandung" },
+    ],
+    Yogyakarta: [
+      { label: "UGM", city: "Yogyakarta" },
+      { label: "UNY", city: "Yogyakarta" },
+      { label: "UII", city: "Yogyakarta" },
+      { label: "UMY", city: "Yogyakarta" },
+      { label: "Sanata Dharma", city: "Yogyakarta" },
+    ],
+    Jakarta: [
+      { label: "UI", city: "Jakarta" },
+      { label: "BINUS", city: "Jakarta" },
+      { label: "Trisakti", city: "Jakarta" },
+      { label: "Atma Jaya", city: "Jakarta" },
+      { label: "UNJ", city: "Jakarta" },
+    ],
+    Surabaya: [
+      { label: "ITS", city: "Surabaya" },
+      { label: "UNAIR", city: "Surabaya" },
+      { label: "UPN Veteran", city: "Surabaya" },
+      { label: "UK Petra", city: "Surabaya" },
+      { label: "Universitas Ciputra", city: "Surabaya" },
+    ],
+    Malang: [
+      { label: "UB", city: "Malang" },
+      { label: "UM", city: "Malang" },
+      { label: "UIN Malang", city: "Malang" },
+      { label: "Polinema", city: "Malang" },
+      { label: "Universitas Merdeka", city: "Malang" },
+    ],
+    Semarang: [
+      { label: "UNDIP", city: "Semarang" },
+      { label: "UNNES", city: "Semarang" },
+      { label: "Soegijapranata", city: "Semarang" },
+      { label: "Polines", city: "Semarang" },
+      { label: "Universitas Wahid Hasyim", city: "Semarang" },
+    ],
+  },
+  area: {
+    Bandung: [
+      { label: "Dago", city: "Bandung" },
+      { label: "Setiabudi", city: "Bandung" },
+      { label: "Cihampelas", city: "Bandung" },
+      { label: "Riau", city: "Bandung" },
+      { label: "Buahbatu", city: "Bandung" },
+    ],
+    Yogyakarta: [
+      { label: "Kotabaru", city: "Yogyakarta" },
+      { label: "Caturtunggal", city: "Yogyakarta" },
+      { label: "Demangan", city: "Yogyakarta" },
+      { label: "Gejayan", city: "Yogyakarta" },
+      { label: "Timoho", city: "Yogyakarta" },
+    ],
+    Jakarta: [
+      { label: "Menteng", city: "Jakarta" },
+      { label: "Tebet", city: "Jakarta" },
+      { label: "Kemang", city: "Jakarta" },
+      { label: "Kelapa Gading", city: "Jakarta" },
+      { label: "Pondok Indah", city: "Jakarta" },
+    ],
+    Surabaya: [
+      { label: "Wonokromo", city: "Surabaya" },
+      { label: "Gubeng", city: "Surabaya" },
+      { label: "Sukolilo", city: "Surabaya" },
+      { label: "Mulyorejo", city: "Surabaya" },
+      { label: "Bubutan", city: "Surabaya" },
+    ],
+    Malang: [
+      { label: "Sumbersari", city: "Malang" },
+      { label: "Dinoyo", city: "Malang" },
+      { label: "Lowokwaru", city: "Malang" },
+      { label: "Sawojajar", city: "Malang" },
+      { label: "Blimbing", city: "Malang" },
+    ],
+    Semarang: [
+      { label: "Tembalang", city: "Semarang" },
+      { label: "Gajahmungkur", city: "Semarang" },
+      { label: "Semarang Tengah", city: "Semarang" },
+      { label: "Pleburan", city: "Semarang" },
+      { label: "Ngaliyan", city: "Semarang" },
+    ],
+  },
+  station: {
+    Bandung: [
+      { label: "Stasiun Bandung", city: "Bandung" },
+      { label: "Stasiun Kiaracondong", city: "Bandung" },
+      { label: "Halte Trans Bandung Dago", city: "Bandung" },
+      { label: "Halte Trans Bandung Cibiru", city: "Bandung" },
+      { label: "Leuwipanjang", city: "Bandung" },
+    ],
+    Yogyakarta: [
+      { label: "Stasiun Tugu", city: "Yogyakarta" },
+      { label: "Stasiun Lempuyangan", city: "Yogyakarta" },
+      { label: "Halte Trans Jogja UGM", city: "Yogyakarta" },
+      { label: "Halte Trans Jogja Malioboro", city: "Yogyakarta" },
+      { label: "Terminal Giwangan", city: "Yogyakarta" },
+    ],
+    Jakarta: [
+      { label: "Stasiun Gambir", city: "Jakarta" },
+      { label: "Stasiun Senen", city: "Jakarta" },
+      { label: "Halte TransJakarta Monas", city: "Jakarta" },
+      { label: "Halte TransJakarta Blok M", city: "Jakarta" },
+      { label: "MRT Bundaran HI", city: "Jakarta" },
+    ],
+    Surabaya: [
+      { label: "Stasiun Gubeng", city: "Surabaya" },
+      { label: "Stasiun Pasar Turi", city: "Surabaya" },
+      { label: "Halte Suroboyo Bus", city: "Surabaya" },
+      { label: "Terminal Purabaya", city: "Surabaya" },
+      { label: "Pelabuhan Tanjung Perak", city: "Surabaya" },
+    ],
+    Malang: [
+      { label: "Stasiun Malang", city: "Malang" },
+      { label: "Stasiun Malang Kotalama", city: "Malang" },
+      { label: "Terminal Arjosari", city: "Malang" },
+      { label: "Terminal Landungsari", city: "Malang" },
+      { label: "Halte Malang Kota", city: "Malang" },
+    ],
+    Semarang: [
+      { label: "Stasiun Semarang Tawang", city: "Semarang" },
+      { label: "Stasiun Semarang Poncol", city: "Semarang" },
+      { label: "Terminal Terboyo", city: "Semarang" },
+      { label: "Pelabuhan Tanjung Emas", city: "Semarang" },
+      { label: "BRT Semarang", city: "Semarang" },
+    ],
+  },
+};
+
 export default function LocationSearchPopup({
   open,
   onClose,
@@ -93,10 +245,7 @@ export default function LocationSearchPopup({
     maxH: number;
   } | null>(null);
 
-  // Measure the anchor (the form) once on open, so the portalled panel can
-  // align itself under it. If there is not enough room below (short viewports),
-  // flip the panel above the anchor and clamp its max height to the viewport.
-  // Fixed positioning + portal = immune to ancestor overflow clipping.
+  // Measure the anchor (the form) once on open
   const GAP = 8;
   useEffect(() => {
     if (!open) return;
@@ -112,7 +261,6 @@ export default function LocationSearchPopup({
       setAnchorRect({
         left: r.left,
         width: r.width,
-        // below: panel top = anchor bottom + gap; flip: panel bottom = anchor top - gap
         top: flip ? r.top - GAP : r.bottom + GAP,
         flip,
         maxH: Math.max(160, maxH),
@@ -126,8 +274,7 @@ export default function LocationSearchPopup({
     };
   }, [open, anchorRef]);
 
-  // Debounced autocomplete — avoids burning through Geoapify requests.
-  // 350ms idle window; aborted in-flight requests when a newer one fires.
+  // Debounced autocomplete
   useEffect(() => {
     if (!open) return;
     let cancelled = false;
@@ -138,7 +285,6 @@ export default function LocationSearchPopup({
         setLoading(false);
         return;
       }
-
       setLoading(true);
       abortRef.current?.abort();
       const controller = new AbortController();
@@ -157,14 +303,13 @@ export default function LocationSearchPopup({
         if (!cancelled && abortRef.current === controller) setLoading(false);
       }
     }, 350);
-
     return () => {
       cancelled = true;
       clearTimeout(timer);
     };
   }, [query, open]);
 
-  // focus input on open — reset + focus in rAF (async), not sync in effect
+  // focus input on open
   useEffect(() => {
     if (!open) return;
     const raf = requestAnimationFrame(() => {
@@ -202,19 +347,12 @@ export default function LocationSearchPopup({
         });
         onClose();
       },
-      () => {
-        // denied or unavailable — silently close
-        onClose();
-      }
+      () => onClose()
     );
   }, [onPick, onClose]);
 
   if (!open) return null;
-
-  if (!anchorRect || typeof document === "undefined") {
-    // not yet measured (or SSR) — render nothing yet
-    return null;
-  }
+  if (!anchorRect || typeof document === "undefined") return null;
 
   return createPortal(
     <>
@@ -225,7 +363,7 @@ export default function LocationSearchPopup({
         aria-hidden="true"
       />
 
-      {/* popup panel — fixed so no ancestor overflow can clip it */}
+      {/* popup panel */}
       <div
         className="fixed z-50 overflow-y-auto rounded-lg border border-nk-border bg-nk-surface shadow-xl"
         style={{
@@ -240,7 +378,11 @@ export default function LocationSearchPopup({
       >
         {/* search input */}
         <div className="flex items-center gap-2.5 border-b border-nk-border px-4 py-3">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-nk-text-muted" aria-hidden="true">
+          <svg
+            width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"
+            className="shrink-0 text-nk-text-muted" aria-hidden="true"
+          >
             <circle cx="11" cy="11" r="7" />
             <path d="m21 21-4.3-4.3" />
           </svg>
@@ -260,7 +402,7 @@ export default function LocationSearchPopup({
 
         {/* autocomplete results */}
         {results.length > 0 && (
-          <ul className="max-h-64 overflow-y-auto border-b border-nk-border">
+          <ul className="max-h-48 overflow-y-auto border-b border-nk-border">
             {results.map((r, i) => (
               <li key={`${r.formatted}-${i}`}>
                 <button
@@ -271,7 +413,11 @@ export default function LocationSearchPopup({
                   }}
                   className="flex w-full items-start gap-3 px-4 py-2.5 text-left transition-colors hover:bg-nk-warm"
                 >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0 text-nk-text-muted" aria-hidden="true">
+                  <svg
+                    width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"
+                    className="mt-0.5 shrink-0 text-nk-text-muted" aria-hidden="true"
+                  >
                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
@@ -296,7 +442,10 @@ export default function LocationSearchPopup({
             onClick={handleNearby}
             className="inline-flex items-center gap-2 text-sm font-medium text-nk-accent transition-opacity hover:opacity-80"
           >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <svg
+              width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
+            >
               <circle cx="12" cy="12" r="3" />
               <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
             </svg>
@@ -322,8 +471,8 @@ export default function LocationSearchPopup({
           ))}
         </div>
 
-        {/* quick options for active tab */}
-        <div className="flex flex-wrap gap-2 p-4">
+        {/* quick picks row */}
+        <div className="flex flex-wrap gap-2 border-b border-nk-border px-4 py-3">
           {QUICK_OPTIONS[activeTab].map((opt) => (
             <button
               key={opt.label}
@@ -332,14 +481,47 @@ export default function LocationSearchPopup({
                 onPick({ kind: activeTab, label: opt.label, city: opt.city });
                 onClose();
               }}
-              className="inline-flex items-center rounded-md border border-nk-dark-border bg-nk-bg px-3 py-1.5 text-xs font-medium text-nk-text transition-colors hover:bg-nk-section"
+              className="inline-flex items-center rounded-md border border-nk-dark-border bg-nk-bg px-2.5 py-1 text-xs font-medium text-nk-text transition-colors hover:bg-nk-section"
             >
               {opt.label}
             </button>
           ))}
         </div>
+
+        {/* accordion directory — organised by city */}
+        {CITIES.map((city) => {
+          const items = DIRECTORY[activeTab]?.[city];
+          if (!items || items.length === 0) return null;
+          return (
+            <div key={city} className="px-4">
+              <Accordion>
+                <AccordionItem value={city}>
+                  <AccordionTrigger className="py-2.5 text-sm font-medium text-nk-text">
+                    {city}
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-3">
+                    <div className="flex flex-wrap gap-2">
+                      {items.map((item) => (
+                        <button
+                          key={item.label}
+                          type="button"
+                          onClick={() => {
+                            onPick({ kind: activeTab, label: item.label, city: item.city });
+                            onClose();
+                          }}
+                          className="inline-flex items-center rounded-md border border-nk-border bg-nk-bg px-2.5 py-1 text-xs text-nk-text transition-colors hover:bg-nk-warm"
+                        >
+                          {item.label}
+                        </button>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+          );
+        })}
       </div>
-      {/* popup panel */}
     </>,
     document.body
   );
