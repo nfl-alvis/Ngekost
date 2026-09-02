@@ -97,7 +97,7 @@ export default async function HomePage({
             <br />
             {t("hero.title2")}
           </h1>
-          <div className="mt-12 max-w-2xl">
+          <div className="mx-auto mt-12 w-full max-w-2xl">
             <SearchBar />
           </div>
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { CITIES } from "@/lib/data/properties";
@@ -16,6 +16,7 @@ import {
 export default function SearchBar() {
   const t = useTranslations("hero");
   const router = useRouter();
+  const formRef = useRef<HTMLFormElement>(null);
   const [q, setQ] = useState("");
   const [city, setCity] = useState("");
   const [popupOpen, setPopupOpen] = useState(false);
@@ -50,6 +51,7 @@ export default function SearchBar() {
 
   return (
     <form
+      ref={formRef}
       onSubmit={submit}
       className="relative flex w-full max-w-2xl flex-col border border-nk-border bg-nk-surface sm:flex-row"
     >
@@ -100,11 +102,12 @@ export default function SearchBar() {
         {t("search")}
       </button>
 
-      {/* location search popup — anchored under the input, above city select */}
+      {/* location search popup — portalled to body, anchored under the form */}
       <LocationSearchPopup
         open={popupOpen}
         onClose={() => setPopupOpen(false)}
         onPick={handlePick}
+        anchorRef={formRef}
       />
     </form>
   );
