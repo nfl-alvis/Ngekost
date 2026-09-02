@@ -18,6 +18,15 @@
     "placeholder": "Masukan nama lokasi/area/alamat",
     "search": "Cari",
     "popular": "Populer:",
+    "popup": {
+      "searching": "Mencari…",
+      "nearby": "Cari di lokasi sekitar saya",
+      "tab": {
+        "campus": "Kampus",
+        "area": "Area",
+        "station": "Stasiun & Halte"
+      }
+    },
     "stats": {
       "properties": "kost terverifikasi",
       "cities": "kota",

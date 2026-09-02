@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { CITIES } from "@/lib/data/properties";
+import LocationSearchPopup, { type LocationPick } from "@/components/LocationSearchPopup";
 import {
   Select,
   SelectContent,
@@ -17,6 +18,7 @@ export default function SearchBar() {
   const router = useRouter();
   const [q, setQ] = useState("");
   const [city, setCity] = useState("");
+  const [popupOpen, setPopupOpen] = useState(false);
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -26,10 +28,30 @@ export default function SearchBar() {
     router.push(`/kost${params.toString() ? `?${params.toString()}` : ""}`);
   }
 
+  function handlePick(pick: LocationPick) {
+    const params = new URLSearchParams();
+    switch (pick.kind) {
+      case "query":
+        params.set("q", pick.text);
+        break;
+      case "nearby":
+        params.set("lat", String(pick.lat));
+        params.set("lon", String(pick.lon));
+        break;
+      case "campus":
+      case "area":
+      case "station":
+        params.set("q", pick.label);
+        params.set("kota", pick.city);
+        break;
+    }
+    router.push(`/kost?${params.toString()}`);
+  }
+
   return (
     <form
       onSubmit={submit}
-      className="flex w-full max-w-2xl flex-col border border-nk-border bg-nk-surface sm:flex-row"
+      className="relative flex w-full max-w-2xl flex-col border border-nk-border bg-nk-surface sm:flex-row"
     >
       <div className="flex flex-1 items-center gap-2.5 border-b border-nk-border px-4 py-3 sm:border-b-0 sm:border-r">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 text-nk-text-muted" aria-hidden="true">
@@ -37,8 +59,9 @@ export default function SearchBar() {
           <path d="m21 21-4.3-4.3" />
         </svg>
         <input
-          type="search"
+          type="text"
           value={q}
+          onFocus={() => setPopupOpen(true)}
           onChange={(e) => setQ(e.target.value)}
           placeholder={t("placeholder")}
           className="w-full bg-transparent text-sm text-nk-text outline-none placeholder:text-nk-text-muted"
@@ -76,6 +99,13 @@ export default function SearchBar() {
       >
         {t("search")}
       </button>
+
+      {/* location search popup — anchored under the input, above city select */}
+      <LocationSearchPopup
+        open={popupOpen}
+        onClose={() => setPopupOpen(false)}
+        onPick={handlePick}
+      />
     </form>
   );
 }

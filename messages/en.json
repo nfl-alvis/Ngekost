@@ -18,6 +18,15 @@
     "placeholder": "Search location/area/address",
     "search": "Search",
     "popular": "Popular:",
+    "popup": {
+      "searching": "Searching…",
+      "nearby": "Search near my current location",
+      "tab": {
+        "campus": "Campus",
+        "area": "Area",
+        "station": "Station & Stop"
+      }
+    },
     "stats": {
       "properties": "verified properties",
       "cities": "cities",
