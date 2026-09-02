@@ -21,6 +21,8 @@
     "popup": {
       "searching": "Mencari…",
       "nearby": "Cari di lokasi sekitar saya",
+      "popularSection": "Pencarian populer",
+      "directoryTitle": "{tab} berdasarkan kota",
       "tab": {
         "campus": "Kampus",
         "area": "Area",

@@ -21,6 +21,8 @@
     "popup": {
       "searching": "Searching…",
       "nearby": "Search near my current location",
+      "popularSection": "Popular searches",
+      "directoryTitle": "{tab} by city",
       "tab": {
         "campus": "Campus",
         "area": "Area",

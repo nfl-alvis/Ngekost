@@ -472,29 +472,37 @@ export default function LocationSearchPopup({
         </div>
 
         {/* quick picks row */}
-        <div className="flex flex-wrap gap-2 border-b border-nk-border px-4 py-3">
-          {QUICK_OPTIONS[activeTab].map((opt) => (
-            <button
-              key={opt.label}
-              type="button"
-              onClick={() => {
-                onPick({ kind: activeTab, label: opt.label, city: opt.city });
-                onClose();
-              }}
-              className="inline-flex items-center rounded-md border border-nk-dark-border bg-nk-bg px-2.5 py-1 text-xs font-medium text-nk-text transition-colors hover:bg-nk-section"
-            >
-              {opt.label}
-            </button>
-          ))}
+        <div className="border-b border-nk-border px-4 py-3">
+          <p className="mb-2 text-xs font-medium text-nk-text-muted">
+            {t("popup.popularSection")}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {QUICK_OPTIONS[activeTab].map((opt) => (
+              <button
+                key={opt.label}
+                type="button"
+                onClick={() => {
+                  onPick({ kind: activeTab, label: opt.label, city: opt.city });
+                  onClose();
+                }}
+                className="inline-flex items-center rounded-md border border-nk-dark-border bg-nk-bg px-2.5 py-1 text-xs font-medium text-nk-text transition-colors hover:border-nk-accent hover:bg-nk-section"
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* accordion directory — organised by city */}
-        {CITIES.map((city) => {
-          const items = DIRECTORY[activeTab]?.[city];
-          if (!items || items.length === 0) return null;
-          return (
-            <div key={city} className="px-4">
-              <Accordion>
+        <div className="px-4 pb-2 pt-3">
+          <p className="mb-2 text-xs font-medium text-nk-text-muted">
+            {t("popup.directoryTitle", { tab: t(`popup.tab.${activeTab}`) })}
+          </p>
+          {CITIES.map((city) => {
+            const items = DIRECTORY[activeTab]?.[city];
+            if (!items || items.length === 0) return null;
+            return (
+              <Accordion key={city}>
                 <AccordionItem value={city}>
                   <AccordionTrigger className="py-2.5 text-sm font-medium text-nk-text">
                     {city}
@@ -509,7 +517,7 @@ export default function LocationSearchPopup({
                             onPick({ kind: activeTab, label: item.label, city: item.city });
                             onClose();
                           }}
-                          className="inline-flex items-center rounded-md border border-nk-border bg-nk-bg px-2.5 py-1 text-xs text-nk-text transition-colors hover:bg-nk-warm"
+                          className="inline-flex items-center rounded-md border border-nk-border bg-nk-bg px-2.5 py-1 text-xs text-nk-text transition-colors hover:border-nk-accent hover:bg-nk-warm"
                         >
                           {item.label}
                         </button>
@@ -518,9 +526,9 @@ export default function LocationSearchPopup({
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </>,
     document.body
