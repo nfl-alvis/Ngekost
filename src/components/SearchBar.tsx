@@ -4,6 +4,13 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { CITIES } from "@/lib/data/properties";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function SearchBar() {
   const t = useTranslations("hero");
@@ -44,17 +51,23 @@ export default function SearchBar() {
           <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
           <circle cx="12" cy="10" r="3" />
         </svg>
-        <select
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          className="w-full cursor-pointer bg-transparent text-sm text-nk-text outline-none"
-          aria-label={t("placeholder")}
+        <Select
+          value={city || null}
+          onValueChange={(v) => setCity(v ?? "")}
+          items={CITIES.map((c) => ({ label: c, value: c }))}
         >
-          <option value="">{t("popular")}</option>
-          {CITIES.map((c) => (
-            <option key={c} value={c}>{c}</option>
-          ))}
-        </select>
+          <SelectTrigger className="h-auto w-full cursor-pointer py-0 text-sm text-nk-text">
+            <SelectValue placeholder={t("popular")} className="truncate" />
+          </SelectTrigger>
+          <SelectContent align="start">
+            <SelectItem value="">{t("popular")}</SelectItem>
+            {CITIES.map((c) => (
+              <SelectItem key={c} value={c}>
+                {c}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
 
       <button
