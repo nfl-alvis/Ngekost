@@ -10,6 +10,8 @@ const buttonVariants = {
     "border border-nk-border bg-nk-surface text-nk-text transition-colors hover:bg-nk-warm active:scale-[0.99]",
   ghost:
     "text-nk-text transition-colors hover:text-nk-text-muted active:scale-[0.99]",
+  light:
+    "border border-white/20 bg-white/10 text-white backdrop-blur-sm transition-all hover:bg-white/20 active:scale-[0.99]",
 } as const;
 
 const buttonSizes = {
