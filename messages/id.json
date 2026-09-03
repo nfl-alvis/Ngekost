@@ -8,7 +8,8 @@
     "locale": "ID",
     "home": "Beranda",
     "menu": "Menu",
-    "explore": "Jelajahi"
+    "explore": "Jelajahi",
+    "about": "Tentang"
   },
   "hero": {
     "badge": "Ratusan kost terverifikasi",
@@ -215,5 +216,54 @@
     "title": "Kos Sekitar Kampus",
     "subtitle": "Temukan kost dalam jangkauan jalan kaki dari kampus favoritmu.",
     "seeAll": "Lihat semua kampus"
+  },
+  "about": {
+    "eyebrow": "Tentang kami",
+    "title": "Ngebantu anak kos nemu tempat tinggal yang bisa dipercaya.",
+    "subtitle": "NgeKost lahir dari masalah sederhana: nyari kost itu melelahkan. Iklan nggak sesuai, harga nggak jelas, foto nggak nyambung. Kami rapikan semuanya.",
+    "missionLabel": "Misi kami",
+    "missionTitle": "Setiap kost dicek dulu. Yang lolos, yang tampil.",
+    "missionBody": "Tim verifikasi kami meninjau setiap properti sebelum tampil di platform — dari foto, harga, sampai fasilitas. Kalau ada yang nggak sesuai, kost itu nggak tayang. Sederhana, tapi jarang dilakukan.",
+    "imageAlt": "Proses verifikasi kost oleh tim NgeKost",
+    "valuesLabel": "Nilai kami",
+    "valuesTitle": "Tiga hal yang nggak kami tawar.",
+    "values": [
+      {
+        "title": "Terverifikasi dulu, tampil kemudian",
+        "body": "Setiap kost melewati pemeriksaan tim sebelum muncul di hasil pencarian. Nggak ada listing hantu."
+      },
+      {
+        "title": "Harga yang terlihat, itu yang dibayar",
+        "body": "Harga bersih tanpa biaya tersembunyi. Listing tanpa harga yang jelas nggak kami tampilkan."
+      },
+      {
+        "title": "Dekat kampus, dekat aktivitas",
+        "body": "Filter berdasarkan kampus, stasiun, dan area — karena jarak berjalan kaki itu penting."
+      }
+    ],
+    "processLabel": "Cara kerja",
+    "processTitle": "Bagaimana kost lolos verifikasi.",
+    "process": [
+      {
+        "title": "Pengelola mendaftarkan kost",
+        "body": "Data kost, foto, dan harga diisi lengkap oleh pemilik atau pengelola."
+      },
+      {
+        "title": "Tim memeriksa dokumen & foto",
+        "body": "Kepemilikan, lokasi, dan kesesuaian foto dicek satu per satu."
+      },
+      {
+        "title": "Kunjungan atau video call",
+        "body": "Untuk kota utama, tim kami berkunjung langsung. Sisanya lewat video call."
+      },
+      {
+        "title": "Badge terverifikasi diterbitkan",
+        "body": "Kost yang lolos mendapat badge dan mulai tampil di pencarian."
+      }
+    ],
+    "statsLabel": "NgeKost hari ini",
+    "ctaTitle": "Siap pindah ke kost yang lebih baik?",
+    "ctaBody": "Jelajahi ratusan kost terverifikasi di 6 kota. Harga bersih, fasilitas sesuai.",
+    "ctaButton": "Jelajahi Kost"
   }
 }

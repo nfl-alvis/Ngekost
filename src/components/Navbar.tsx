@@ -18,6 +18,7 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/kost", label: t("listings") },
+    { href: "/about", label: t("about") },
   ];
 
   const goRole = (role: "seeker" | "owner") => {

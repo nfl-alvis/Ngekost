@@ -13,8 +13,8 @@ export default function Footer() {
     { href: "/kost?kota=Malang", label: t("malang") },
   ];
 
-  const companyLinks = [
-    { href: "#", label: t("about") },
+  const companyLinks: { href: string; label: string }[] = [
+    { href: "/about", label: t("about") },
     { href: "#", label: t("blog") },
     { href: "#", label: t("jobs") },
     { href: "#", label: t("partners") },
@@ -66,15 +66,25 @@ export default function Footer() {
             <p className="mb-2 text-xs font-semibold text-nk-dark-border">
               {t("company")}
             </p>
-            {companyLinks.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                className="text-sm font-light text-nk-text-inverse transition-colors hover:text-white"
-              >
-                {l.label}
-              </a>
-            ))}
+            {companyLinks.map((l) =>
+              l.href.startsWith("/") ? (
+                <Link
+                  key={l.label}
+                  href={l.href as `/${string}`}
+                  className="text-sm font-light text-nk-text-inverse transition-colors hover:text-white"
+                >
+                  {l.label}
+                </Link>
+              ) : (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  className="text-sm font-light text-nk-text-inverse transition-colors hover:text-white"
+                >
+                  {l.label}
+                </a>
+              )
+            )}
           </div>
 
           <div className="flex flex-col gap-4">
