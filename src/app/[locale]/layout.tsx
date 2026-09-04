@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import "@/app/globals.css";
-import Navbar from "@/components/Navbar";
+import ConditionalNavbar from "@/components/ConditionalNavbar";
 import ConditionalFooter from "@/components/ConditionalFooter";
 import { SessionProvider } from "@/components/SessionProvider";
 
@@ -50,7 +50,7 @@ export default async function LocaleLayout({
         </a>
         <NextIntlClientProvider messages={messages}>
           <SessionProvider>
-            <Navbar />
+            <ConditionalNavbar />
             <main id="main-content" className="flex-1">{children}</main>
             <ConditionalFooter />
           </SessionProvider>

@@ -13,6 +13,7 @@
     "dashboard": "Dashboard",
     "adminPanel": "Admin Panel",
     "myBookings": "My Bookings",
+    "notifications": "Notifications",
     "logout": "Log out"
   },
   "hero": {
@@ -359,7 +360,14 @@
     "approve": "Approve",
     "reject": "Reject",
     "chartTitle": "Revenue, Last 6 Months",
-    "months": ["March", "April", "May", "June", "July", "August"],
+    "months": [
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August"
+    ],
     "properties": {
       "title": "My Properties",
       "add": "+ Add New Property",
@@ -480,7 +488,11 @@
       "noTelegram": "Telegram not connected, messages can only go via Email",
       "back": "Back",
       "empty": "Select a conversation to start replying.",
-      "unread": "unread"
+      "unread": "unread",
+      "moreActions": "More actions",
+      "deleteChat": "Delete chat",
+      "call": "Voice call",
+      "videoCall": "Video call"
     },
     "subscription": {
       "title": "Subscription",
@@ -572,5 +584,295 @@
       "detailTitle": "Verification Detail",
       "rejectionReason": "Rejection Reason"
     }
+  },
+  "blog": {
+    "title": "NgeKost Blog",
+    "subtitle": "Guides to boarding-house life: finding a place, moving in, and staying on good terms with housemates.",
+    "featured": "Featured",
+    "readMore": "Read more",
+    "minRead": "min read",
+    "backToBlog": "Back to Blog",
+    "related": "More Articles",
+    "posts": {
+      "ceklist-aman-sewa-kost-pertama": {
+        "title": "The First-Time Renter's Safety Checklist",
+        "excerpt": "13 things to check before signing a rental agreement: from owner legitimacy to bathroom water pressure.",
+        "author": "Anindita Prameswari",
+        "date": "August 24, 2026",
+        "category": "Guides"
+      },
+      "kost-vs-apartemen-hitung-biaya": {
+        "title": "Kos vs Apartment: Do the Yearly Math, Not Just Monthly Rent",
+        "excerpt": "Apartment rent looks reasonable until you add prepaid electricity, security, and parking. Here's the breakdown.",
+        "author": "Bagus Wicaksono",
+        "date": "August 10, 2026",
+        "category": "Money"
+      },
+      "etika-tetangga-kos": {
+        "title": "Boarding-House Etiquette Everyone Forgets",
+        "excerpt": "Laundry left on the shared line, speakers at 11 pm, borrowed items without asking. The unwritten rules, written down.",
+        "author": "Larissa Hutami",
+        "date": "July 28, 2026",
+        "category": "Lifestyle"
+      },
+      "negosiasi-harga-sewa": {
+        "title": "How to Negotiate Rent Without Offending the Owner",
+        "excerpt": "Negotiation is about timing and data: lease length, room condition, and realistic comparables from the neighborhood.",
+        "author": "Rafael Sanjaya",
+        "date": "July 15, 2026",
+        "category": "Guides"
+      },
+      "dekorasi-kamar-sewa": {
+        "title": "Rentable Room Decor You Can Take When You Move",
+        "excerpt": "Paper lanterns, posters hung with washi tape, and drill-free shelves. Make it home without losing your deposit.",
+        "author": "Larissa Hutami",
+        "date": "July 2, 2026",
+        "category": "Lifestyle"
+      },
+      "keamanan-kos-tips": {
+        "title": "6 Small Habits That Keep You Safer in a Boarding House",
+        "excerpt": "Photocopy important documents, save your neighbor's number, learn the street's busy hours. Simple but effective.",
+        "author": "Anindita Prameswari",
+        "date": "June 18, 2026",
+        "category": "Safety"
+      }
+    }
+  },
+  "karir": {
+    "title": "Careers at NgeKost",
+    "subtitle": "A small team building boarding-house search for millions of renters. Working from Jakarta, Bandung, and home.",
+    "openings": "Open Positions",
+    "sendCv": "Send your CV to",
+    "process": "Hiring Process",
+    "processSteps": [
+      "A relaxed 30-minute chat about your experience",
+      "A practical take-home task for your role, 3 days to complete",
+      "A final conversation with the team you'd join"
+    ],
+    "noMatch": "Nothing that fits? Send your CV anyway — we'll reach out when a new role opens.",
+    "openingsList": [
+      {
+        "title": "Frontend Engineer",
+        "type": "Full-time",
+        "location": "Bandung / Remote",
+        "team": "Product"
+      },
+      {
+        "title": "Field Verification Officer",
+        "type": "Contract",
+        "location": "Jakarta",
+        "team": "Operations"
+      },
+      {
+        "title": "Content Writer (Kost & Property)",
+        "type": "Part-time",
+        "location": "Remote",
+        "team": "Marketing"
+      }
+    ]
+  },
+  "mitra": {
+    "badge": "For Property Owners",
+    "title": "Manage your kost without spreadsheets",
+    "subtitle": "List your property, receive bookings, issue invoices, and track payments from one dashboard. Your Telegram rings when a request comes in.",
+    "cta": "Register as an Owner",
+    "ctaSecondary": "See the Demo Dashboard",
+    "steps": "How It Works",
+    "step1Title": "Register & verify your property",
+    "step1Body": "Fill in property and room-type data. Our team verifies within 3 business days before your listing goes public.",
+    "step2Title": "Receive bookings",
+    "step2Body": "Booking requests arrive with tenant identity attached. Approve or decline from the dashboard; tenants are notified automatically.",
+    "step3Title": "Manage tenants & invoices",
+    "step3Body": "Monthly invoices are issued automatically. Track unpaid ones, mark paid ones, record arrears without a notebook.",
+    "statsListing": "Listing fee",
+    "statsListingValue": "Rp0",
+    "statsPayout": "Payment disbursement",
+    "statsPayoutValue": "24 hours",
+    "statsVerify": "Property verification",
+    "statsVerifyValue": "3 days",
+    "why": "Why owners choose NgeKost",
+    "why1Title": "Telegram notifications",
+    "why1Body": "New bookings, received payments, and tenants in arrears land in your personal Telegram chat.",
+    "why2Title": "Ready-to-use message templates",
+    "why2Body": "Payment reminders and visit confirmations don't need retyping. Pick a template, send.",
+    "why3Title": "Occupancy reports",
+    "why3Body": "See vacant rooms per type and six-month revenue trends without manual recaps."
+  },
+  "bantuan": {
+    "title": "Help Center",
+    "subtitle": "Search the topics below, or contact us if you can't find your answer.",
+    "searchPlaceholder": "Search help topics...",
+    "hours": "Monday-Saturday, 08:00-20:00 WIB",
+    "wa": "WhatsApp Chat",
+    "email": "Email",
+    "popular": "Popular Topics",
+    "cats": {
+      "booking": "Bookings & Rentals",
+      "payment": "Payments & Invoices",
+      "account": "Account & Security",
+      "verification": "Property Verification",
+      "owner": "For Owners"
+    },
+    "topics": {
+      "booking": [
+        "How to submit a booking",
+        "How long does owner approval take?",
+        "Cancel a submitted booking",
+        "When is the deposit returned?"
+      ],
+      "payment": [
+        "Accepted payment methods",
+        "Booking payment deadline",
+        "Late monthly invoice payment",
+        "How to request a payment receipt"
+      ],
+      "account": [
+        "Change your email or phone number",
+        "My account is blocked, why?",
+        "Forgot password",
+        "Delete account"
+      ],
+      "verification": [
+        "How long does verification take?",
+        "Common reasons properties get rejected",
+        "Edit data after approval"
+      ],
+      "owner": [
+        "Adding a new room type",
+        "Issuing a manual invoice",
+        "Connecting Telegram notifications",
+        "Changing your subscription plan"
+      ]
+    },
+    "stillStuck": "Still stuck?"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Short answers to the questions we hear most.",
+    "groups": {
+      "booking": "Bookings & Rentals",
+      "payment": "Payments",
+      "owner": "For Owners"
+    },
+    "items": {
+      "q1": "How long does the owner have to respond to a booking?",
+      "a1": "Up to 24 hours. Past that with no response, the request expires automatically and no funds are deducted.",
+      "q2": "Can I view the room before paying?",
+      "a2": "Yes. Submit a booking, then schedule a visit through messages. Payment only happens once you're sure.",
+      "q3": "What if my room is given to someone else?",
+      "a3": "The room locks automatically when a booking is approved, so the owner can't accept other requests for the same room until the booking completes or is cancelled.",
+      "q4": "Which payment methods are available?",
+      "q4a": "Bank transfer (BCA, Mandiri, BNI), e-wallets (GoPay, OVO, DANA), QRIS, and retail outlets (Indomaret, Alfamart).",
+      "q5": "Is my payment data safe?",
+      "a5": "Payments are processed by a licensed payment provider. NgeKost never stores your card numbers or bank credentials.",
+      "q6": "How do I list my kost?",
+      "a6": "Register as an Owner, fill in property and room-type data, then submit for verification. It's free and completes within 3 business days.",
+      "q7": "What does NgeKost cost for owners?",
+      "a7": "Listing is free. Subscription plans start at Rp99,000/month for management features: automatic invoicing, Telegram notifications, and occupancy reports.",
+      "q8": "How does payment disbursement work?",
+      "a8": "Tenant payments land in your NgeKost balance, then disburse to your bank account within 24 business hours after confirmation."
+    }
+  },
+  "legal": {
+    "termsTitle": "Terms & Conditions",
+    "termsUpdated": "Last updated: September 1, 2026",
+    "privacyTitle": "Privacy Policy",
+    "privacyUpdated": "Last updated: September 1, 2026",
+    "sections": [
+      {
+        "heading": "1. Acceptance of Terms",
+        "body": "By accessing NgeKost you agree to these terms. If you disagree with any part, stop using the service. These terms apply to all users: renters, property owners, and visitors."
+      },
+      {
+        "heading": "2. Accounts and Responsibility",
+        "body": "You must provide accurate information when registering and keep your credentials confidential.",
+        "list": [
+          "One person may hold one account.",
+          "Activity in your account is considered yours.",
+          "Report unauthorized use of your account immediately."
+        ]
+      },
+      {
+        "heading": "3. Bookings and Payments",
+        "body": "A booking request becomes binding once the owner approves it. After approval, payment follows the stated deadline and the room is locked for you.",
+        "list": [
+          "Payments are processed by a licensed payment provider.",
+          "Refunds follow the cancellation policy on each property page.",
+          "NgeKost never stores card numbers or bank credentials."
+        ]
+      },
+      {
+        "heading": "4. NgeKost's Role",
+        "body": "NgeKost is an intermediary platform. We verify owner identity and property data completeness, but we are not a party to the rental agreement between owner and tenant. Disputes over the room, facilities, or comfort are settled between both parties; we assist mediation through the Help Center."
+      },
+      {
+        "heading": "5. User Content",
+        "body": "Reviews, photos, and messages you send must reflect real experiences. We remove fake content, hate speech, and unsolicited ads, and may suspend repeat offenders."
+      },
+      {
+        "heading": "6. Changes to Terms",
+        "body": "These terms may change at any time. Material changes are announced by email or notification at least 7 days before taking effect. Continuing to use the service after that date means you accept the new version."
+      }
+    ],
+    "sectionsPrivacy": [
+      {
+        "heading": "1. Data We Collect",
+        "body": "When you register and use NgeKost, we collect:",
+        "list": [
+          "Name, email, and phone number.",
+          "Property and transaction data (bookings, invoices, payments).",
+          "Technical data: IP address, device type, and usage logs."
+        ]
+      },
+      {
+        "heading": "2. How We Use Data",
+        "body": "Data is used to run the service: processing bookings, issuing invoices, sending Telegram notifications, and verifying properties. We also use it to improve search and show relevant recommendations."
+      },
+      {
+        "heading": "3. Sharing with Third Parties",
+        "body": "We do not sell personal data. Data is shared on a limited basis with:",
+        "list": [
+          "Payment providers to process transactions.",
+          "Notification providers (Telegram) for messages you subscribe to.",
+          "Legal authorities when required by regulation."
+        ]
+      },
+      {
+        "heading": "4. Storage and Security",
+        "body": "Data is stored on servers in Indonesia and encrypted in transit. Internal access is limited to teams who need it. Retention follows transaction bookkeeping obligations, up to 10 years for financial data."
+      },
+      {
+        "heading": "5. Your Rights",
+        "body": "You can request a copy, correction, or deletion of your personal data anytime via halo@ngekost.id. Requests are processed within 14 business days. Deleting your account doesn't delete transactions the law requires us to keep."
+      },
+      {
+        "heading": "6. Data Protection Contact",
+        "body": "Send privacy questions to halo@ngekost.id with the subject \"Privacy\". We respond within 3 business days."
+      }
+    ]
+  },
+  "daftar": {
+    "title": "Create your account",
+    "subtitle": "One account to find a kost or manage properties.",
+    "google": "Continue with Google",
+    "or": "or sign up with email",
+    "roleSeeker": "Tenant",
+    "roleOwner": "Owner",
+    "name": "Full Name",
+    "namePlaceholder": "Name as on your ID",
+    "email": "Email",
+    "emailPlaceholder": "name@email.com",
+    "wa": "WhatsApp Number",
+    "waPlaceholder": "0812 3456 7890",
+    "waHelper": "Used for booking notifications and verification.",
+    "password": "Password",
+    "passwordPlaceholder": "At least 8 characters",
+    "passwordHelper": "Combine letters, numbers, and symbols.",
+    "agree": "I agree to the",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "submit": "Create Account",
+    "haveAccount": "Already have an account?",
+    "login": "Log in"
   }
 }

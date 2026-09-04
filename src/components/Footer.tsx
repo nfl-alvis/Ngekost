@@ -15,16 +15,16 @@ export default function Footer() {
 
   const companyLinks: { href: string; label: string }[] = [
     { href: "/about", label: t("about") },
-    { href: "#", label: t("blog") },
-    { href: "#", label: t("jobs") },
-    { href: "#", label: t("partners") },
+    { href: "/blog", label: t("blog") },
+    { href: "/karir", label: t("jobs") },
+    { href: "/mitra", label: t("partners") },
   ];
 
   const supportLinks = [
-    { href: "#", label: t("help") },
-    { href: "#", label: t("faq") },
-    { href: "#", label: t("terms") },
-    { href: "#", label: t("privacy") },
+    { href: "/bantuan", label: t("help") },
+    { href: "/faq", label: t("faq") },
+    { href: "/legal/syarat-ketentuan", label: t("terms") },
+    { href: "/legal/privasi", label: t("privacy") },
   ];
 
   return (

@@ -39,6 +39,16 @@
   --color-border: var(--color-nk-border);
   --color-input: var(--color-nk-border);
   --color-ring: var(--color-nk-accent);
+
+  /* ===== sidebar tokens (dashboard owner/admin) — warm greige, jelas beda dari bg ===== */
+  --color-sidebar: #F1EEE7;
+  --color-sidebar-foreground: var(--color-nk-text);
+  --color-sidebar-primary: var(--color-nk-accent);
+  --color-sidebar-primary-foreground: var(--color-nk-text-inverse);
+  --color-sidebar-accent: #E7E3D8;
+  --color-sidebar-accent-foreground: var(--color-nk-text);
+  --color-sidebar-border: var(--color-nk-border);
+  --color-sidebar-ring: var(--color-nk-accent);
   --radius: 0.5rem;
 
   --font-serif: var(--font-sans);

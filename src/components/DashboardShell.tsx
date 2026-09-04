@@ -1,28 +1,68 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/navigation";
+import {
+  Bell,
+  Building2,
+  CalendarCheck,
+  CreditCard,
+  History,
+  LayoutDashboard,
+  MessageSquare,
+  Receipt,
+  Settings,
+  ShieldCheck,
+  Users,
+} from "lucide-react";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarRail,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { Separator } from "@/components/ui/separator";
 import Logo from "@/components/Logo";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { useSession } from "@/components/SessionProvider";
+import { notifications } from "@/lib/data/entities";
 import { cn } from "@/lib/utils";
 
-type Item = { href: string; label: string };
+type Item = { href: string; label: string; icon: React.ComponentType };
 
 const OWNER_ITEMS: Item[] = [
-  { href: "/owner", label: "dashboard" },
-  { href: "/owner/properties", label: "properties" },
-  { href: "/owner/bookings", label: "bookings" },
-  { href: "/owner/tenants", label: "tenants" },
-  { href: "/owner/invoices", label: "invoices" },
-  { href: "/owner/messages", label: "messages" },
-  { href: "/owner/notifications", label: "notifications" },
-  { href: "/owner/subscription", label: "subscription" },
-  { href: "/owner/settings", label: "settings" },
+  { href: "/owner", label: "dashboard", icon: LayoutDashboard },
+  { href: "/owner/properties", label: "properties", icon: Building2 },
+  { href: "/owner/bookings", label: "bookings", icon: CalendarCheck },
+  { href: "/owner/tenants", label: "tenants", icon: Users },
+  { href: "/owner/invoices", label: "invoices", icon: Receipt },
+  { href: "/owner/messages", label: "messages", icon: MessageSquare },
+  { href: "/owner/notifications", label: "notifications", icon: Bell },
+  { href: "/owner/subscription", label: "subscription", icon: CreditCard },
+  { href: "/owner/settings", label: "settings", icon: Settings },
 ];
 
 const ADMIN_ITEMS: Item[] = [
-  { href: "/admin/verification", label: "queue" },
-  { href: "/admin/verification/history", label: "history" },
+  { href: "/admin/verification", label: "queue", icon: ShieldCheck },
+  { href: "/admin/verification/history", label: "history", icon: History },
 ];
 
 export default function DashboardShell({
@@ -35,7 +75,9 @@ export default function DashboardShell({
   const t = useTranslations(role === "owner" ? "owner.nav" : "admin.nav");
   const navT = useTranslations("nav");
   const pathname = usePathname();
-  const { user } = useSession();
+  const router = useRouter();
+  const { user, logout } = useSession();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const items = role === "owner" ? OWNER_ITEMS : ADMIN_ITEMS;
   const isActive = (href: string) =>
@@ -45,52 +87,194 @@ export default function DashboardShell({
 
   const userName = user?.name ?? (role === "owner" ? "Ratri Wulandari" : "Bayu Pratama");
   const initial = userName.trim().charAt(0).toUpperCase();
+  const unreadCount = notifications.filter((n) => !n.read).length;
+
+  const roleLabel = role === "owner" ? navT("dashboard") : navT("adminPanel");
+
+  // breadcrumb: halaman aktif = item nav dengan prefix paling spesifik
+  const currentItem = [...items]
+    .sort((a, b) => b.href.length - a.href.length)
+    .find((i) => pathname === i.href || pathname.startsWith(i.href + "/"));
+  const pageTitle = currentItem ? t(currentItem.label) : null;
+
+  const handleLogout = () => {
+    setMenuOpen(false);
+    logout();
+    router.push("/");
+  };
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-6 py-8 lg:px-10">
-      <div className="flex flex-col gap-6 lg:flex-row lg:gap-10">
-        {/* Sidebar — horizontal scroll di mobile, kolom di desktop */}
-        <aside className="lg:w-56 lg:shrink-0">
-          <div className="mb-4 hidden lg:block">
-            <Logo className="h-7 w-auto text-nk-text" />
+    <SidebarProvider>
+      <Sidebar collapsible="icon" variant="inset">
+        <SidebarHeader>
+          <div className="flex items-center px-2 py-1.5 group-data-[collapsible=icon]:justify-center">
+            <span className="group-data-[collapsible=icon]:hidden">
+              <Logo className="h-7 w-auto text-nk-text" />
+            </span>
+            <span className="hidden size-8 items-center justify-center rounded-lg bg-nk-accent text-sm font-semibold text-nk-text-inverse group-data-[collapsible=icon]:flex">
+              N
+            </span>
           </div>
-          <nav
-            aria-label={role === "owner" ? "Owner" : "Admin"}
-            className="no-scrollbar -mx-6 flex gap-1 overflow-x-auto px-6 lg:mx-0 lg:flex-col lg:px-0"
-          >
-            {items.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "whitespace-nowrap rounded-lg px-3 py-2 text-sm transition-colors",
-                  isActive(item.href)
-                    ? "bg-nk-accent font-medium text-nk-text-inverse"
-                    : "text-nk-text-muted hover:bg-nk-warm hover:text-nk-text"
-                )}
+        </SidebarHeader>
+
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel>{roleLabel}</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {items.map((item) => (
+                  <SidebarMenuItem key={item.href}>
+                    <SidebarMenuButton
+                      asChild
+                      isActive={isActive(item.href)}
+                      tooltip={t(item.label)}
+                      className="data-[active=true]:bg-sidebar-primary data-[active=true]:text-sidebar-primary-foreground"
+                    >
+                      <Link href={item.href}>
+                        <item.icon />
+                        <span>{t(item.label)}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+        <SidebarRail />
+      </Sidebar>
+
+      <SidebarInset>
+        {/* header ala shadcn-admin: trigger + breadcrumb + switcher + avatar menu */}
+        <header className="sticky top-0 z-20 flex h-14 shrink-0 items-center gap-3 rounded-t-xl border-b border-nk-border bg-nk-bg/80 px-4 backdrop-blur-md">
+          <SidebarTrigger className="-ml-1" />
+          <Separator orientation="vertical" className="h-4" />
+          {/* breadcrumb */}
+          <div className="flex min-w-0 items-center gap-1.5 text-sm">
+            <span className="text-nk-text-muted">{roleLabel}</span>
+            {pageTitle && pageTitle !== roleLabel && (
+              <>
+                <span className="text-nk-text-muted">/</span>
+                <span className="truncate font-medium text-nk-text">{pageTitle}</span>
+              </>
+            )}
+          </div>
+
+          <div className="ml-auto flex items-center gap-2">
+            <LanguageSwitcher />
+
+            {/* bell notifikasi — dropdown shadcn/ui */}
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                className="relative flex size-9 items-center justify-center rounded-full border border-nk-border bg-nk-surface text-nk-text transition-colors hover:border-nk-accent hover:text-nk-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nk-accent"
+                aria-label={navT("notifications")}
               >
-                {t(item.label)}
-              </Link>
-            ))}
-          </nav>
+                <Bell className="size-4" />
+                {unreadCount > 0 && (
+                  <span className="absolute -right-0.5 -top-0.5 flex size-4 items-center justify-center rounded-full bg-[#9C3B32] font-mono text-[9px] font-semibold leading-none text-white">
+                    {unreadCount}
+                  </span>
+                )}
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-80 p-0">
+                <DropdownMenuLabel className="flex items-center justify-between px-3 py-2.5">
+                  <span>{navT("notifications")}</span>
+                  {unreadCount > 0 && (
+                    <span className="rounded-full bg-nk-warm px-1.5 py-0.5 font-mono text-[10px] text-nk-text-muted">
+                      {unreadCount}
+                    </span>
+                  )}
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator className="m-0" />
+                <div className="max-h-80 overflow-y-auto">
+                  {notifications.slice(0, 6).map((n) => (
+                    <DropdownMenuItem key={n.id} asChild className="cursor-pointer p-0 focus:bg-nk-warm">
+                      <Link
+                        href={n.linkUrl ?? "/owner"}
+                        className="flex w-full flex-col items-start gap-0.5 border-b border-nk-border px-3 py-2.5 last:border-b-0"
+                      >
+                        <span className="flex w-full items-center gap-2">
+                          <span
+                            className={cn(
+                              "size-1.5 shrink-0 rounded-full",
+                              n.read ? "bg-nk-border" : "bg-[#2F6B3C]"
+                            )}
+                          />
+                          <span
+                            className={cn(
+                              "truncate text-sm",
+                              n.read ? "text-nk-text-muted" : "font-medium text-nk-text"
+                            )}
+                          >
+                            {n.title}
+                          </span>
+                        </span>
+                        <span className="line-clamp-1 pl-3.5 text-xs text-nk-text-muted">{n.body}</span>
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </div>
+                <DropdownMenuSeparator className="m-0" />
+                <DropdownMenuItem asChild className="cursor-pointer focus:bg-nk-warm">
+                  <Link href="/owner/notifications" className="w-full py-2.5 text-center text-sm text-nk-accent">
+                    {navT("notifications")}
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
-          {/* profil singkat di bawah sidebar (desktop) */}
-          <div className="mt-8 hidden items-center gap-3 border-t border-nk-border pt-4 lg:flex">
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-nk-accent text-sm font-medium text-nk-text-inverse">
-              {initial}
-            </span>
-            <span className="flex min-w-0 flex-col">
-              <span className="truncate text-sm font-medium text-nk-text">{userName}</span>
-              <span className="text-xs capitalize text-nk-text-muted">
-                {role === "owner" ? navT("dashboard") : navT("adminPanel")}
-              </span>
-            </span>
+            {/* avatar menu */}
+            <div className="relative">
+              <button
+                type="button"
+                aria-label={userName}
+                aria-expanded={menuOpen}
+                onClick={() => setMenuOpen((v) => !v)}
+                className="flex size-8 items-center justify-center rounded-full bg-nk-accent text-sm font-medium text-nk-text-inverse transition-opacity hover:opacity-90"
+              >
+                {initial}
+              </button>
+
+              {menuOpen && (
+                <>
+                  <button
+                    type="button"
+                    aria-label="Tutup menu"
+                    onClick={() => setMenuOpen(false)}
+                    className="fixed inset-0 z-30 cursor-default"
+                  />
+                  <div className="absolute right-0 top-10 z-40 w-56 rounded-lg border border-nk-border bg-nk-surface p-1 shadow-lg">
+                    <div className="border-b border-nk-border px-3 py-2">
+                      <p className="truncate text-sm font-medium text-nk-text">{userName}</p>
+                      <p className="text-xs text-nk-text-muted">{roleLabel}</p>
+                    </div>
+                    <div className="p-1">
+                      <Link
+                        href="/"
+                        onClick={() => setMenuOpen(false)}
+                        className="block rounded-md px-3 py-2 text-sm text-nk-text transition-colors hover:bg-nk-warm"
+                      >
+                        {navT("home")}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={handleLogout}
+                        className="block w-full rounded-md px-3 py-2 text-left text-sm text-[#9C3B32] transition-colors hover:bg-[#FAEAE8]"
+                      >
+                        {navT("logout")}
+                      </button>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
-        </aside>
+        </header>
 
-        {/* konten */}
-        <div className="min-w-0 flex-1">{children}</div>
-      </div>
-    </div>
+        <div className="mx-auto w-full max-w-7xl flex-1 px-6 py-8 lg:px-10">
+          {children}
+        </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }

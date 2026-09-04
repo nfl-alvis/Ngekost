@@ -13,6 +13,7 @@
     "dashboard": "Dashboard",
     "adminPanel": "Admin Panel",
     "myBookings": "Booking Saya",
+    "notifications": "Notifikasi",
     "logout": "Keluar"
   },
   "hero": {
@@ -359,7 +360,14 @@
     "approve": "Setujui",
     "reject": "Tolak",
     "chartTitle": "Pendapatan 6 Bulan Terakhir",
-    "months": ["Maret", "April", "Mei", "Juni", "Juli", "Agustus"],
+    "months": [
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus"
+    ],
     "properties": {
       "title": "Properti Saya",
       "add": "+ Tambah Properti Baru",
@@ -480,7 +488,11 @@
       "noTelegram": "Belum terhubung Telegram, pesan hanya bisa lewat Email",
       "back": "Kembali",
       "empty": "Pilih percakapan untuk mulai membalas.",
-      "unread": "belum dibaca"
+      "unread": "belum dibaca",
+      "moreActions": "Aksi lainnya",
+      "deleteChat": "Hapus percakapan",
+      "call": "Panggilan suara",
+      "videoCall": "Panggilan video"
     },
     "subscription": {
       "title": "Langganan",
@@ -572,5 +584,295 @@
       "detailTitle": "Detail Verifikasi",
       "rejectionReason": "Alasan Penolakan"
     }
+  },
+  "blog": {
+    "title": "Blog NgeKost",
+    "subtitle": "Panduan tinggal di kos: cari, pindah, tetap ramah dengan tetangga.",
+    "featured": "Sorotan",
+    "readMore": "Baca selengkapnya",
+    "minRead": "menit baca",
+    "backToBlog": "Kembali ke Blog",
+    "related": "Artikel Lainnya",
+    "posts": {
+      "ceklist-aman-sewa-kost-pertama": {
+        "title": "Ceklist Aman Sewa Kost Pertama",
+        "excerpt": "13 hal yang harus kamu cek sebelum tanda tangan perjanjian sewa: dari legalitas pemilik sampai tekanan air kamar mandi.",
+        "author": "Anindita Prameswari",
+        "date": "24 Agustus 2026",
+        "category": "Panduan"
+      },
+      "kost-vs-apartemen-hitung-biaya": {
+        "title": "Kos vs Apartemen: Hitung Biaya Setahun, Bukan Sekadar Harga Bulanan",
+        "excerpt": "Harga sewa apartemen terlihat masuk akal sampai kamu menjumlahkan listrik prabayar, keamanan, dan parkir. Ini perhitungannya.",
+        "author": "Bagus Wicaksono",
+        "date": "10 Agustus 2026",
+        "category": "Keuangan"
+      },
+      "etika-tetangga-kos": {
+        "title": "Etika Tetangga Kos yang Sering Dilupakan",
+        "excerpt": "Pakaian di area jemuran bersama, volume speaker jam 11 malam, dan barang yang pinjam tanpa izin. Aturan tak tertulisnya di sini.",
+        "author": "Larissa Hutami",
+        "date": "28 Juli 2026",
+        "category": "Gaya Hidup"
+      },
+      "negosiasi-harga-sewa": {
+        "title": "Cara Negosiasi Harga Sewa Tanpa Bikin Pemilik Tersinggung",
+        "excerpt": "Negosiasi itu soal timing dan data: lama sewa, kondisi kamar, dan pembanding yang realistis dari lingkungan sekitar.",
+        "author": "Rafael Sanjaya",
+        "date": "15 Juli 2026",
+        "category": "Panduan"
+      },
+      "dekorasi-kamar-sewa": {
+        "title": "Dekorasi Kamar Sewa yang Boleh Dibawa Saat Pindah",
+        "excerpt": "Lampu tumbler, poster yang ditempel dengan washi tape, dan rak tanpa bor. cantikkan kamar tanpa kehilangan deposit.",
+        "author": "Larissa Hutami",
+        "date": "2 Juli 2026",
+        "category": "Gaya Hidup"
+      },
+      "keamanan-kos-tips": {
+        "title": "6 Kebiasaan Kecil yang Bikin Kamu Lebih Aman di Kos",
+        "excerpt": "Salin dokumen penting, catat nomor pemilik tetangga, dan kenali pola keramaian lingkungan. Sederhana tapi berpengaruh.",
+        "author": "Anindita Prameswari",
+        "date": "18 Juni 2026",
+        "category": "Keamanan"
+      }
+    }
+  },
+  "karir": {
+    "title": "Karir di NgeKost",
+    "subtitle": "Tim kecil yang mengerjakan pencarian kos untuk jutaan penyewa. Bekerja dari Jakarta, Bandung, dan rumah masing-masing.",
+    "openings": "Lowongan Terbuka",
+    "sendCv": "Kirim CV ke",
+    "process": "Proses Rekrutmen",
+    "processSteps": [
+      "Ngobrol santai 30 menit tentang pengalamanmu",
+      "Tugas praktik sesuai peran, 3 hari pengerjaan",
+      "Diskusi akhir dengan tim yang akan kamu bergabung"
+    ],
+    "noMatch": "Tidak menemukan peran yang cocok? Kirim CV tetap, kami hubungi saat ada posisi baru.",
+    "openingsList": [
+      {
+        "title": "Frontend Engineer",
+        "type": "Full-time",
+        "location": "Bandung / Remote",
+        "team": "Product"
+      },
+      {
+        "title": "Field Verification Officer",
+        "type": "Kontrak",
+        "location": "Jakarta",
+        "team": "Operations"
+      },
+      {
+        "title": "Content Writer (Kost & Properti)",
+        "type": "Part-time",
+        "location": "Remote",
+        "team": "Marketing"
+      }
+    ]
+  },
+  "mitra": {
+    "badge": "Untuk Pemilik Kos",
+    "title": "Kelola kos tanpa spreadsheet",
+    "subtitle": "Daftarkan properti, terima booking, terbitkan tagihan, dan pantau pembayaran dari satu dashboard. Telegram-mu ikut berdering saat ada pengajuan masuk.",
+    "cta": "Daftar Sebagai Pemilik",
+    "ctaSecondary": "Lihat Dashboard Demo",
+    "steps": "Cara Kerjanya",
+    "step1Title": "Daftar & verifikasi properti",
+    "step1Body": "Isi data properti dan tipe kamar. Tim kami memverifikasi dalam 3 hari kerja sebelum listing tampil publik.",
+    "step2Title": "Terima booking masuk",
+    "step2Body": "Pengajuan booking datang lengkap dengan identitas penyewa. Setujui atau tolak langsung dari dashboard, penyewa otomatis diberi tahu.",
+    "step3Title": "Kelola tenant & tagihan",
+    "step3Body": "Tagihan bulanan terbit otomatis. Pantau yang belum bayar, tandai yang lunas, dan catat tunggakan tanpa buku tulis.",
+    "statsListing": "Biaya listing",
+    "statsListingValue": "Rp0",
+    "statsPayout": "Pencairan pembayaran",
+    "statsPayoutValue": "24 jam",
+    "statsVerify": "Verifikasi properti",
+    "statsVerifyValue": "3 hari",
+    "why": "Kenapa pemilik memilih NgeKost",
+    "why1Title": "Notifikasi Telegram",
+    "why1Body": "Booking baru, pembayaran diterima, dan tenant menunggak masuk ke chat Telegram pribadimu.",
+    "why2Title": "Template pesan siap pakai",
+    "why2Body": "Pengingat tagihan dan konfirmasi kunjungan tak perlu diketik ulang. Pilih template, kirim.",
+    "why3Title": "Laporan okupansi",
+    "why3Body": "Lihat kamar kosong per tipe dan tren pendapatan enam bulan terakhir tanpa rekap manual."
+  },
+  "bantuan": {
+    "title": "Pusat Bantuan",
+    "subtitle": "Cari topik di bawah, atau hubungi kami kalau belum ketemu jawabannya.",
+    "searchPlaceholder": "Cari topik bantuan...",
+    "hours": "Senin-Sabtu, 08.00-20.00 WIB",
+    "wa": "Chat WhatsApp",
+    "email": "Email",
+    "popular": "Topik Populer",
+    "cats": {
+      "booking": "Booking & Sewa",
+      "payment": "Pembayaran & Tagihan",
+      "account": "Akun & Keamanan",
+      "verification": "Verifikasi Properti",
+      "owner": "Untuk Pemilik"
+    },
+    "topics": {
+      "booking": [
+        "Cara mengajukan booking",
+        "Berapa lama persetujuan pemilik?",
+        "Batalin booking yang sudah diajukan",
+        "Kapan DP dikembalikan?"
+      ],
+      "payment": [
+        "Metode pembayaran yang diterima",
+        "Batas waktu pembayaran booking",
+        "Tagihan bulanan terlambat bayar",
+        "Cara minta bukti transfer"
+      ],
+      "account": [
+        "Ganti email atau nomor telepon",
+        "Akunku diblokir, kenapa?",
+        "Lupa password",
+        "Hapus akun"
+      ],
+      "verification": [
+        "Berapa lama verifikasi properti?",
+        "Alasan umum properti ditolak",
+        "Edit data setelah disetujui"
+      ],
+      "owner": [
+        "Menambah tipe kamar baru",
+        "Cara terbitkan tagihan manual",
+        "Hubungkan notifikasi Telegram",
+        "Ubah paket langganan"
+      ]
+    },
+    "stillStuck": "Belum ketemu juga?"
+  },
+  "faq": {
+    "title": "Pertanyaan Umum",
+    "subtitle": "Jawaban singkat untuk hal yang paling sering ditanyakan.",
+    "groups": {
+      "booking": "Booking & Sewa",
+      "payment": "Pembayaran",
+      "owner": "Untuk Pemilik"
+    },
+    "items": {
+      "q1": "Berapa lama pemilik merespons pengajuan booking?",
+      "a1": "Maksimal 24 jam. Kalau lewat dari itu tanpa respons, pengajuan otomatis kedaluwarsa dan tidak ada dana yang terpotong.",
+      "q2": "Apakah saya bisa meninjau kamar sebelum bayar?",
+      "a2": "Bisa. Ajukan booking, lalu jadwalkan kunjungan lewat fitur pesan. Pembayaran baru dilakukan setelah kamu yakin.",
+      "q3": "Apa yang terjadi kalau kamar saya diberikan ke orang lain?",
+      "a3": "Status kamar terkunci otomatis saat booking disetujui, jadi pemilik tidak bisa menerima pengajuan lain untuk kamar yang sama sampai booking selesai atau dibatalkan.",
+      "q4": "Metode pembayaran apa saja yang tersedia?",
+      "q4a": "Transfer bank (BCA, Mandiri, BNI), e-wallet (GoPay, OVO, DANA), QRIS, dan gerai retail (Indomaret, Alfamart).",
+      "q5": "Apakah data pembayaran saya aman?",
+      "a5": "Pembayaran diproses lewat penyedia pembayaran berlisensi. NgeKost tidak pernah menyimpan nomor kartu atau kredensial bank kamu.",
+      "q6": "Bagaimana cara mendaftarkan kos saya?",
+      "a6": "Daftar sebagai Pemilik, isi data properti dan tipe kamar, lalu kirim untuk verifikasi. Prosesnya gratis dan selesai dalam 3 hari kerja.",
+      "q7": "Berapa biaya pakai NgeKost untuk pemilik?",
+      "a7": "Listing gratis. Paket berlangganan mulai Rp99.000/bulan untuk fitur manajemen: tagihan otomatis, notifikasi Telegram, dan laporan okupansi.",
+      "q8": "Bagaimana proses pencairan pembayaran?",
+      "a8": "Pembayaran dari penyewa masuk ke saldo NgeKost, lalu dicairkan ke rekeningmu dalam 24 jam kerja setelah pembayaran terkonfirmasi."
+    }
+  },
+  "legal": {
+    "termsTitle": "Syarat & Ketentuan",
+    "termsUpdated": "Terakhir diperbarui: 1 September 2026",
+    "privacyTitle": "Kebijakan Privasi",
+    "privacyUpdated": "Terakhir diperbarui: 1 September 2026",
+    "sections": [
+      {
+        "heading": "1. Penerimaan Ketentuan",
+        "body": "Dengan mengakses NgeKost, kamu menyetujui ketentuan ini. Kalau tidak setuju dengan bagian mana pun, hentikan penggunaan layanan. Ketentuan berlaku untuk semua pengguna: pencari kos, pemilik properti, dan pengunjung."
+      },
+      {
+        "heading": "2. Akun dan Tanggung Jawab",
+        "body": "Kamu wajib memberikan data yang benar saat mendaftar dan menjaga kerahasiaan kredensial akun.",
+        "list": [
+          "Satu orang boleh memiliki satu akun.",
+          "Aktivitas di akunmu dianggap dilakukan olehmu.",
+          "Segera laporkan jika akunmu digunakan tanpa izin."
+        ]
+      },
+      {
+        "heading": "3. Booking dan Pembayaran",
+        "body": "Pengajuan booking mengikat secara moral sebelum disetujui pemilik. Setelah disetujui, pembayaran mengikuti batas waktu yang tertera dan kamar dikunci untukmu.",
+        "list": [
+          "Pembayaran diproses oleh penyedia pembayaran berlisensi.",
+          "Pengembalian dana mengikuti kebijakan pembatalan yang tercantum di halaman detail properti.",
+          "NgeKost tidak menyimpan data kartu atau kredensial bank."
+        ]
+      },
+      {
+        "heading": "4. Peran NgeKost",
+        "body": "NgeKost adalah platform perantara. Kami memverifikasi identitas pemilik dan kelengkapan data properti, tetapi tidak menjadi pihak dalam perjanjian sewa antara pemilik dan penyewa. Sengketa fisik atas kamar, fasilitas, atau kenyamanan diselesaikan kedua belah pihak; kami membantu mediasi lewat Pusat Bantuan."
+      },
+      {
+        "heading": "5. Konten Pengguna",
+        "body": "Ulasan, foto, dan pesan yang kamu kirim harus mencerminkan pengalaman sebenarnya. Kami menghapus konten palsu, ujaran kebencian, dan iklan tanpa persetujuan, serta dapat menonaktifkan akun yang melanggar berulang."
+      },
+      {
+        "heading": "6. Perubahan Ketentuan",
+        "body": "Ketentuan ini dapat diperbarui sewaktu-waktu. Perubahan material diumumkan lewat email atau notifikasi minimal 7 hari sebelum berlaku. Melanjutkan penggunaan setelah tanggal berlaku berarti kamu menyetujui versi terbaru."
+      }
+    ],
+    "sectionsPrivacy": [
+      {
+        "heading": "1. Data yang Kami Kumpulkan",
+        "body": "Saat kamu mendaftar dan memakai NgeKost, kami mengumpulkan:",
+        "list": [
+          "Nama, email, dan nomor telepon.",
+          "Data properti dan transaksi (booking, tagihan, pembayaran).",
+          "Data teknis: alamat IP, jenis perangkat, dan log penggunaan."
+        ]
+      },
+      {
+        "heading": "2. Cara Kami Menggunakan Data",
+        "body": "Data dipakai untuk menjalankan layanan: memproses booking, menerbitkan tagihan, mengirim notifikasi Telegram, dan memverifikasi properti. Kami juga memakainya untuk meningkatkan pencarian dan menampilkan rekomendasi yang relevan."
+      },
+      {
+        "heading": "3. Berbagi dengan Pihak Ketiga",
+        "body": "Kami tidak menjual data pribadi. Data dibagikan terbatas kepada:",
+        "list": [
+          "Penyedia pembayaran untuk memproses transaksi.",
+          "Penyedia notifikasi (Telegram) untuk pesan yang kamu langgani.",
+          "Otoritas hukum bila diwajibkan peraturan."
+        ]
+      },
+      {
+        "heading": "4. Penyimpanan dan Keamanan",
+        "body": "Data disimpan di server dalam wilayah yurisdiksi Indonesia dan dienkripsi saat transit. Akses internal dibatasi untuk tim yang membutuhkan. Retensi data mengikuti kewajiban pembukuan transaksi, maksimal 10 tahun untuk data finansial."
+      },
+      {
+        "heading": "5. Hak-Hakmu",
+        "body": "Kamu berhak meminta salinan, koreksi, atau penghapusan data pribadimu kapan saja lewat halo@ngekost.id. Permintaan kami proses dalam 14 hari kerja. Menghapus akun tidak menghapus transaksi yang wajib disimpan hukum."
+      },
+      {
+        "heading": "6. Kontak Perlindungan Data",
+        "body": "Pertanyaan tentang privasi dikirim ke halo@ngekost.id dengan subjek \"Privasi\". Kami merespons dalam 3 hari kerja."
+      }
+    ]
+  },
+  "daftar": {
+    "title": "Buat akun baru",
+    "subtitle": "Satu akun untuk cari kos atau kelola properti.",
+    "google": "Lanjutkan dengan Google",
+    "or": "atau daftar dengan email",
+    "roleSeeker": "Pencari Kos",
+    "roleOwner": "Pemilik Kos",
+    "name": "Nama Lengkap",
+    "namePlaceholder": "Nama sesuai kartu identitas",
+    "email": "Email",
+    "emailPlaceholder": "nama@email.com",
+    "wa": "Nomor WhatsApp",
+    "waPlaceholder": "0812 3456 7890",
+    "waHelper": "Dipakai untuk notifikasi booking dan verifikasi.",
+    "password": "Password",
+    "passwordPlaceholder": "Minimal 8 karakter",
+    "passwordHelper": "Gabungkan huruf, angka, dan simbol.",
+    "agree": "Saya setuju pada",
+    "terms": "Syarat & Ketentuan",
+    "privacy": "Kebijakan Privasi",
+    "submit": "Buat Akun",
+    "haveAccount": "Sudah punya akun?",
+    "login": "Masuk"
   }
 }
