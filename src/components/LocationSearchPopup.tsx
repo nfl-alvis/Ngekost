@@ -223,12 +223,10 @@ export default function LocationSearchPopup({
   open,
   onClose,
   onPick,
-  anchorRef,
 }: {
   open: boolean;
   onClose: () => void;
   onPick: (pick: LocationPick) => void;
-  anchorRef: React.RefObject<HTMLElement | null>;
 }) {
   const t = useTranslations("hero");
   const [query, setQuery] = useState("");
@@ -237,42 +235,6 @@ export default function LocationSearchPopup({
   const [activeTab, setActiveTab] = useState<Tab>("campus");
   const abortRef = useRef<AbortController | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [anchorRect, setAnchorRect] = useState<{
-    left: number;
-    width: number;
-    top: number;
-    flip: boolean;
-    maxH: number;
-  } | null>(null);
-
-  // Measure the anchor (the form) once on open
-  const GAP = 8;
-  useEffect(() => {
-    if (!open) return;
-    const measure = () => {
-      const el = anchorRef.current;
-      if (!el) return;
-      const r = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const spaceBelow = vh - r.bottom;
-      const EST_HEIGHT = 230;
-      const flip = spaceBelow < EST_HEIGHT + GAP && r.top > EST_HEIGHT;
-      const maxH = flip ? r.top - GAP * 2 : spaceBelow - GAP * 2;
-      setAnchorRect({
-        left: r.left,
-        width: r.width,
-        top: flip ? r.top - GAP : r.bottom + GAP,
-        flip,
-        maxH: Math.max(160, maxH),
-      });
-    };
-    const raf = requestAnimationFrame(measure);
-    window.addEventListener("resize", measure);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("resize", measure);
-    };
-  }, [open, anchorRef]);
 
   // Debounced autocomplete
   useEffect(() => {
@@ -352,31 +314,26 @@ export default function LocationSearchPopup({
   }, [onPick, onClose]);
 
   if (!open) return null;
-  if (!anchorRect || typeof document === "undefined") return null;
+  if (typeof document === "undefined") return null;
 
   return createPortal(
     <>
-      {/* backdrop */}
+      {/* backdrop — full cover */}
       <div
-        className="fixed inset-0 z-40 bg-nk-text/30 backdrop-blur-[2px]"
+        className="fixed inset-0 z-[60] bg-nk-text/30 backdrop-blur-[2px]"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* popup panel */}
+      {/* popup panel — centered top overlay, not full-width */}
       <div
-        className="fixed z-50 overflow-y-auto rounded-lg border border-nk-border bg-nk-surface shadow-xl"
-        style={{
-          left: anchorRect.left,
-          top: anchorRect.top,
-          width: anchorRect.width,
-          maxHeight: anchorRect.maxH,
-          transform: anchorRect.flip ? "translateY(-100%)" : "none",
-        }}
+        className="fixed inset-x-0 top-0 z-[70] flex justify-center pt-16 md:pt-20"
         role="dialog"
         aria-modal="true"
+        onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
       >
-        {/* search input */}
+        <div className="mx-auto w-full max-w-lg max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-lg border border-nk-border bg-nk-surface shadow-xl">
+          {/* search input */}
         <div className="flex items-center gap-2.5 border-b border-nk-border px-4 py-3">
           <svg
             width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -528,6 +485,7 @@ export default function LocationSearchPopup({
               </Accordion>
             );
           })}
+        </div>
         </div>
       </div>
     </>,

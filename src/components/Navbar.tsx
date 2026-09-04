@@ -5,13 +5,24 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Logo from "@/components/Logo";
+import { useSession } from "@/components/SessionProvider";
 
 export default function Navbar() {
   const t = useTranslations("nav");
   const loginT = useTranslations("login");
+  const { user, logout } = useSession();
   const pathname = usePathname();
   const router = useRouter();
   const [roleOpen, setRoleOpen] = useState(false);
+  const [avatarOpen, setAvatarOpen] = useState(false);
+
+  const initial = user ? user.name.trim().charAt(0).toUpperCase() : "";
+
+  const handleLogout = () => {
+    setAvatarOpen(false);
+    logout();
+    router.push("/");
+  };
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
@@ -62,6 +73,52 @@ export default function Navbar() {
             </svg>
             {t("search")}
           </Link>
+          {user ? (
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setAvatarOpen((v) => !v)}
+                aria-label={user.name}
+                aria-expanded={avatarOpen}
+                className="flex size-9 items-center justify-center rounded-full bg-nk-accent text-sm font-medium text-nk-text-inverse transition-opacity hover:opacity-90"
+              >
+                {initial}
+              </button>
+              {avatarOpen && (
+                <>
+                  <div
+                    className="fixed inset-0 z-40"
+                    onClick={() => setAvatarOpen(false)}
+                    aria-hidden="true"
+                  />
+                  <div className="absolute right-0 z-50 mt-2 w-56 overflow-hidden rounded-lg border border-nk-border bg-nk-surface py-1 shadow-xl">
+                    <div className="border-b border-nk-border px-4 py-3">
+                      <p className="truncate text-sm font-medium text-nk-text">{user.name}</p>
+                      <p className="truncate text-xs text-nk-text-muted">{user.email}</p>
+                    </div>
+                    <Link
+                      href={user.role === "owner" ? "/owner" : user.role === "admin" ? "/admin" : "/bookings"}
+                      onClick={() => setAvatarOpen(false)}
+                      className="block px-4 py-2.5 text-sm text-nk-text transition-colors hover:bg-nk-warm"
+                    >
+                      {user.role === "owner"
+                        ? t("dashboard")
+                        : user.role === "admin"
+                          ? t("adminPanel")
+                          : t("myBookings")}
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={handleLogout}
+                      className="block w-full px-4 py-2.5 text-left text-sm text-nk-text-muted transition-colors hover:bg-nk-warm hover:text-nk-text"
+                    >
+                      {t("logout")}
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          ) : (
           <button
             type="button"
             onClick={() => setRoleOpen(true)}
@@ -69,6 +126,7 @@ export default function Navbar() {
           >
             {t("login")}
           </button>
+          )}
         </div>
 
         <div className="flex items-center gap-2 md:hidden">

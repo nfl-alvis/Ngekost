@@ -1,0 +1,76 @@
+"use client";
+
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import DashboardShell from "@/components/DashboardShell";
+import { notifications } from "@/lib/data/entities";
+
+export default function OwnerNotificationsPage() {
+  const t = useTranslations("owner.notif");
+  const [read, setRead] = useState<string[]>([]);
+
+  const unread = notifications.filter((n) => !read.includes(n.id));
+  const typeLabel = {
+    booking: t("typeBooking"),
+    payment: t("typePayment"),
+    subscription: t("typeSubscription"),
+  };
+
+  return (
+    <DashboardShell role="owner">
+      <div className="mb-6 flex items-center justify-between">
+        <h1 className="text-2xl font-medium tracking-tight text-nk-text">{t("title")}</h1>
+        {unread.length > 0 && (
+          <button
+            type="button"
+            onClick={() => setRead(notifications.map((n) => n.id))}
+            className="text-sm text-nk-text underline underline-offset-4 transition-colors hover:text-nk-text-muted"
+          >
+            {t("markAll")}
+          </button>
+        )}
+      </div>
+
+      {notifications.length === 0 ? (
+        <div className="rounded-lg border border-dashed border-nk-border px-6 py-16 text-center text-sm text-nk-text-muted">
+          {t("empty")}
+        </div>
+      ) : (
+        <div className="overflow-hidden rounded-lg border border-nk-border bg-nk-surface">
+          {notifications.map((n, i) => {
+            const isRead = read.includes(n.id);
+            return (
+              <button
+                key={n.id}
+                type="button"
+                onClick={() => setRead((prev) => (prev.includes(n.id) ? prev : [...prev, n.id]))}
+                className={`flex w-full items-start gap-4 p-4 text-left transition-colors hover:bg-nk-warm/60 ${
+                  i > 0 ? "border-t border-nk-border" : ""
+                }`}
+              >
+                <span
+                  className={`mt-1.5 size-2 shrink-0 rounded-full ${
+                    isRead ? "bg-nk-border" : "bg-nk-accent"
+                  }`}
+                  aria-hidden="true"
+                />
+                <span className="min-w-0 flex-1">
+                  <span className="flex flex-wrap items-center gap-2">
+                    <span className={`text-sm ${isRead ? "text-nk-text-muted" : "font-medium text-nk-text"}`}>
+                      {n.title}
+                    </span>
+                    <span className="rounded-full border border-nk-border px-2 py-0.5 text-[10px] text-nk-text-muted">
+                      {typeLabel[n.type]}
+                    </span>
+                  </span>
+                  <span className="mt-0.5 block text-xs text-nk-text-muted">{n.body}</span>
+                  <span className="mt-1 block text-xs text-nk-text-muted/70">{new Date(n.at).toLocaleString("id-ID", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}</span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </DashboardShell>
+  );
+}

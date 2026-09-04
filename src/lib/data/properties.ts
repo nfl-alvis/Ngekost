@@ -24,6 +24,8 @@ export const properties: Property[] = [
     minPrice: 1150000,
     distanceToCampusM: 600,
     depositInfo: "DP 500 ribu, lunas tiap awal bulan.",
+    verificationStatus: "verified",
+    dpAmount: 500000,
   },
   {
     slug: "kost-putri-mawar-kotabaru",
@@ -48,6 +50,7 @@ export const properties: Property[] = [
     minPrice: 950000,
     distanceToCampusM: 900,
     depositInfo: "Tanpa deposit, DP 1 bulan pertama.",
+    verificationStatus: "verified",
   },
   {
     slug: "kost-pangeran-diponegoro-menteng",
@@ -73,6 +76,8 @@ export const properties: Property[] = [
     minPrice: 2750000,
     distanceToCampusM: 1800,
     depositInfo: "Deposit 1 bulan, dikembalikan saat keluar.",
+    verificationStatus: "verified",
+    maxRooms: 24,
   },
   {
     slug: "kost-al-amin-wonokromo",
@@ -97,6 +102,8 @@ export const properties: Property[] = [
     minPrice: 850000,
     distanceToCampusM: 1500,
     depositInfo: "DP 300 ribu.",
+    verificationStatus: "verified",
+    dpAmount: 300000,
   },
   {
     slug: "kost-bougenville-summbersari",
@@ -121,6 +128,7 @@ export const properties: Property[] = [
     minPrice: 780000,
     distanceToCampusM: 800,
     depositInfo: "Tanpa deposit.",
+    verificationStatus: "verified",
   },
   {
     slug: "kost-mutiara-gading-serpong",
@@ -145,6 +153,7 @@ export const properties: Property[] = [
     minPrice: 1850000,
     distanceToCampusM: 1100,
     depositInfo: "Deposit 500 ribu.",
+    verificationStatus: "verified",
   },
   {
     slug: "kost-kenanga-setiabudi",
@@ -169,6 +178,8 @@ export const properties: Property[] = [
     minPrice: 1050000,
     distanceToCampusM: 750,
     depositInfo: "DP 400 ribu.",
+    verificationStatus: "verified",
+    dpAmount: 400000,
   },
   {
     slug: "kost-ratna-darmo",
@@ -193,6 +204,57 @@ export const properties: Property[] = [
     minPrice: 1250000,
     distanceToCampusM: 1200,
     depositInfo: "Deposit 600 ribu.",
+    verificationStatus: "verified",
+  },
+  {
+    slug: "kost-sara-theresa-cibubur",
+    name: "Kost Sara Theresa",
+    tagline: "Asri, hommy, dekat kawasan Cibubur.",
+    description:
+      "Kost dua lantai di kawasan Cibubur dengan taman belakang dan ruang bersama. Lingkungan perumahan tertutup, keamanan satu gerbang. Cocok untuk pekerja muda yang commuting ke Jakarta.",
+    city: "Jakarta",
+    district: "Cibubur",
+    address: "Jl. Raya Cibubur No. 21, Cibubur, Jakarta Timur",
+    gender: "mixed",
+    verified: false,
+    active: false,
+    rating: 0,
+    reviewCount: 0,
+    imageSeed: "sara-theresa-cibubur",
+    facilities: ["wifi", "ac", "bathroom-in", "parking", "kitchen", "laundry", "cctv"],
+    roomTypes: [
+      { id: "st-standard", name: "Standard", pricePerMonth: 1450000, available: 3, total: 6, sizeM2: 16 },
+      { id: "st-deluxe", name: "Deluxe", pricePerMonth: 1850000, available: 2, total: 4, sizeM2: 20 },
+    ],
+    minPrice: 1450000,
+    distanceToCampusM: 3200,
+    depositInfo: "Deposit 500 ribu.",
+    verificationStatus: "pending",
+  },
+  {
+    slug: "kost-zinnia-cimahi",
+    name: "Kost Zinnia",
+    tagline: "Khusus putri, dekat kawasan Cimahi.",
+    description:
+      "Kost khusus perempuan di Cimahi dengan halaman luas dan area jemur tertutup. Dekat stasiun Cimahi dan pasar.",
+    city: "Bandung",
+    district: "Cimahi",
+    address: "Jl. Zinnia No. 4, Cimahi, Bandung",
+    gender: "female",
+    verified: false,
+    active: false,
+    rating: 0,
+    reviewCount: 0,
+    imageSeed: "zinnia-cimahi",
+    facilities: ["wifi", "bathroom-in", "kitchen", "wardrobe", "cctv"],
+    roomTypes: [
+      { id: "zn-standard", name: "Standard", pricePerMonth: 900000, available: 4, total: 8, sizeM2: 14 },
+    ],
+    minPrice: 900000,
+    distanceToCampusM: 2100,
+    depositInfo: "Tanpa deposit.",
+    verificationStatus: "rejected",
+    verificationNote: "Foto fasilitas tidak sesuai dengan kondisi kamar saat pemeriksaan lapangan.",
   },
 ];
 

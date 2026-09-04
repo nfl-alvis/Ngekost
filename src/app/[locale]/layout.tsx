@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing";
 import "@/app/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { SessionProvider } from "@/components/SessionProvider";
 
 const sans = Inter({
   variable: "--font-sans",
@@ -48,9 +49,11 @@ export default async function LocaleLayout({
           {(messages as unknown as { common?: { skip?: string } })?.common?.skip || "Skip to content"}
         </a>
         <NextIntlClientProvider messages={messages}>
-          <Navbar />
-          <main id="main-content" className="flex-1">{children}</main>
-          <Footer />
+          <SessionProvider>
+            <Navbar />
+            <main id="main-content" className="flex-1">{children}</main>
+            <Footer />
+          </SessionProvider>
         </NextIntlClientProvider>
       </body>
     </html>

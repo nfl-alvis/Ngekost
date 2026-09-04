@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { CITIES } from "@/lib/data/properties";
@@ -16,7 +16,6 @@ import {
 export default function SearchBar() {
   const t = useTranslations("hero");
   const router = useRouter();
-  const formRef = useRef<HTMLFormElement>(null);
   const [q, setQ] = useState("");
   const [city, setCity] = useState("");
   const [popupOpen, setPopupOpen] = useState(false);
@@ -51,7 +50,6 @@ export default function SearchBar() {
 
   return (
     <form
-      ref={formRef}
       onSubmit={submit}
       className="relative flex w-full max-w-2xl flex-col border border-nk-border bg-nk-surface sm:flex-row"
     >
@@ -66,7 +64,7 @@ export default function SearchBar() {
           onFocus={() => setPopupOpen(true)}
           onChange={(e) => setQ(e.target.value)}
           placeholder={t("placeholder")}
-          className="w-full bg-transparent text-sm text-nk-text outline-none placeholder:text-nk-text-muted"
+          className="w-full bg-transparent text-left text-sm text-nk-text outline-none placeholder:text-nk-text-muted"
           aria-label={t("placeholder")}
         />
       </div>
@@ -102,12 +100,11 @@ export default function SearchBar() {
         {t("search")}
       </button>
 
-      {/* location search popup — portalled to body, anchored under the form */}
+      {/* location search popup — portalled to body, pinned to the top of the viewport */}
       <LocationSearchPopup
         open={popupOpen}
         onClose={() => setPopupOpen(false)}
         onPick={handlePick}
-        anchorRef={formRef}
       />
     </form>
   );
