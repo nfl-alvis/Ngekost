@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# AI agent files (lokal saja, tidak di-push)
+/AGENTS.md
+/CLAUDE.md
+/.agents/
+/.claude/
