@@ -7,7 +7,7 @@ import { hasLocale } from "next-intl";
 import { routing } from "@/i18n/routing";
 import "@/app/globals.css";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import ConditionalFooter from "@/components/ConditionalFooter";
 import { SessionProvider } from "@/components/SessionProvider";
 
 const sans = Inter({
@@ -52,7 +52,7 @@ export default async function LocaleLayout({
           <SessionProvider>
             <Navbar />
             <main id="main-content" className="flex-1">{children}</main>
-            <Footer />
+            <ConditionalFooter />
           </SessionProvider>
         </NextIntlClientProvider>
       </body>

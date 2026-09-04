@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import DashboardShell from "@/components/DashboardShell";
-import { Dialog } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { subscriptionState, subscriptionPlans } from "@/lib/data/entities";
 import { formatIDR, cn } from "@/lib/utils";
 
@@ -113,7 +113,8 @@ export default function OwnerSubscriptionPage() {
         </button>
       </div>
 
-      <Dialog open={cancelOpen} onClose={() => setCancelOpen(false)} className="max-w-sm">
+      <Dialog open={cancelOpen} onOpenChange={(o) => !o && setCancelOpen(false)}>
+        <DialogContent className="max-w-sm">
         <h2 className="pr-8 text-lg font-medium text-nk-text">{t("cancelTitle")}</h2>
         <p className="mt-2 text-sm text-nk-text-muted">
           {t("cancelBody", { date: state.activeUntil ?? "30 Sep 2026" })}
@@ -128,6 +129,7 @@ export default function OwnerSubscriptionPage() {
         >
           {t("cancelConfirm")}
         </button>
+      </DialogContent>
       </Dialog>
     </DashboardShell>
   );

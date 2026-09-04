@@ -7,7 +7,7 @@ import { bookings } from "@/lib/data/entities";
 import type { Booking, BookingStatus } from "@/lib/data/types";
 import { formatIDR } from "@/lib/utils";
 import { StatusBadge } from "@/components/StatusBadge";
-import { Dialog } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 const ACTIVE: BookingStatus[] = ["pending", "approved-awaiting-payment", "active"];
 const DONE: BookingStatus[] = ["rejected", "expired", "cancelled"];
@@ -178,7 +178,8 @@ export default function MyBookingsPage() {
       )}
 
       {/* modal detail + timeline */}
-      <Dialog open={detail !== null} onClose={() => setDetail(null)}>
+      <Dialog open={detail !== null} onOpenChange={(o) => !o && setDetail(null)}>
+      <DialogContent>
         {detail && (
           <>
             <h2 className="pr-8 text-lg font-medium text-nk-text">{t("detailTitle")}</h2>
@@ -215,6 +216,7 @@ export default function MyBookingsPage() {
             </ol>
           </>
         )}
+            </DialogContent>
       </Dialog>
     </div>
   );

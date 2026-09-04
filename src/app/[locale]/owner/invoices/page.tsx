@@ -4,7 +4,9 @@ import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import DashboardShell from "@/components/DashboardShell";
 import { StatusBadge } from "@/components/StatusBadge";
-import { Dialog } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 import { invoices as seedInvoices, tenants } from "@/lib/data/entities";
 import type { Invoice } from "@/lib/data/types";
 import { formatIDR } from "@/lib/utils";
@@ -67,45 +69,43 @@ export default function OwnerInvoicesPage() {
       </div>
 
       {/* tab filter */}
-      <div className="mb-5 flex gap-1 rounded-lg border border-nk-border bg-nk-surface p-1 w-fit">
+      <Tabs value={filter} onValueChange={(v) => setFilter(v as typeof filter)}>
+        <TabsList className="mb-5 flex h-auto w-fit gap-1 rounded-lg border border-nk-border bg-nk-surface p-1">
         {tabs.map((tab) => (
-          <button
+          <TabsTrigger
             key={tab.id}
-            type="button"
-            onClick={() => setFilter(tab.id)}
-            className={`rounded-md px-3.5 py-2 text-sm transition-colors ${
-              filter === tab.id
-                ? "bg-nk-accent font-medium text-nk-text-inverse"
-                : "text-nk-text-muted hover:text-nk-text"
-            }`}
+            value={tab.id}
+            className="rounded-md px-3.5 py-2 text-sm font-normal transition-colors data-[state=active]:bg-nk-accent data-[state=active]:font-medium data-[state=active]:text-nk-text-inverse data-[state=inactive]:text-nk-text-muted hover:data-[state=inactive]:text-nk-text"
           >
             {tab.label}
-          </button>
+          </TabsTrigger>
         ))}
-      </div>
+        </TabsList>
+
+      </Tabs>
 
       {/* desktop tabel */}
       <div className="hidden overflow-hidden rounded-lg border border-nk-border bg-nk-surface lg:block">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b border-nk-border text-left text-xs text-nk-text-muted">
-              <th className="px-4 py-3 font-medium">{t("colTenant")}</th>
-              <th className="px-4 py-3 font-medium">{t("colPeriod")}</th>
-              <th className="px-4 py-3 font-medium">{t("colAmount")}</th>
-              <th className="px-4 py-3 font-medium">{t("colStatus")}</th>
-              <th className="px-4 py-3 font-medium">{t("colDue")}</th>
-              <th className="px-4 py-3 font-medium">{t("colAction")}</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table className="w-full text-sm">
+          <TableHeader>
+            <TableRow className="border-b border-nk-border text-left text-xs text-nk-text-muted">
+              <TableHead className="px-4 py-3 font-medium">{t("colTenant")}</TableHead>
+              <TableHead className="px-4 py-3 font-medium">{t("colPeriod")}</TableHead>
+              <TableHead className="px-4 py-3 font-medium">{t("colAmount")}</TableHead>
+              <TableHead className="px-4 py-3 font-medium">{t("colStatus")}</TableHead>
+              <TableHead className="px-4 py-3 font-medium">{t("colDue")}</TableHead>
+              <TableHead className="px-4 py-3 font-medium">{t("colAction")}</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             {filtered.map((inv) => (
-              <tr key={inv.id} className="border-b border-nk-border last:border-b-0">
-                <td className="px-4 py-3 font-medium text-nk-text">{inv.tenantName}</td>
-                <td className="px-4 py-3 text-nk-text">{inv.period}</td>
-                <td className="px-4 py-3 text-nk-text">{formatIDR(inv.amount)}</td>
-                <td className="px-4 py-3">{badge(inv)}</td>
-                <td className="px-4 py-3 text-nk-text-muted">{inv.dueDate}</td>
-                <td className="px-4 py-3">
+              <TableRow key={inv.id} className="border-b border-nk-border last:border-b-0">
+                <TableCell className="px-4 py-3 font-medium text-nk-text">{inv.tenantName}</TableCell>
+                <TableCell className="px-4 py-3 text-nk-text">{inv.period}</TableCell>
+                <TableCell className="px-4 py-3 text-nk-text">{formatIDR(inv.amount)}</TableCell>
+                <TableCell className="px-4 py-3">{badge(inv)}</TableCell>
+                <TableCell className="px-4 py-3 text-nk-text-muted">{inv.dueDate}</TableCell>
+                <TableCell className="px-4 py-3">
                   {inv.status === "lunas" ? (
                     <span className="text-xs text-nk-text-muted">
                       {t("paidOn", { date: inv.paidAt ?? "" })}
@@ -119,11 +119,11 @@ export default function OwnerInvoicesPage() {
                       {t("markPaid")}
                     </button>
                   )}
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
 
       {/* mobile cards */}
@@ -154,7 +154,8 @@ export default function OwnerInvoicesPage() {
       </div>
 
       {/* modal buat tagihan manual */}
-      <Dialog open={createOpen} onClose={() => setCreateOpen(false)} className="max-w-sm">
+      <Dialog open={createOpen} onOpenChange={(o) => !o && setCreateOpen(false)}>
+        <DialogContent className="max-w-sm">
         <h2 className="pr-8 text-lg font-medium text-nk-text">{t("create")}</h2>
         <div className="mt-5 flex flex-col gap-4">
           <div className="flex flex-col gap-1.5">
@@ -223,6 +224,7 @@ export default function OwnerInvoicesPage() {
             {t("create")}
           </button>
         </div>
+      </DialogContent>
       </Dialog>
     </DashboardShell>
   );

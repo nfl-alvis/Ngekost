@@ -1,19 +1,20 @@
+import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
 /**
  * Badge status semantik lintas domain: booking, verifikasi, pembayaran, kamar.
- * Warna konsisten: hijau=sehat, kuning=menunggu, biru=proses bayar,
- * merah=masalah, abu=netral/terisi.
+ * Wraps shadcn Badge dengan varian warna warm-palette:
+ * hijau=sehat, kuning=menunggu, biru=proses bayar, merah=masalah, abu=netral.
  */
-const statusColors = {
-  yellow: "border-[#EAD9A8] bg-[#FBF3DC] text-[#8A6A14]",
+const colorVariants = {
   green: "border-[#BFDCC5] bg-[#E9F4EC] text-[#2F6B3C]",
-  blue: "border-[#BFD3E8] bg-[#EAF1FA] text-[#2C5A8F]",
+  yellow: "border-[#EAD9A8] bg-[#FBF3DC] text-[#8A6A1F]",
+  blue: "border-[#B9CCE4] bg-[#E8EFF8] text-[#33517C]",
   red: "border-[#EBC4C0] bg-[#FAEAE8] text-[#9C3B32]",
   gray: "border-nk-border bg-nk-section text-nk-text-muted",
 } as const;
 
-export type StatusColor = keyof typeof statusColors;
+export type StatusColor = keyof typeof colorVariants;
 
 export function StatusBadge({
   color,
@@ -25,14 +26,8 @@ export function StatusBadge({
   children: React.ReactNode;
 }) {
   return (
-    <span
-      className={cn(
-        "inline-flex items-center whitespace-nowrap rounded-md border px-2.5 py-0.5 text-xs font-medium",
-        statusColors[color],
-        className
-      )}
-    >
+    <Badge variant="outline" className={cn(colorVariants[color], className)}>
       {children}
-    </span>
+    </Badge>
   );
 }

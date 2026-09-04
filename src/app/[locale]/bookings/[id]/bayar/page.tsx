@@ -6,12 +6,11 @@ import { useParams, useRouter } from "next/navigation";
 import { useRouter as useI18nRouter } from "@/i18n/navigation";
 import { bookings } from "@/lib/data/entities";
 import { formatIDR } from "@/lib/utils";
-import { Dialog } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 export default function PaymentPage() {
   const t = useTranslations("payment");
   const params = useParams<{ id: string }>();
-  const router = useRouter();
   const i18nRouter = useI18nRouter();
 
   const booking = bookings.find((b) => b.id === params.id);
@@ -98,7 +97,8 @@ export default function PaymentPage() {
       <p className="mt-3 text-center text-xs text-nk-text-muted">{t("warning")}</p>
 
       {/* modal simulasi sukses */}
-      <Dialog open={paid} onClose={() => setPaid(false)} className="max-w-sm text-center">
+      <Dialog open={paid} onOpenChange={(o) => !o && setPaid(false)}>
+        <DialogContent className="max-w-sm text-center">
         <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-full bg-[#E9F4EC] text-[#2F6B3C]">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M20 6 9 17l-5-5" />
@@ -113,6 +113,7 @@ export default function PaymentPage() {
         >
           {t("backToBookings")}
         </button>
+        </DialogContent>
       </Dialog>
     </div>
   );

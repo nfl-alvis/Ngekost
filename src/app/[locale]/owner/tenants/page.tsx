@@ -5,7 +5,8 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import DashboardShell from "@/components/DashboardShell";
 import { StatusBadge } from "@/components/StatusBadge";
-import { Dialog } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 import {
   getOwnerProperties,
   invoices,
@@ -63,19 +64,19 @@ export default function OwnerTenantsPage() {
 
       {/* desktop tabel */}
       <div className="hidden overflow-hidden rounded-lg border border-nk-border bg-nk-surface lg:block">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b border-nk-border text-left text-xs text-nk-text-muted">
-              <th className="px-4 py-3 font-medium">{t("colTenant")}</th>
-              <th className="px-4 py-3 font-medium">{t("colProperty")}</th>
-              <th className="px-4 py-3 font-medium">{t("colPayment")}</th>
-              <th className="px-4 py-3 font-medium">{t("colAction")}</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table className="w-full text-sm">
+          <TableHeader>
+            <TableRow className="border-b border-nk-border text-left text-xs text-nk-text-muted">
+              <TableHead className="px-4 py-3 font-medium">{t("colTenant")}</TableHead>
+              <TableHead className="px-4 py-3 font-medium">{t("colProperty")}</TableHead>
+              <TableHead className="px-4 py-3 font-medium">{t("colPayment")}</TableHead>
+              <TableHead className="px-4 py-3 font-medium">{t("colAction")}</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             {filtered.map((tn) => (
-              <tr key={tn.id} className="border-b border-nk-border last:border-b-0">
-                <td className="px-4 py-3">
+              <TableRow key={tn.id} className="border-b border-nk-border last:border-b-0">
+                <TableCell className="px-4 py-3">
                   <div className="flex items-center gap-3">
                     <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-nk-warm text-sm font-medium text-nk-text">
                       {tn.name.trim().charAt(0).toUpperCase()}
@@ -85,13 +86,13 @@ export default function OwnerTenantsPage() {
                       <span className="block truncate text-xs text-nk-text-muted">{tn.phone}</span>
                     </span>
                   </div>
-                </td>
-                <td className="px-4 py-3 text-nk-text">
+                </TableCell>
+                <TableCell className="px-4 py-3 text-nk-text">
                   {tn.propertyName}
                   <span className="block text-xs text-nk-text-muted">Kamar {tn.roomNumber}</span>
-                </td>
-                <td className="px-4 py-3">{payBadge(tn.paymentStatus)}</td>
-                <td className="px-4 py-3">
+                </TableCell>
+                <TableCell className="px-4 py-3">{payBadge(tn.paymentStatus)}</TableCell>
+                <TableCell className="px-4 py-3">
                   <button
                     type="button"
                     onClick={() => setDetail(tn)}
@@ -99,11 +100,11 @@ export default function OwnerTenantsPage() {
                   >
                     {t("viewDetail")}
                   </button>
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
 
       {/* mobile cards */}
@@ -136,7 +137,8 @@ export default function OwnerTenantsPage() {
       </div>
 
       {/* modal detail tenant */}
-      <Dialog open={detail !== null} onClose={() => setDetail(null)} className="max-w-lg">
+      <Dialog open={detail !== null} onOpenChange={(o) => !o && setDetail(null)}>
+        <DialogContent className="max-w-lg">
         {detail && (
           <>
             <h2 className="pr-8 text-lg font-medium text-nk-text">{t("detailTitle")}</h2>
@@ -195,6 +197,7 @@ export default function OwnerTenantsPage() {
             </button>
           </>
         )}
+      </DialogContent>
       </Dialog>
     </DashboardShell>
   );

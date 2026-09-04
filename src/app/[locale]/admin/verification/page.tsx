@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import DashboardShell from "@/components/DashboardShell";
-import { Dialog } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 import { verificationQueue } from "@/lib/data/entities";
 import type { AdminReviewEntry } from "@/lib/data/types";
 
@@ -48,24 +49,24 @@ export default function AdminVerificationPage() {
         <>
           {/* desktop tabel */}
           <div className="hidden overflow-hidden rounded-lg border border-nk-border bg-nk-surface lg:block">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-nk-border text-left text-xs text-nk-text-muted">
-                  <th className="px-4 py-3 font-medium">{t("colProperty")}</th>
-                  <th className="px-4 py-3 font-medium">{t("colOwner")}</th>
-                  <th className="px-4 py-3 font-medium">{t("colCity")}</th>
-                  <th className="px-4 py-3 font-medium">{t("colDate")}</th>
-                  <th className="px-4 py-3 font-medium">{t("colAction")}</th>
-                </tr>
-              </thead>
-              <tbody>
+            <Table className="w-full text-sm">
+              <TableHeader>
+                <TableRow className="border-b border-nk-border text-left text-xs text-nk-text-muted">
+                  <TableHead className="px-4 py-3 font-medium">{t("colProperty")}</TableHead>
+                  <TableHead className="px-4 py-3 font-medium">{t("colOwner")}</TableHead>
+                  <TableHead className="px-4 py-3 font-medium">{t("colCity")}</TableHead>
+                  <TableHead className="px-4 py-3 font-medium">{t("colDate")}</TableHead>
+                  <TableHead className="px-4 py-3 font-medium">{t("colAction")}</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
                 {queue.map((p) => (
-                  <tr key={p.id} className="border-b border-nk-border last:border-b-0">
-                    <td className="px-4 py-3 font-medium text-nk-text">{p.propertyName}</td>
-                    <td className="px-4 py-3 text-nk-text">{p.ownerName}</td>
-                    <td className="px-4 py-3 text-nk-text">{p.city}</td>
-                    <td className="px-4 py-3 text-nk-text-muted">{p.submittedAt}</td>
-                    <td className="px-4 py-3">
+                  <TableRow key={p.id} className="border-b border-nk-border last:border-b-0">
+                    <TableCell className="px-4 py-3 font-medium text-nk-text">{p.propertyName}</TableCell>
+                    <TableCell className="px-4 py-3 text-nk-text">{p.ownerName}</TableCell>
+                    <TableCell className="px-4 py-3 text-nk-text">{p.city}</TableCell>
+                    <TableCell className="px-4 py-3 text-nk-text-muted">{p.submittedAt}</TableCell>
+                    <TableCell className="px-4 py-3">
                       <button
                         type="button"
                         onClick={() => setReview(p)}
@@ -73,11 +74,11 @@ export default function AdminVerificationPage() {
                       >
                         {t("review")}
                       </button>
-                    </td>
-                  </tr>
+                    </TableCell>
+                  </TableRow>
                 ))}
-              </tbody>
-            </table>
+              </TableBody>
+            </Table>
           </div>
 
           {/* mobile cards */}
@@ -105,14 +106,16 @@ export default function AdminVerificationPage() {
       {/* modal review */}
       <Dialog
         open={review !== null}
-        onClose={() => {
-          setReview(null);
-          setRejectOpen(false);
-          setApproveConfirm(false);
-          setReasonError(false);
+        onOpenChange={(o) => {
+          if (!o) {
+            setReview(null);
+            setRejectOpen(false);
+            setApproveConfirm(false);
+            setReasonError(false);
+          }
         }}
-        className="max-w-lg"
       >
+        <DialogContent className="max-w-lg">
         {review && (
           <>
             <h2 className="pr-8 text-lg font-medium text-nk-text">{t("detailTitle")}</h2>
@@ -220,6 +223,7 @@ export default function AdminVerificationPage() {
             )}
           </>
         )}
+      </DialogContent>
       </Dialog>
     </DashboardShell>
   );

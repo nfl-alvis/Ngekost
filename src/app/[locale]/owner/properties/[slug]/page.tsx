@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import DashboardShell from "@/components/DashboardShell";
 import { StatusBadge } from "@/components/StatusBadge";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { roomUnits, type RoomUnit } from "@/lib/data/entities";
 import { getPropertyBySlug } from "@/lib/data/properties";
 import { formatIDR, cn } from "@/lib/utils";
@@ -104,22 +105,20 @@ export default function OwnerPropertyDetailPage() {
       </section>
 
       {/* tabs */}
-      <div className="mb-6 flex gap-1 border-b border-nk-border">
-        {tabs.map((tab2) => (
-          <button
-            key={tab2.id}
-            type="button"
-            onClick={() => setTab(tab2.id)}
-            className={`-mb-px border-b-2 px-4 py-2.5 text-sm transition-colors ${
-              tab === tab2.id
-                ? "border-nk-accent font-medium text-nk-text"
-                : "border-transparent text-nk-text-muted hover:text-nk-text"
-            }`}
-          >
-            {tab2.label}
-          </button>
-        ))}
-      </div>
+      <Tabs value={tab} onValueChange={(v) => setTab(v as typeof tab)}>
+        <TabsList className="mb-6 flex h-auto w-fit gap-1 rounded-none border-b border-nk-border bg-transparent p-0">
+          {tabs.map((tab2) => (
+            <TabsTrigger
+              key={tab2.id}
+              value={tab2.id}
+              className="-mb-px rounded-none border-b-2 border-transparent px-4 py-2.5 text-sm font-normal text-nk-text-muted shadow-none transition-colors data-[state=active]:border-nk-accent data-[state=active]:bg-transparent data-[state=active]:font-medium data-[state=active]:text-nk-text data-[state=active]:shadow-none"
+            >
+              {tab2.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+
+      </Tabs>
 
       {/* TAB: Tipe Kamar */}
       {tab === "rooms" && (

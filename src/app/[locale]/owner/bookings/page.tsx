@@ -4,7 +4,9 @@ import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 import DashboardShell from "@/components/DashboardShell";
 import { StatusBadge } from "@/components/StatusBadge";
-import { Dialog } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
 import { ownerBookings } from "@/lib/data/entities";
 import type { Booking } from "@/lib/data/types";
 import { formatIDR } from "@/lib/utils";
@@ -92,53 +94,49 @@ export default function OwnerBookingsPage() {
       <h1 className="mb-6 text-2xl font-medium tracking-tight text-nk-text">{t("title")}</h1>
 
       {/* tab filter */}
-      <div className="no-scrollbar mb-5 flex gap-1 overflow-x-auto rounded-lg border border-nk-border bg-nk-surface p-1 lg:w-fit">
-        {tabs.map((tab2) => (
-          <button
-            key={tab2.id}
-            type="button"
-            onClick={() => setTab(tab2.id)}
-            className={`whitespace-nowrap rounded-md px-3.5 py-2 text-sm transition-colors ${
-              tab === tab2.id
-                ? "bg-nk-accent font-medium text-nk-text-inverse"
-                : "text-nk-text-muted hover:text-nk-text"
-            }`}
-          >
-            {tab2.label}
-          </button>
-        ))}
-      </div>
+      <Tabs value={tab} onValueChange={(v) => setTab(v as Tab)}>
+        <TabsList className="no-scrollbar mb-5 flex h-auto w-fit gap-1 overflow-x-auto rounded-lg border border-nk-border bg-nk-surface p-1">
+          {tabs.map((tab2) => (
+            <TabsTrigger
+              key={tab2.id}
+              value={tab2.id}
+              className="whitespace-nowrap rounded-md px-3.5 py-2 text-sm font-normal transition-colors data-[state=active]:bg-nk-accent data-[state=active]:font-medium data-[state=active]:text-nk-text-inverse data-[state=inactive]:text-nk-text-muted hover:data-[state=inactive]:text-nk-text"
+            >
+              {tab2.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
 
       {/* desktop: tabel / mobile: card list */}
       <div className="hidden overflow-hidden rounded-lg border border-nk-border bg-nk-surface lg:block">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b border-nk-border text-left text-xs text-nk-text-muted">
-              <th className="px-4 py-3 font-medium">{t("colName")}</th>
-              <th className="px-4 py-3 font-medium">{t("colProperty")}</th>
-              <th className="px-4 py-3 font-medium">{t("colDate")}</th>
-              <th className="px-4 py-3 font-medium">{t("colStatus")}</th>
-              <th className="px-4 py-3 font-medium">{t("colAction")}</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table className="w-full text-sm">
+          <TableHeader>
+            <TableRow className="border-b border-nk-border text-left text-xs text-nk-text-muted">
+              <TableHead className="px-4 py-3 font-medium">{t("colName")}</TableHead>
+              <TableHead className="px-4 py-3 font-medium">{t("colProperty")}</TableHead>
+              <TableHead className="px-4 py-3 font-medium">{t("colDate")}</TableHead>
+              <TableHead className="px-4 py-3 font-medium">{t("colStatus")}</TableHead>
+              <TableHead className="px-4 py-3 font-medium">{t("colAction")}</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             {filtered.map((b) => (
-              <tr key={b.id} className="border-b border-nk-border last:border-b-0">
-                <td className="px-4 py-3">
+              <TableRow key={b.id} className="border-b border-nk-border last:border-b-0">
+                <TableCell className="px-4 py-3">
                   <p className="font-medium text-nk-text">{b.applicantName}</p>
                   <p className="font-mono text-xs text-nk-text-muted">{b.id}</p>
-                </td>
-                <td className="px-4 py-3 text-nk-text">
+                </TableCell>
+                <TableCell className="px-4 py-3 text-nk-text">
                   {b.propertyName}
                   <span className="block text-xs text-nk-text-muted">
                     {b.roomType} ({b.roomNumber})
                   </span>
-                </td>
-                <td className="px-4 py-3 text-nk-text-muted">
+                </TableCell>
+                <TableCell className="px-4 py-3 text-nk-text-muted">
                   {new Date(b.createdAt).toLocaleDateString("id-ID", { day: "numeric", month: "short", year: "numeric" })}
-                </td>
-                <td className="px-4 py-3">{statusBadge(b, tr)}</td>
-                <td className="px-4 py-3">
+                </TableCell>
+                <TableCell className="px-4 py-3">{statusBadge(b, tr)}</TableCell>
+                <TableCell className="px-4 py-3">
                   {b.status === "pending" ? (
                     <div className="flex gap-2">
                       <button
@@ -165,11 +163,11 @@ export default function OwnerBookingsPage() {
                       {t("viewDetail")}
                     </button>
                   )}
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
 
       {/* mobile card list */}
@@ -220,8 +218,11 @@ export default function OwnerBookingsPage() {
         ))}
       </div>
 
+      </Tabs>
+
       {/* modal detail */}
-      <Dialog open={detail !== null} onClose={() => setDetail(null)} className="max-w-lg">
+      <Dialog open={detail !== null} onOpenChange={(o) => !o && setDetail(null)}>
+        <DialogContent className="max-w-lg">
         {detail && (
           <>
             <h2 className="pr-8 text-lg font-medium text-nk-text">{t("detailTitle")}</h2>
@@ -287,10 +288,12 @@ export default function OwnerBookingsPage() {
             )}
           </>
         )}
+      </DialogContent>
       </Dialog>
 
       {/* modal reject */}
-      <Dialog open={rejectTarget !== null} onClose={() => setRejectTarget(null)} className="max-w-sm">
+      <Dialog open={rejectTarget !== null} onOpenChange={(o) => !o && setRejectTarget(null)}>
+        <DialogContent className="max-w-sm">
         {rejectTarget && (
           <>
             <h2 className="pr-8 text-lg font-medium text-nk-text">{t("rejectTitle")}</h2>
@@ -316,6 +319,7 @@ export default function OwnerBookingsPage() {
             </button>
           </>
         )}
+      </DialogContent>
       </Dialog>
     </DashboardShell>
   );

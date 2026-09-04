@@ -6,13 +6,12 @@ import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { Link, useRouter as useI18nRouter } from "@/i18n/navigation";
 import { getPropertyBySlug } from "@/lib/data/properties";
 import { formatIDR } from "@/lib/utils";
-import { Dialog } from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 export default function BookingApplyPage() {
   const t = useTranslations("booking");
   const params = useParams<{ slug: string }>();
   const searchParams = useSearchParams();
-  const router = useRouter();
   const i18nRouter = useI18nRouter();
 
   const slug = params.slug;
@@ -155,7 +154,8 @@ export default function BookingApplyPage() {
       </form>
 
       {/* modal sukses */}
-      <Dialog open={submitted} onClose={() => setSubmitted(false)} className="max-w-sm text-center">
+      <Dialog open={submitted} onOpenChange={(o) => !o && setSubmitted(false)}>
+        <DialogContent className="max-w-sm text-center">
         <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-full bg-[#E9F4EC] text-[#2F6B3C]">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M20 6 9 17l-5-5" />
@@ -170,6 +170,7 @@ export default function BookingApplyPage() {
         >
           {t("successCta")}
         </button>
+        </DialogContent>
       </Dialog>
     </div>
   );
