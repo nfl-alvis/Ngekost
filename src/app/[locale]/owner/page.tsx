@@ -27,7 +27,7 @@ type Stat = {
   up?: boolean;
   badge?: boolean;
   icon: StatIcon;
-  tint: { card: string; border: string; icon: string };
+  tint: { card: string; icon: string };
 };
 
 export default function OwnerDashboardPage() {
@@ -64,7 +64,6 @@ export default function OwnerDashboardPage() {
       icon: TrendingUp,
       tint: {
         card: "bg-[#E9F4EC]",
-        border: "border-[#BFDCC5]",
         icon: "bg-[#CFE8D6] text-[#2F6B3C]",
       },
     },
@@ -75,7 +74,6 @@ export default function OwnerDashboardPage() {
       icon: BedDouble,
       tint: {
         card: "bg-[#E8EFF8]",
-        border: "border-[#B9CCE4]",
         icon: "bg-[#D3E0F0] text-[#33517C]",
       },
     },
@@ -86,7 +84,6 @@ export default function OwnerDashboardPage() {
       icon: AlertCircle,
       tint: {
         card: "bg-[#FAEAE8]",
-        border: "border-[#EBC4C0]",
         icon: "bg-[#F3D7D3] text-[#9C3B32]",
       },
     },
@@ -98,7 +95,6 @@ export default function OwnerDashboardPage() {
       icon: CalendarClock,
       tint: {
         card: "bg-[#FBF3DC]",
-        border: "border-[#EAD9A8]",
         icon: "bg-[#F3E3B8] text-[#8A6A1F]",
       },
     },
@@ -120,9 +116,8 @@ export default function OwnerDashboardPage() {
           <div
             key={s.label}
             className={cn(
-              "flex flex-col gap-1 overflow-hidden rounded-xl border",
-              s.tint.card,
-              s.tint.border
+              "flex flex-col gap-1 overflow-hidden rounded-xl ring-1 ring-foreground/10",
+              s.tint.card
             )}
           >
             <p className="px-4 pb-1 pt-3 text-sm font-semibold text-nk-text">{s.label}</p>
@@ -177,7 +172,7 @@ export default function OwnerDashboardPage() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* kolom kiri: booking pending + chart */}
         <div className="flex flex-col gap-6 lg:col-span-2">
-          <section className="flex flex-col gap-1 overflow-hidden rounded-xl border border-nk-border bg-nk-section">
+          <section className="flex flex-col gap-1 overflow-hidden rounded-xl ring-1 ring-foreground/10 bg-nk-section">
             <div className="flex items-center justify-between px-4 pb-1 pt-3">
               <h2 className="text-sm font-semibold text-nk-text">{t("bookingPending")}</h2>
               <Link
@@ -227,7 +222,7 @@ export default function OwnerDashboardPage() {
           </section>
 
           {/* chart SVG */}
-          <section className="rounded-lg border border-nk-border bg-nk-surface p-6">
+          <section className="rounded-xl ring-1 ring-foreground/10 bg-nk-surface p-6">
             <h2 className="mb-6 text-lg font-medium text-nk-text">{t("chartTitle")}</h2>
             <div className="flex h-44 items-end gap-3">
               {REVENUE.map((v, i) => (
@@ -249,7 +244,7 @@ export default function OwnerDashboardPage() {
         </div>
 
         {/* sidebar kanan: aktivitas */}
-        <aside className="flex flex-col gap-1 overflow-hidden rounded-xl border border-nk-border bg-nk-section lg:order-last">
+        <aside className="flex flex-col gap-1 overflow-hidden rounded-xl ring-1 ring-foreground/10 bg-nk-section lg:order-last">
           <h2 className="px-4 pb-1 pt-3 text-sm font-semibold text-nk-text">{t("activity")}</h2>
           <ol className="flex flex-1 flex-col rounded-lg bg-nk-surface px-5">
             {ACTIVITIES.map((a) => (

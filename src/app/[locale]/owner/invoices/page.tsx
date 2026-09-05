@@ -59,7 +59,7 @@ export default function OwnerInvoicesPage() {
 
       {/* ringkasan — band judul tinted di atas, card putih menyatu di bawah */}
       <div className="mb-6 grid grid-cols-2 gap-4 sm:max-w-md">
-        <div className="flex flex-col gap-1 overflow-hidden rounded-xl border border-[#B9CCE4] bg-[#E8EFF8]">
+        <div className="flex flex-col gap-1 overflow-hidden rounded-xl ring-1 ring-foreground/10 bg-[#E8EFF8]">
           <p className="px-4 pb-1 pt-3 text-sm font-semibold text-nk-text">{t("summaryUnpaid")}</p>
           <div className="flex-1 rounded-lg bg-nk-surface p-4">
             <div className="flex items-center gap-3">
@@ -72,7 +72,7 @@ export default function OwnerInvoicesPage() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-1 overflow-hidden rounded-xl border border-[#EBC4C0] bg-[#FAEAE8]">
+        <div className="flex flex-col gap-1 overflow-hidden rounded-xl ring-1 ring-foreground/10 bg-[#FAEAE8]">
           <p className="px-4 pb-1 pt-3 text-sm font-semibold text-nk-text">{t("summaryArrears")}</p>
           <div className="flex-1 rounded-lg bg-nk-surface p-4">
             <div className="flex items-center gap-3">
