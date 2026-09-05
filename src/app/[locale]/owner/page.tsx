@@ -177,9 +177,9 @@ export default function OwnerDashboardPage() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* kolom kiri: booking pending + chart */}
         <div className="flex flex-col gap-6 lg:col-span-2">
-          <section>
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-lg font-medium text-nk-text">{t("bookingPending")}</h2>
+          <section className="flex flex-col gap-1 overflow-hidden rounded-xl border border-nk-border bg-nk-section">
+            <div className="flex items-center justify-between px-4 pb-1 pt-3">
+              <h2 className="text-sm font-semibold text-nk-text">{t("bookingPending")}</h2>
               <Link
                 href="/owner/bookings"
                 className="text-sm text-nk-text underline underline-offset-4 transition-colors hover:text-nk-text-muted"
@@ -187,7 +187,7 @@ export default function OwnerDashboardPage() {
                 {t("seeAll")}
               </Link>
             </div>
-            <div className="flex flex-col divide-y divide-nk-border rounded-lg border border-nk-border bg-nk-surface">
+            <div className="flex flex-1 flex-col divide-y divide-nk-border rounded-lg bg-nk-surface">
               {pending.slice(0, 5).map((b) => (
                 <div key={b.id} className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center">
                   <div className="min-w-0 flex-1">
@@ -249,9 +249,9 @@ export default function OwnerDashboardPage() {
         </div>
 
         {/* sidebar kanan: aktivitas */}
-        <aside className="rounded-lg border border-nk-border bg-nk-surface p-5 lg:order-last">
-          <h2 className="mb-4 text-base font-medium text-nk-text">{t("activity")}</h2>
-          <ol className="flex flex-col">
+        <aside className="flex flex-col gap-1 overflow-hidden rounded-xl border border-nk-border bg-nk-section lg:order-last">
+          <h2 className="px-4 pb-1 pt-3 text-sm font-semibold text-nk-text">{t("activity")}</h2>
+          <ol className="flex flex-1 flex-col rounded-lg bg-nk-surface px-5">
             {ACTIVITIES.map((a) => (
               <li key={a.id} className="border-b border-nk-border py-3 last:border-b-0">
                 <p className="text-sm text-nk-text">{a.text}</p>
