@@ -54,8 +54,7 @@ export default function OwnerDashboardPage() {
 
   const max = Math.max(...REVENUE);
 
-  // Pola hotel-dashboard shadcn: outer card tinted berisi judul,
-  // inner card putih berisi ikon + nilai + catatan.
+  // Band judul tinted di atas card putih — tidak membungkus isi card.
   const stats: Stat[] = [
     {
       label: t("statRevenue"),
@@ -115,15 +114,19 @@ export default function OwnerDashboardPage() {
         <p className="text-sm text-nk-text-muted">{today}</p>
       </div>
 
-      {/* stat cards — outer tinted + inner white (pola hotel dashboard) */}
+      {/* stat cards — band judul tinted di atas, card putih menyatu di bawah */}
       <div className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {stats.map((s) => (
           <div
             key={s.label}
-            className={cn("rounded-xl border p-4", s.tint.card, s.tint.border)}
+            className={cn(
+              "flex flex-col gap-1 overflow-hidden rounded-xl border",
+              s.tint.card,
+              s.tint.border
+            )}
           >
-            <p className="text-sm font-semibold text-nk-text">{s.label}</p>
-            <div className="mt-3 rounded-lg bg-nk-surface p-4">
+            <p className="px-4 pb-1 pt-3 text-sm font-semibold text-nk-text">{s.label}</p>
+            <div className="flex-1 rounded-lg bg-nk-surface p-4">
               <div className="flex items-center gap-3">
                 <div
                   className={cn(
