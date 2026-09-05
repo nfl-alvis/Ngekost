@@ -7,6 +7,7 @@ import { StatusBadge } from "@/components/StatusBadge";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@/components/ui/table";
+import { AlertCircle, Receipt } from "lucide-react";
 import { invoices as seedInvoices, tenants } from "@/lib/data/entities";
 import type { Invoice } from "@/lib/data/types";
 import { formatIDR } from "@/lib/utils";
@@ -56,15 +57,33 @@ export default function OwnerInvoicesPage() {
         </button>
       </div>
 
-      {/* ringkasan */}
+      {/* ringkasan — band judul tinted di atas, card putih menyatu di bawah */}
       <div className="mb-6 grid grid-cols-2 gap-4 sm:max-w-md">
-        <div className="rounded-lg border border-nk-border bg-nk-surface p-4">
-          <p className="text-xs text-nk-text-muted">{t("summaryUnpaid")}</p>
-          <p className="mt-1 text-2xl font-semibold text-nk-text">{unpaidThisMonth}</p>
+        <div className="flex flex-col gap-1 overflow-hidden rounded-xl border border-[#B9CCE4] bg-[#E8EFF8]">
+          <p className="px-4 pb-1 pt-3 text-sm font-semibold text-nk-text">{t("summaryUnpaid")}</p>
+          <div className="flex-1 rounded-lg bg-nk-surface p-4">
+            <div className="flex items-center gap-3">
+              <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#D3E0F0] text-[#33517C]">
+                <Receipt className="size-4" aria-hidden="true" />
+              </div>
+              <p className="truncate text-2xl font-semibold tracking-tight text-nk-text">
+                {unpaidThisMonth}
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="rounded-lg border border-nk-border bg-nk-surface p-4">
-          <p className="text-xs text-nk-text-muted">{t("summaryArrears")}</p>
-          <p className="mt-1 text-2xl font-semibold text-nk-text">{arrears}</p>
+        <div className="flex flex-col gap-1 overflow-hidden rounded-xl border border-[#EBC4C0] bg-[#FAEAE8]">
+          <p className="px-4 pb-1 pt-3 text-sm font-semibold text-nk-text">{t("summaryArrears")}</p>
+          <div className="flex-1 rounded-lg bg-nk-surface p-4">
+            <div className="flex items-center gap-3">
+              <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#F3D7D3] text-[#9C3B32]">
+                <AlertCircle className="size-4" aria-hidden="true" />
+              </div>
+              <p className="truncate text-2xl font-semibold tracking-tight text-nk-text">
+                {arrears}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
