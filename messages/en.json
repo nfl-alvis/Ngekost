@@ -359,7 +359,31 @@
     "statNeedsResponse": "needs response",
     "approve": "Approve",
     "reject": "Reject",
-    "chartTitle": "Revenue, Last 6 Months",
+    "chartTitle": "Revenue Stats",
+    "rangeWeekly": "Weekly",
+    "rangeMonthly": "Monthly",
+    "rangeYearly": "Yearly",
+    "chartTrendWeekly": "+12.4%",
+    "chartTrendMonthly": "+8.4%",
+    "chartTrendYearly": "+14.2%",
+    "chartCompareWeekly": "from last week",
+    "chartCompareMonthly": "from last month",
+    "chartCompareYearly": "from last year",
+    "days": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat",
+      "Sun"
+    ],
+    "years": [
+      "2023",
+      "2024",
+      "2025",
+      "2026"
+    ],
     "months": [
       "March",
       "April",

@@ -359,7 +359,31 @@
     "statNeedsResponse": "perlu direspons",
     "approve": "Setujui",
     "reject": "Tolak",
-    "chartTitle": "Pendapatan 6 Bulan Terakhir",
+    "chartTitle": "Statistik Pendapatan",
+    "rangeWeekly": "Mingguan",
+    "rangeMonthly": "Bulanan",
+    "rangeYearly": "Tahunan",
+    "chartTrendWeekly": "+12,4%",
+    "chartTrendMonthly": "+8,4%",
+    "chartTrendYearly": "+14,2%",
+    "chartCompareWeekly": "dari minggu lalu",
+    "chartCompareMonthly": "dari bulan lalu",
+    "chartCompareYearly": "dari tahun lalu",
+    "days": [
+      "Sen",
+      "Sel",
+      "Rab",
+      "Kam",
+      "Jum",
+      "Sab",
+      "Min"
+    ],
+    "years": [
+      "2023",
+      "2024",
+      "2025",
+      "2026"
+    ],
     "months": [
       "Maret",
       "April",

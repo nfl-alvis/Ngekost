@@ -1,8 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { AlertCircle, BedDouble, CalendarClock, TrendingUp } from "lucide-react";
+import { AlertCircle, BedDouble, CalendarClock, ChevronDown, TrendingUp } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+} from "@/components/ui/dropdown-menu";
 import { Link } from "@/i18n/navigation";
 import DashboardShell from "@/components/DashboardShell";
 import { StatusBadge } from "@/components/StatusBadge";
@@ -10,6 +18,14 @@ import { OWNER_PROFILE, ownerBookings, roomUnits, tenants } from "@/lib/data/ent
 import { cn, formatIDR } from "@/lib/utils";
 
 const REVENUE = [24.1, 26.8, 25.3, 28.9, 31.2, 33.7]; // juta Rp
+// Pendapatan per range (juta Rp)
+const REVENUE_RANGES = {
+  weekly: [14.2, 16.8, 15.1, 18.6, 17.3, 19.8, 21.4],
+  monthly: REVENUE,
+  yearly: [142.5, 168.2, 189.9, 214.6],
+} as const;
+
+type RevenueRange = keyof typeof REVENUE_RANGES;
 const ACTIVITIES = [
   { id: "a1", text: "Booking #BK-1234 disetujui", at: "2 jam lalu" },
   { id: "a2", text: "Pembayaran diterima dari Citra Lestari Dewi", at: "3 jam lalu" },
@@ -52,7 +68,16 @@ export default function OwnerDashboardPage() {
     year: "numeric",
   });
 
-  const max = Math.max(...REVENUE);
+  const [range, setRange] = useState<RevenueRange>("monthly");
+  const revenue = REVENUE_RANGES[range];
+  const revenueTotal = revenue.reduce((a, v) => a + v, 0);
+  const revenueMax = Math.max(...revenue);
+  const chartLabels =
+    range === "weekly"
+      ? (t.raw("days") as string[])
+      : range === "yearly"
+        ? (t.raw("years") as string[])
+        : monthNames;
 
   // Band judul tinted di atas card putih — tidak membungkus isi card.
   const stats: Stat[] = [
@@ -221,24 +246,55 @@ export default function OwnerDashboardPage() {
             </div>
           </section>
 
-          {/* chart SVG */}
-          <section className="rounded-xl ring-1 ring-foreground/10 bg-nk-surface p-6">
-            <h2 className="mb-6 text-lg font-medium text-nk-text">{t("chartTitle")}</h2>
-            <div className="flex h-44 items-end gap-3">
-              {REVENUE.map((v, i) => (
-                <div key={i} className="flex h-full flex-1 flex-col items-center justify-end gap-2">
-                  <span className="font-mono text-[10px] tabular-nums text-nk-text-muted">
-                    {v.toFixed(1)}
-                  </span>
-                  <div
-                    className="w-full rounded-t-sm bg-nk-accent/80 transition-all hover:bg-nk-accent"
-                    style={{ height: `${(v / max) * 100}%` }}
-                    role="img"
-                    aria-label={`${monthNames[i]}: ${v} juta`}
-                  />
-                  <span className="text-[10px] text-nk-text-muted">{monthNames[i]}</span>
-                </div>
-              ))}
+          {/* revenue stat — pola Revenue Stat hotel dashboard: band judul + dropdown, total + trend, bar chart */}
+          <section className="flex flex-col gap-1 overflow-hidden rounded-xl ring-1 ring-foreground/10 bg-nk-section">
+            <div className="flex items-center justify-between px-4 pb-1 pt-3">
+              <h2 className="text-sm font-semibold text-nk-text">{t("chartTitle")}</h2>
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  className="flex items-center gap-1.5 rounded-md bg-nk-surface px-3 py-1.5 text-sm text-nk-text ring-1 ring-foreground/10 transition-colors hover:bg-nk-accent-subtle focus:outline-none"
+                  aria-label={t("chartTitle")}
+                >
+                  {t(`range${range.charAt(0).toUpperCase()}${range.slice(1)}`)}
+                  <ChevronDown className="size-3.5 text-nk-text-muted" aria-hidden="true" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuRadioGroup value={range} onValueChange={(v) => setRange(v as RevenueRange)}>
+                    <DropdownMenuRadioItem value="weekly">{t("rangeWeekly")}</DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="monthly">{t("rangeMonthly")}</DropdownMenuRadioItem>
+                    <DropdownMenuRadioItem value="yearly">{t("rangeYearly")}</DropdownMenuRadioItem>
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+            <div className="flex-1 rounded-lg bg-nk-surface p-6">
+              <p className="text-2xl font-semibold tracking-tight text-nk-text">
+                {formatIDR(revenueTotal * 1_000_000)}
+              </p>
+              <p className="mt-1 text-sm">
+                <span className="font-medium text-[#2F6B3C]">
+                  {t(`chartTrend${range.charAt(0).toUpperCase()}${range.slice(1)}`)}
+                </span>{" "}
+                <span className="text-nk-text-muted">
+                  {t(`chartCompare${range.charAt(0).toUpperCase()}${range.slice(1)}`)}
+                </span>
+              </p>
+              <div className="mt-6 flex h-44 items-end gap-3">
+                {revenue.map((v, i) => (
+                  <div key={`${range}-${i}`} className="flex h-full flex-1 flex-col items-center justify-end gap-2">
+                    <span className="font-mono text-[10px] tabular-nums text-nk-text-muted">
+                      {v.toFixed(1)}
+                    </span>
+                    <div
+                      className="w-full rounded-t-sm bg-nk-accent/80 transition-all hover:bg-nk-accent"
+                      style={{ height: `${(v / revenueMax) * 100}%` }}
+                      role="img"
+                      aria-label={`${chartLabels[i]}: ${v} juta`}
+                    />
+                    <span className="text-[10px] text-nk-text-muted">{chartLabels[i]}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
         </div>
