@@ -2,11 +2,12 @@
 
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { AlertCircle, BedDouble, CalendarClock, TrendingUp } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import DashboardShell from "@/components/DashboardShell";
 import { StatusBadge } from "@/components/StatusBadge";
 import { OWNER_PROFILE, ownerBookings, roomUnits, tenants } from "@/lib/data/entities";
-import { formatIDR } from "@/lib/utils";
+import { cn, formatIDR } from "@/lib/utils";
 
 const REVENUE = [24.1, 26.8, 25.3, 28.9, 31.2, 33.7]; // juta Rp
 const ACTIVITIES = [
@@ -16,6 +17,18 @@ const ACTIVITIES = [
   { id: "a4", text: "Kamar A-104 diubah jadi Maintenance", at: "Kemarin, 16.40" },
   { id: "a5", text: "Booking #BK-1155 kedaluwarsa", at: "Kemarin, 10.05" },
 ];
+
+type StatIcon = React.ComponentType<{ className?: string }>;
+
+type Stat = {
+  label: string;
+  value: string;
+  note: string;
+  up?: boolean;
+  badge?: boolean;
+  icon: StatIcon;
+  tint: { card: string; border: string; icon: string };
+};
 
 export default function OwnerDashboardPage() {
   const t = useTranslations("owner");
@@ -40,28 +53,55 @@ export default function OwnerDashboardPage() {
   });
 
   const max = Math.max(...REVENUE);
-  const stats = [
+
+  // Pola hotel-dashboard shadcn: outer card tinted berisi judul,
+  // inner card putih berisi ikon + nilai + catatan.
+  const stats: Stat[] = [
     {
       label: t("statRevenue"),
       value: formatIDR(33700000),
       note: t("statRevenueChange"),
       up: true,
+      icon: TrendingUp,
+      tint: {
+        card: "bg-[#E9F4EC]",
+        border: "border-[#BFDCC5]",
+        icon: "bg-[#CFE8D6] text-[#2F6B3C]",
+      },
     },
     {
       label: t("statOccupancy"),
       value: `${Math.round((filled / totalRooms) * 100)}%`,
       note: t("statOccupancyNote", { filled, total: totalRooms }),
+      icon: BedDouble,
+      tint: {
+        card: "bg-[#E8EFF8]",
+        border: "border-[#B9CCE4]",
+        icon: "bg-[#D3E0F0] text-[#33517C]",
+      },
     },
     {
       label: t("statArrears"),
       value: formatIDR(arrearsSum),
       note: t("statArrearsNote", { count: arrears }),
+      icon: AlertCircle,
+      tint: {
+        card: "bg-[#FAEAE8]",
+        border: "border-[#EBC4C0]",
+        icon: "bg-[#F3D7D3] text-[#9C3B32]",
+      },
     },
     {
       label: t("statNewBookings"),
       value: String(pending.length),
       note: pending.length > 0 ? t("statNeedsResponse") : "",
       badge: pending.length > 0,
+      icon: CalendarClock,
+      tint: {
+        card: "bg-[#FBF3DC]",
+        border: "border-[#EAD9A8]",
+        icon: "bg-[#F3E3B8] text-[#8A6A1F]",
+      },
     },
   ];
 
@@ -75,36 +115,57 @@ export default function OwnerDashboardPage() {
         <p className="text-sm text-nk-text-muted">{today}</p>
       </div>
 
-      {/* stat cards */}
+      {/* stat cards — outer tinted + inner white (pola hotel dashboard) */}
       <div className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {stats.map((s) => (
-          <div key={s.label} className="rounded-lg border border-nk-border bg-nk-surface p-5">
-            <p className="text-xs text-nk-text-muted">{s.label}</p>
-            <p className="mt-2 text-2xl font-semibold tracking-tight text-nk-text">{s.value}</p>
-            <div className="mt-2 flex items-center gap-1.5">
-              {s.badge && <StatusBadge color="yellow">{s.note}</StatusBadge>}
-              {!s.badge && s.note && (
-                <>
-                  {s.up !== undefined && (
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className={s.up ? "text-[#2F6B3C]" : "text-[#9C3B32]"}
-                      style={{ transform: s.up ? "none" : "rotate(180deg)" }}
-                      aria-hidden="true"
-                    >
-                      <path d="M12 19V5M5 12l7-7 7 7" />
-                    </svg>
+          <div
+            key={s.label}
+            className={cn("rounded-xl border p-4", s.tint.card, s.tint.border)}
+          >
+            <p className="text-sm font-semibold text-nk-text">{s.label}</p>
+            <div className="mt-3 rounded-lg bg-nk-surface p-4">
+              <div className="flex items-center gap-3">
+                <div
+                  className={cn(
+                    "flex size-10 shrink-0 items-center justify-center rounded-full",
+                    s.tint.icon
                   )}
-                  <span className="text-xs text-nk-text-muted">{s.note}</span>
-                </>
-              )}
+                >
+                  <s.icon className="size-4" aria-hidden="true" />
+                </div>
+                <div className="min-w-0">
+                  <p className="truncate text-2xl font-semibold tracking-tight text-nk-text">
+                    {s.value}
+                  </p>
+                  {(s.badge || s.note) && (
+                    <div className="mt-0.5 flex items-center gap-1.5">
+                      {s.badge && <StatusBadge color="yellow">{s.note}</StatusBadge>}
+                      {!s.badge && s.note && (
+                        <>
+                          {s.up !== undefined && (
+                            <svg
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className={s.up ? "text-[#2F6B3C]" : "text-[#9C3B32]"}
+                              style={{ transform: s.up ? "none" : "rotate(180deg)" }}
+                              aria-hidden="true"
+                            >
+                              <path d="M12 19V5M5 12l7-7 7 7" />
+                            </svg>
+                          )}
+                          <span className="truncate text-xs text-nk-text-muted">{s.note}</span>
+                        </>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         ))}
